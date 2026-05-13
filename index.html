@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="企业战略自助诊断H5 - 3分钟了解您的企业战略定位">
+  <title>企业战略自助诊断</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1E3A8A', light: '#3B82F6' },
+            gold: { DEFAULT: '#F59E0B', dark: '#D97706' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* 内联关键样式，确保CDN失败时的基础体验 */
+    .page-section { display: none; }
+    #page-welcome { display: block; }
+    .option-card { cursor: pointer; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="app-container" id="app">
+
+    <!-- ====== 进度条 ====== -->
+    <div id="progress-container">
+      <div id="progress-bar" style="width:0%"></div>
+      <span class="progress-text" id="progress-label"></span>
+    </div>
+
+    <!-- ====== 欢迎页 ====== -->
+    <section class="page-section" id="page-welcome">
+      <div class="welcome-hero">
+        <div class="icon">📊</div>
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-2">企业战略自助诊断</h1>
+        <p class="text-sm text-gray-500 mb-1">基于经典战略方法论</p>
+        <p class="text-xs text-gray-400 mb-8">3分钟 · 10道题 · 免费</p>
+
+        <!-- 流程图 -->
+        <div class="flex items-center gap-2 text-xs text-gray-400 mb-10">
+          <span class="w-20 h-1 bg-gray-200 rounded"></span>
+          <span>答题</span>
+          <span class="w-20 h-1 bg-gray-200 rounded"></span>
+          <span>分析</span>
+          <span class="w-20 h-1 bg-gray-200 rounded"></span>
+          <span>报告</span>
+          <span class="w-20 h-1 bg-gray-200 rounded"></span>
+        </div>
+
+        <button onclick="goToStep1()" id="btn-start" class="btn-primary">
+          开始诊断
+        </button>
+
+        <p class="text-xs text-gray-300 mt-6">完全免费 · 无需注册 · 即刻诊断</p>
+      </div>
+    </section>
+
+    <!-- ====== Step1：基础信息 ====== -->
+    <section class="page-section" id="page-step1">
+      <h2 class="text-xl font-extrabold text-gray-900 mb-1">基础信息</h2>
+      <p class="text-xs text-gray-400 mb-6">请填写以下信息（严格保密，仅用于诊断分析）</p>
+
+      <!-- 行业 -->
+      <div class="mb-5">
+        <label class="block text-sm font-medium text-gray-700 mb-2">所属行业</label>
+        <select id="industry">
+          <option value="">-- 请选择 --</option>
+          <option value="internet">互联网/信息技术</option>
+          <option value="manufacturing">制造业</option>
+          <option value="finance">金融保险</option>
+          <option value="healthcare">医疗健康</option>
+          <option value="education">教育培训</option>
+          <option value="retail">零售贸易</option>
+          <option value="realestate">房地产/建筑</option>
+          <option value="catering">餐饮/酒店</option>
+          <option value="logistics">物流/运输</option>
+          <option value="media">文化/传媒</option>
+          <option value="energy">能源/环保</option>
+          <option value="agriculture">农业</option>
+          <option value="other">其他</option>
+        </select>
+      </div>
+
+      <!-- 企业规模 -->
+      <div class="mb-5">
+        <label class="block text-sm font-medium text-gray-700 mb-2">企业规模</label>
+        <div class="radio-group" id="size-group">
+          <div class="radio-option">
+            <input type="radio" name="size" value="small" id="size-small">
+            <label for="size-small">小型企业<br><span class="text-xs text-gray-400">&lt; 50人</span></label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="size" value="medium" id="size-medium">
+            <label for="size-medium">中型企业<br><span class="text-xs text-gray-400">50-500人</span></label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="size" value="large" id="size-large">
+            <label for="size-large">大型企业<br><span class="text-xs text-gray-400">&gt; 500人</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 营收区间 -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-2">年营收区间</label>
+        <div class="radio-group" id="revenue-group">
+          <div class="radio-option">
+            <input type="radio" name="revenue" value="below_1m" id="rev-low">
+            <label for="rev-low">&lt; 100万/年</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="revenue" value="1m_10m" id="rev-mid">
+            <label for="rev-mid">100万-1000万/年</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="revenue" value="10m_100m" id="rev-high">
+            <label for="rev-high">1000万-1亿/年</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="revenue" value="above_100m" id="rev-vhigh">
+            <label for="rev-vhigh">&gt; 1亿/年</label>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="submitStep1()" id="btn-step1" class="btn-primary">
+        下一步 →
+      </button>
+    </section>
+
+    <!-- ====== Step2：市场吸引力评估 ====== -->
+    <section class="page-section" id="page-step2">
+      <h2 class="text-xl font-extrabold text-gray-900 mb-1">市场吸引力评估</h2>
+      <p class="text-xs text-gray-400 mb-6">从4个维度评估您所在市场的吸引力</p>
+
+      <div id="step2-question">
+        <!-- 由 renderStep2Question() 动态填充 -->
+      </div>
+    </section>
+
+    <!-- ====== Step3：竞争地位评估 ====== -->
+    <section class="page-section" id="page-step3">
+      <h2 class="text-xl font-extrabold text-gray-900 mb-1">竞争地位评估</h2>
+      <p class="text-xs text-gray-400 mb-6">从4个维度评估企业在市场中的竞争地位</p>
+
+      <div id="step3-question">
+        <!-- 由 renderStep3Question() 动态填充 -->
+      </div>
+    </section>
+
+    <!-- ====== Step4：方向偏好 ====== -->
+    <section class="page-section" id="page-step4">
+      <h2 class="text-xl font-extrabold text-gray-900 mb-1">方向偏好</h2>
+      <p class="text-xs text-gray-400 mb-6">帮助我们了解您的战略倾向（影响建议精度）</p>
+
+      <!-- 问题1：战略方向（必选） -->
+      <div class="mb-6" id="step4-d1">
+        <label class="block text-sm font-bold text-gray-800 mb-3">您更倾向于哪种战略方向？ <span class="text-red-500">*</span></label>
+        <div class="space-y-2">
+          <div class="option-card" onclick="selectDirection(this, 'aggressive')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">激进扩张</div>
+              <div class="text-xs text-gray-400 mt-0.5">加大投入，抢占市场份额，追求高速增长</div>
+            </div>
+          </div>
+          <div class="option-card" onclick="selectDirection(this, 'steady')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">稳健发展</div>
+              <div class="text-xs text-gray-400 mt-0.5">保持现有优势，适度扩张，控制风险</div>
+            </div>
+          </div>
+          <div class="option-card" onclick="selectDirection(this, 'focus')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">聚焦深耕</div>
+              <div class="text-xs text-gray-400 mt-0.5">收缩战线，聚焦核心业务，做深做透</div>
+            </div>
+          </div>
+          <div class="option-card" onclick="selectDirection(this, 'transform')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">转型突破</div>
+              <div class="text-xs text-gray-400 mt-0.5">进入新领域，寻找新增长点</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 问题2：数字化态度（可选） -->
+      <div class="mb-6" id="step4-d2">
+        <label class="block text-sm font-bold text-gray-800 mb-3">您对数字化转型的态度是？ <span class="text-xs text-gray-400 font-normal">（选填）</span></label>
+        <div class="space-y-2">
+          <div class="option-card" onclick="selectDigitalAttitude(this, 'allin')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">全面推进</div>
+              <div class="text-xs text-gray-400 mt-0.5">全面投入数字化建设，驱动业务变革</div>
+            </div>
+          </div>
+          <div class="option-card" onclick="selectDigitalAttitude(this, 'keypoint')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">重点突破</div>
+              <div class="text-xs text-gray-400 mt-0.5">选择关键环节进行数字化升级</div>
+            </div>
+          </div>
+          <div class="option-card" onclick="selectDigitalAttitude(this, 'follow')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">稳步跟随</div>
+              <div class="text-xs text-gray-400 mt-0.5">跟随行业趋势，保持适度数字化投入</div>
+            </div>
+          </div>
+          <div class="option-card" onclick="selectDigitalAttitude(this, 'wait')">
+            <div>
+              <div class="font-medium text-gray-900 text-sm">观望为主</div>
+              <div class="text-xs text-gray-400 mt-0.5">保持现状，等待市场成熟</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="submitStep4()" id="btn-step4" class="btn-primary">
+        生成诊断报告
+      </button>
+    </section>
+
+    <!-- ====== 加载页 ====== -->
+    <section class="page-section" id="page-loading">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <div class="loading-bar-track">
+          <div id="loading-bar"></div>
+        </div>
+        <p id="loading-text" class="text-sm text-gray-500">正在分析您的市场环境...</p>
+      </div>
+    </section>
+
+    <!-- ====== 报告页 ====== -->
+    <section class="page-section" id="page-report">
+      <h2 class="text-2xl font-extrabold text-gray-900 mb-6 text-center">诊断报告</h2>
+
+      <!-- 板块1：诊断结果 -->
+      <div class="report-section" id="report-quadrant">
+        <!-- 由 renderDiagnosisResult() 动态填充 -->
+      </div>
+
+      <!-- 板块2：分析依据 -->
+      <div class="report-section" id="report-radar">
+        <!-- 由 renderRadarChartSection() 动态填充 -->
+      </div>
+
+      <!-- 板块3：战略方向建议 -->
+      <div class="report-section" id="report-suggestions">
+        <!-- 由 renderSuggestions() 动态填充 -->
+      </div>
+
+      <!-- 板块4：L2引导 -->
+      <div class="report-section" id="report-l2">
+        <!-- 由 renderL2Guide() 动态填充 -->
+      </div>
+
+      <!-- 板块5：打赏引导 -->
+      <div class="report-section" id="report-donation">
+        <!-- 由 renderDonation() 动态填充 -->
+      </div>
+
+      <!-- 板块6：免责声明 + 重新测试 -->
+      <div class="report-section" id="report-disclaimer">
+        <!-- 由 renderDisclaimer() 动态填充 -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JS文件 -->
+  <script src="js/data.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/report.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

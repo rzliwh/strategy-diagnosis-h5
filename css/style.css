@@ -1,0 +1,492 @@
+/**
+ * style.css - 自定义样式（移动端优先）
+ * 企业战略自助诊断H5
+ */
+
+/* ========== 基础重置 ========== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #F8FAFC;
+  color: #1E293B;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== 主容器 ========== */
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== 页面区域 ========== */
+.page-section {
+  display: none;
+  min-height: 100vh;
+  padding: 20px 20px 40px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#page-welcome {
+  display: block;
+}
+
+/* ========== 进度条 ========== */
+#progress-container {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  padding: 12px 20px 8px;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+#progress-bar {
+  height: 6px;
+  background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+  border-radius: 3px;
+  width: 0%;
+  min-width: 0;
+  transition: width 0.5s ease;
+  font-size: 10px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 6px;
+  overflow: visible;
+  position: relative;
+}
+
+/* ========== 欢迎页 ========== */
+.welcome-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.welcome-hero .icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.25);
+}
+
+/* ========== 按钮基础 ========== */
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1E3A8A, #1E40AF);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.2);
+}
+
+.btn-primary:disabled {
+  background: #94A3B8;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ========== 选项卡片 ========== */
+.option-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border: 2px solid #E2E8F0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.option-card:active {
+  transform: scale(0.98);
+}
+
+.option-card .radio-circle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #CBD5E1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.option-card .radio-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.option-card:hover {
+  border-color: #93C5FD;
+  background: #EFF6FF;
+}
+
+/* ========== 选项选中状态 ========== */
+.option-card.selected {
+  border-color: #1E3A8A;
+  background: #EFF6FF;
+  box-shadow: 0 0 0 1px #1E3A8A;
+}
+
+.option-card.selected .radio-circle {
+  border-color: #1E3A8A;
+  background: #1E3A8A;
+}
+
+.option-card.selected .radio-dot {
+  background: #FFFFFF;
+}
+
+/* ========== 进度条文本 ========== */
+.progress-text {
+  display: block;
+  font-size: 11px;
+  color: #64748B;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* ========== 表单元素 ========== */
+select, input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #E2E8F0;
+  border-radius: 12px;
+  font-size: 15px;
+  background: #ffffff;
+  color: #1E293B;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+select:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: #1E3A8A;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 36px;
+}
+
+/* ========== 单选组（step1 规模/营收） ========== */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.radio-group .radio-option {
+  flex: 1;
+  min-width: calc(50% - 5px);
+}
+
+.radio-group .radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-group .radio-option label {
+  display: block;
+  padding: 14px 12px;
+  border: 2px solid #E2E8F0;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.radio-group .radio-option input[type="radio"]:checked + label {
+  border-color: #1E3A8A;
+  background: #EFF6FF;
+  color: #1E3A8A;
+  font-weight: 700;
+}
+
+/* ========== 加载动画 ========== */
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #E2E8F0;
+  border-top: 4px solid #1E3A8A;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 24px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-bar-track {
+  width: 200px;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+#loading-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1E3A8A, #3B82F6);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+#loading-text {
+  font-size: 14px;
+  color: #64748B;
+}
+
+/* ========== 报告页通用 ========== */
+.report-section {
+  margin-bottom: 32px;
+}
+
+.report-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.report-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1E3A8A;
+  margin-bottom: 8px;
+}
+
+/* ========== 得分圆环 ========== */
+.score-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.score-circle .score-value {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* ========== 战略建议卡片 ========== */
+.suggestion-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: #ffffff;
+  transition: box-shadow 0.2s ease;
+}
+
+.suggestion-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ========== 打赏区 ========== */
+.tip-card {
+  text-align: center;
+}
+
+.tip-desc {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 16px;
+}
+
+.tip-amount-options {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.tip-option {
+  flex: 1;
+  border: 2px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tip-option:hover {
+  border-color: #93C5FD;
+}
+
+.tip-option.selected {
+  border-color: #1E3A8A;
+  background-color: #EFF6FF;
+}
+
+.tip-amount {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1E3A8A;
+}
+
+.tip-label {
+  display: block;
+  font-size: 12px;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
+.tip-image-wrapper {
+  display: inline-block;
+  padding: 8px;
+  border: 2px dashed #E2E8F0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.tip-image {
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+.tip-hint {
+  font-size: 14px;
+  color: #64748B;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.donate-qr {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+
+/* ========== 动画 ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ========== 移动端适配 ========== */
+@media (max-width: 480px) {
+  .app-container {
+    box-shadow: none;
+  }
+
+  .page-section {
+    padding: 16px 16px 32px;
+  }
+
+  .radio-group .radio-option {
+    min-width: 100%;
+  }
+}
+
+@media (min-width: 481px) {
+  .radio-group .radio-option {
+    min-width: calc(50% - 5px);
+  }
+}
+
+/* ========== 触摸优化 ========== */
+@media (hover: none) and (pointer: coarse) {
+  .option-card {
+    padding: 16px;
+  }
+}
