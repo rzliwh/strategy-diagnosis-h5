@@ -370,9 +370,9 @@
 
     // 保存答案
     if (STATE.step === 'market') {
-      STATE.marketAnswers[STATE.qIndex] = value;
+      STATE.marketAnswers[STATE.qIndex] = parseInt(value);
     } else if (STATE.step === 'competition') {
-      STATE.compAnswers[STATE.qIndex] = value;
+      STATE.compAnswers[STATE.qIndex] = parseInt(value);
     } else if (STATE.step === 'extra') {
       var q = L2_EXTRA_QUESTIONS[STATE.qIndex];
       STATE.extraAnswers[q.param] = value;
