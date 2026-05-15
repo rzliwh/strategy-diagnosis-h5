@@ -131,11 +131,11 @@ var COMP_QUESTIONS = [
     dimension: '成本结构',
     text: '企业在成本控制方面的优势如何？',
     options: [
-      { value: 1, label: '很高', desc: '成本远高于同行' },
-      { value: 2, label: '较高', desc: '成本略高于同行' },
-      { value: 3, label: '持平', desc: '成本与同行相当' },
-      { value: 4, label: '较低', desc: '成本低于大多数同行' },
-      { value: 5, label: '很低', desc: '行业成本领先者' }
+      { value: 1, label: '劣势明显', desc: '成本远高于同行' },
+      { value: 2, label: '略有劣势', desc: '成本略高于同行' },
+      { value: 3, label: '基本持平', desc: '成本与同行相当' },
+      { value: 4, label: '较有优势', desc: '成本低于大多数同行' },
+      { value: 5, label: '优势明显', desc: '行业成本领先者' }
     ]
   }
 ];
