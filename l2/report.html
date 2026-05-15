@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="L2企业战略方向深度分析报告">
+  <title>企业战略方向分析报告</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1E3A8A', light: '#3B82F6' },
+            gold: { DEFAULT: '#F59E0B', dark: '#D97706' }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="css/l2-style.css">
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?TODO_REPLACE_WITH_BAIDU_STATS_ID";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container" id="app">
+    <!-- 由 renderReport() 动态填充 -->
+  </div>
+
+  <script src="js/l2-data.js"></script>
+  <script>
+  /* ========== 解析URL参数 ========== */
+  function parseParams() {
+    var p = new URLSearchParams(window.location.search);
+    return {
+      market: parseInt(p.get('market')),
+      comp: parseInt(p.get('comp')),
+      industry: p.get('industry') || '',
+      scale: p.get('scale') || '',
+      revenue: p.get('revenue') || '',
+      pref: p.get('pref') || '',
+      pain: p.get('pain') || '',
+      bizType: p.get('bizType') || '',
+      customerType: p.get('customerType') || '',
+      compAdvantage: p.get('compAdvantage') || '',
+      selfAdvantage: p.get('selfAdvantage') || '',
+      goal: p.get('goal') || '',
+      fundStatus: p.get('fundStatus') || ''
+    };
+  }
+
+  /* ========== 方向标签判断 ========== */
+  function getDirectionTags(quadrant, dirIndex, goal, fundStatus) {
+    // 返回 { tag: '推荐'|'谨慎'|null, tagClass: 'recommend'|'caution' }
+    var rules = {
+      '明星区': {
+        0: { recGoals: ['A','B','C','D','E'], minFund: 'B' },  // 扩大份额-高投入
+        1: { recGoals: ['A','B','C','D','E'], minFund: 'C' },  // 复制模式-中投入
+        2: { recGoals: ['A','B','C','D','E'], minFund: 'B' }   // 建立壁垒-中高投入
+      },
+      '机会区': {
+        0: { recGoals: ['A','D'], minFund: 'C' },  // 聚焦细分
+        1: { recGoals: ['A','E','C'], minFund: 'C' },  // 差异化
+        2: { recGoals: ['C','D','A'], minFund: 'C' }   // AI超车
+      },
+      '陷阱区': {
+        0: { recGoals: ['D','B'], minFund: 'D' },  // 聚焦收缩-推荐困境中的企业
+        1: { recGoals: ['A','C'], minFund: 'B' },  // 新赛道转型-需资金
+        2: { recGoals: ['A','B','C','D','E'], minFund: 'D' }  // 合作共赢-低门槛
+      },
+      '保护区': {
+        0: { recGoals: ['B','C'], minFund: 'D' },  // 深耕客户
+        1: { recGoals: ['A','C'], minFund: 'C' },  // 延伸产品线
+        2: { recGoals: ['D','C'], minFund: 'D' }   // AI降本
+      }
+    };
+
+    var fundLevels = { A: 0, B: 1, C: 2, D: 3 };
+    var rule = rules[quadrant] && rules[quadrant][dirIndex];
+    if (!rule) return { tag: null, tagClass: '' };
+
+    var userFund = fundLevels[fundStatus] !== undefined ? fundLevels[fundStatus] : 1;
+    var minFund = fundLevels[rule.minFund] !== undefined ? fundLevels[rule.minFund] : 1;
+
+    if (userFund > minFund + 1) {
+      return { tag: '谨慎', tagClass: 'caution' };
+    }
+    if (rule.recGoals.indexOf(goal) !== -1 && userFund <= minFund + 1) {
+      return { tag: '推荐', tagClass: 'recommend' };
+    }
+    return { tag: null, tagClass: '' };
+  }
+
+  /* ========== 行业洞察文案 ========== */
+  function getMarketLevelText(score) {
+    if (score >= 60) return INDUSTRY_INSIGHT.marketLevel.high;
+    if (score >= 40) return INDUSTRY_INSIGHT.marketLevel.mid;
+    return INDUSTRY_INSIGHT.marketLevel.low;
+  }
+
+  function getScaleStageText(scale) {
+    return INDUSTRY_INSIGHT.scaleStage[scale] || '建议根据企业实际规模制定针对性的发展策略。';
+  }
+
+  function getCustomerRiskText(customerType) {
+    return INDUSTRY_INSIGHT.customerRisk[customerType] || '建议明确目标客户群体，制定针对性的客户运营策略。';
+  }
+
+  /* ========== 收入数字格式化 ========== */
+  function formatMoneyLabel(level) {
+    var map = { '低': 'green', '低中': 'green', '中': 'blue', '中高': 'orange', '高': 'orange' };
+    var cls = map[level] || 'blue';
+    return '<span class="l2-tag l2-tag-' + cls + '">资金：' + level + '</span>';
+  }
+
+  /* ========== L2方向标签名映射 ========== */
+  var EXTRA_LABELS = {
+    bizType: { A:'产品型', B:'服务型', C:'产品+服务混合', D:'平台/流量型' },
+    customerType: { A:'B2C', B:'B2B中小企业', C:'B2B大企业/政府', D:'B2B+B2C混合' },
+    compAdvantage: { A:'价格更低', B:'品牌更知名', C:'渠道更广/资源更多', D:'技术更强', E:'服务/响应更好' },
+    selfAdvantage: { A:'价格竞争力', B:'服务/响应更好', C:'技术/质量更强', D:'细分市场专注', E:'尚未明确差异' },
+    goal: { A:'开发新客户', B:'提高复购/续费', C:'提升产品/服务质量', D:'降低运营成本', E:'建立品牌知名度' },
+    fundStatus: { A:'资金充裕', B:'资金尚可', C:'资金紧张', D:'资金非常紧张' }
+  };
+
+  function extraLabel(key, val) {
+    var map = EXTRA_LABELS[key];
+    return (map && map[val]) ? map[val] : val;
+  }
+
+  /* ========== 主渲染 ========== */
+  function renderReport() {
+    var d = parseParams();
+    if (isNaN(d.market) || isNaN(d.comp)) {
+      showNoData();
+      return;
+    }
+
+    var quadrant = getQuadrant(d.market, d.comp);
+    var qColors = QUADRANT_COLORS[quadrant];
+    var directions = L2_DIRECTIONS[quadrant] || [];
+    var now = new Date();
+    var dateStr = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+
+    var html = '';
+
+    // ===== 1. 报告头部 =====
+    html += '<div class="text-center mb-6 pt-2">';
+    html += '<h1 class="text-xl font-extrabold text-gray-900 mb-2">企业战略方向分析报告</h1>';
+    html += '<p class="text-xs text-gray-400">' + d.industry + ' · ' + d.scale + ' · ' + d.revenue + '</p>';
+    html += '<p class="text-xs text-gray-400">生成时间：' + dateStr + '</p>';
+    html += '</div>';
+
+    html += '<div class="text-center mb-6">';
+    html += '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-2" style="background-color:' + qColors.color + '">';
+    html += quadrant;
+    html += '</div>';
+    html += '<div class="flex gap-4 justify-center mt-3">';
+    html += '<div class="text-center"><span class="text-xs text-gray-400">市场吸引力</span><br><span class="text-xl font-bold" style="color:' + qColors.color + '">' + d.market + '分</span></div>';
+    html += '<div class="text-center"><span class="text-xs text-gray-400">竞争地位</span><br><span class="text-xl font-bold" style="color:' + qColors.color + '">' + d.comp + '分</span></div>';
+    html += '</div>';
+    html += '</div>';
+
+    // ===== 2. 保存链接提示条 =====
+    html += '<div class="l2-save-banner">';
+    html += '<span class="save-icon">📋</span>';
+    html += '<span>保存或收藏此页面链接，即可随时查看您的战略分析报告</span>';
+    html += '</div>';
+
+    // ===== 3. 行业洞察 =====
+    html += '<div class="l2-report-section">';
+    html += '<h2 class="l2-report-title">📊 您所在行业的机会与挑战</h2>';
+    html += '<div class="l2-report-card">';
+    html += '<p class="text-sm text-gray-700 leading-relaxed mb-3"><strong>当前阶段判断：</strong>' + getMarketLevelText(d.market) + '</p>';
+    html += '<p class="text-sm text-gray-700 leading-relaxed mb-3"><strong>您的规模阶段特征：</strong>' + getScaleStageText(d.scale) + '</p>';
+    html += '<p class="text-sm text-gray-700 leading-relaxed"><strong>客户群体风险提示：</strong>' + getCustomerRiskText(d.customerType) + '</p>';
+    html += '</div>';
+    html += '</div>';
+
+    // ===== 4. 战略位置图 =====
+    html += '<div class="l2-report-section">';
+    html += '<h2 class="l2-report-title">📍 战略位置图</h2>';
+    html += '<div class="l2-report-card">';
+    html += '<div class="l2-quadrant-wrap">';
+    html += '<canvas id="quadrantCanvas" width="300" height="300" style="width:300px;height:300px;max-width:100%;"></canvas>';
+    html += '</div>';
+    html += '<p class="text-xs text-gray-400 text-center mt-2">● 您的企业</p>';
+    html += '</div>';
+    html += '</div>';
+
+    // ===== 5. 三大战略方向 =====
+    html += '<div class="l2-report-section">';
+    html += '<h2 class="l2-report-title">🎯 三大战略方向详细拆解</h2>';
+
+    for (var di = 0; di < directions.length; di++) {
+      var dir = directions[di];
+      var tagInfo = getDirectionTags(quadrant, di, d.goal, d.fundStatus);
+
+      html += '<div class="l2-direction-card dir-' + (di + 1) + '">';
+      html += '<div class="l2-dir-header">';
+      html += '<span class="l2-dir-name">方向' + dir.id + '：' + dir.name + '</span>';
+      if (tagInfo.tag) {
+        html += '<span class="l2-dir-tag ' + tagInfo.tagClass + '">' + tagInfo.tag + '</span>';
+      }
+      html += '</div>';
+
+      html += '<p class="l2-dir-tagline">' + dir.tagline + '</p>';
+
+      html += '<div class="l2-dir-block">';
+      html += '<div class="l2-dir-block-title">📋 适合条件</div>';
+      html += '<ul>';
+      for (var s = 0; s < dir.suitable.length; s++) {
+        html += '<li>' + dir.suitable[s] + '</li>';
+      }
+      html += '</ul>';
+      html += '</div>';
+
+      html += '<div class="l2-dir-block">';
+      html += '<div class="l2-dir-block-title">💰 投入评估</div>';
+      html += '<p class="text-sm text-gray-600">' + formatMoneyLabel(dir.investment.money) + '</p>';
+      html += '<p class="text-sm text-gray-600">时间周期：' + dir.investment.time + '</p>';
+      html += '<p class="text-sm text-gray-600">人力需求：' + dir.investment.people + '</p>';
+      html += '</div>';
+
+      html += '<div class="l2-dir-block">';
+      html += '<div class="l2-dir-block-title">⚠️ 主要风险</div>';
+      html += '<ul>';
+      for (var r = 0; r < dir.risk.length; r++) {
+        html += '<li>' + dir.risk[r] + '</li>';
+      }
+      html += '</ul>';
+      html += '</div>';
+
+      html += '<div class="l2-dir-block">';
+      html += '<div class="l2-dir-block-title">📈 预期回报</div>';
+      html += '<p class="text-sm text-gray-600">短期（3个月）：' + dir.reward.short + '</p>';
+      html += '<p class="text-sm text-gray-600">中期（6-12个月）：' + dir.reward.mid + '</p>';
+      html += '</div>';
+
+      html += '<div class="l2-dir-block">';
+      html += '<div class="l2-dir-block-title">🤖 AI落地路径</div>';
+      html += '<ul>';
+      for (var a = 0; a < dir.aiPaths.length; a++) {
+        html += '<li>' + dir.aiPaths[a] + '</li>';
+      }
+      html += '</ul>';
+      html += '</div>';
+
+      html += '<div class="l2-dir-actions">';
+      html += '<div class="l2-dir-block-title">📅 90天行动清单</div>';
+      html += '<h4>第1-30天（启动期）</h4>';
+      var actions30 = dir.actions['1-30'] || [];
+      for (var a1 = 0; a1 < actions30.length; a1++) {
+        html += '<li>' + actions30[a1] + '</li>';
+      }
+      html += '<h4 style="margin-top:8px;">第31-60天（执行期）</h4>';
+      var actions60 = dir.actions['31-60'] || [];
+      for (var a2 = 0; a2 < actions60.length; a2++) {
+        html += '<li>' + actions60[a2] + '</li>';
+      }
+      html += '<h4 style="margin-top:8px;">第61-90天（验证期）</h4>';
+      var actions90 = dir.actions['61-90'] || [];
+      for (var a3 = 0; a3 < actions90.length; a3++) {
+        html += '<li>' + actions90[a3] + '</li>';
+      }
+      html += '</div>';
+
+      html += '</div>';
+    }
+    html += '</div>';
+
+    // ===== 6. 竞争对手分析框架 =====
+    html += renderCompetitorAnalysis(d);
+    html += '';
+
+    // ===== 7. L3升级引导 =====
+    html += renderL3Guide();
+
+    document.getElementById('app').innerHTML = html;
+
+    // 渲染四象限Canvas
+    renderQuadrantCanvas(d.market, d.comp, quadrant);
+  }
+
+  /* ========== 竞对分析渲染 ========== */
+  function renderCompetitorAnalysis(d) {
+    var compKey = d.compAdvantage;
+    var selfKey = d.selfAdvantage;
+
+    var compInfo = COMPETITOR_MAP[compKey] || { dimension: '综合', label: '未指定' };
+    var selfInfo = SELF_ADVANTAGE_MAP[selfKey] || '未指定';
+
+    // 构建比较表的5个维度
+    var dimensions = ['价格', '服务/响应', '技术/质量', '品牌知名度', '渠道/资源'];
+    var compDim = compInfo.dimension;
+    var selfDim = selfInfo;
+
+    var html = '';
+    html += '<div class="l2-report-section">';
+    html += '<h2 class="l2-report-title">🔍 找到你的差异化优势</h2>';
+    html += '<div class="l2-report-card">';
+
+    // 对比表
+    html += '<p class="text-sm font-bold text-gray-700 mb-3">竞对画像对比</p>';
+    html += '<table class="l2-compare-table">';
+    html += '<tr><th class="label-col">维度</th><th>你的企业</th><th>竞争对手</th></tr>';
+    for (var i = 0; i < dimensions.length; i++) {
+      var dim = dimensions[i];
+      var youClass = 'tie', youLabel = '— 持平';
+      var compClass = 'tie', compLabel = '— 持平';
+
+      if (dim === selfDim) {
+        youClass = 'win'; youLabel = '✅ 领先';
+      }
+      if (dim === compDim) {
+        compClass = 'lose'; compLabel = '⚠️ 落后';
+      }
+
+      html += '<tr>';
+      html += '<td class="label-col">' + dim + '</td>';
+      html += '<td class="' + youClass + '">' + youLabel + '</td>';
+      html += '<td class="' + compClass + '">' + compLabel + '</td>';
+      html += '</tr>';
+    }
+    html += '</table>';
+
+    // 差异化建议
+    html += '<p class="text-sm text-gray-700 leading-relaxed mt-4 mb-4">' + getDiffAdvice(compKey, selfKey) + '</p>';
+
+    // 3个快速行动
+    html += '<p class="text-sm font-bold text-gray-700 mb-2">3个提升竞争力的快速行动</p>';
+    html += '<ol class="text-sm text-gray-600 space-y-1" style="padding-left:18px;">';
+    html += '<li>把你的差异化优势写成一句话（一句话电梯演讲），在所有营销物料上统一呈现</li>';
+    html += '<li>找到5个最典型的成功客户案例，整理成可传播的故事</li>';
+    html += '<li>设计一个让客户"尝鲜"的低门槛产品或服务，降低首次决策成本</li>';
+    html += '</ol>';
+
+    html += '</div>';
+    html += '</div>';
+    return html;
+  }
+
+  /* ========== L3引导渲染 ========== */
+  function renderL3Guide() {
+    var html = '';
+    html += '<div class="l2-l3-card">';
+    html += '<p style="font-size:20px;margin-bottom:8px;">📋</p>';
+    html += '<h3>' + L3_GUIDE.title + '</h3>';
+    html += '<p>' + L3_GUIDE.desc + '</p>';
+    html += '<p class="l3-service">' + L3_GUIDE.service + '</p>';
+    html += '<a class="l2-l3-btn" onclick="alert(\'L3咨询服务即将上线，敬请期待！\\n如有需要可联系微信：LaoLee01\')">' + L3_GUIDE.cta + '（' + L3_GUIDE.price + '）</a>';
+    html += '</div>';
+    return html;
+  }
+
+  /* ========== Canvas四象限图（300×300） ========== */
+  function renderQuadrantCanvas(marketScore, compScore, quadrant) {
+    var canvas = document.getElementById('quadrantCanvas');
+    if (!canvas) return;
+
+    var dpr = window.devicePixelRatio || 1;
+    var displaySize = Math.min(canvas.clientWidth || 300, 300);
+
+    canvas.width = displaySize * dpr;
+    canvas.height = displaySize * dpr;
+    canvas.style.width = displaySize + 'px';
+    canvas.style.height = displaySize + 'px';
+
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    var padding = 40;
+    var chartSize = displaySize - padding * 2;
+    var originX = padding;
+    var originY = padding + chartSize;
+    var half = chartSize / 2;
+    var midX = originX + half;
+    var midY = padding + half;
+
+    ctx.clearRect(0, 0, displaySize, displaySize);
+
+    // 四象限背景
+    var colors = {
+      '明星区': 'rgba(16,185,129,0.12)',
+      '机会区': 'rgba(59,130,246,0.12)',
+      '陷阱区': 'rgba(239,68,68,0.12)',
+      '保护区': 'rgba(245,158,11,0.12)'
+    };
+
+    // 明星区 (右上)
+    ctx.fillStyle = colors['明星区'];
+    ctx.fillRect(midX, padding, half, half);
+    // 机会区 (左上)
+    ctx.fillStyle = colors['机会区'];
+    ctx.fillRect(originX, padding, half, half);
+    // 陷阱区 (左下)
+    ctx.fillStyle = colors['陷阱区'];
+    ctx.fillRect(originX, midY, half, half);
+    // 保护区 (右下)
+    ctx.fillStyle = colors['保护区'];
+    ctx.fillRect(midX, midY, half, half);
+
+    // 网格线
+    ctx.strokeStyle = '#E2E8F0';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(midX, padding);
+    ctx.lineTo(midX, padding + chartSize);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(originX, midY);
+    ctx.lineTo(originX + chartSize, midY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 坐标轴
+    ctx.strokeStyle = '#94A3B8';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(originX, padding);
+    ctx.lineTo(originX, padding + chartSize);
+    ctx.lineTo(originX + chartSize, padding + chartSize);
+    ctx.stroke();
+
+    // 轴标签
+    ctx.fillStyle = '#64748B';
+    ctx.font = '11px system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('市场吸引力 →', midX, padding - 8);
+    ctx.save();
+    ctx.translate(originX - 14, midY);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('竞争地位 →', 0, 0);
+    ctx.restore();
+
+    // 象限标签
+    ctx.font = '10px system-ui,sans-serif';
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.fillText('机会区', originX + half / 2, midY - 8);
+    ctx.fillText('明星区', midX + half / 2, midY - 8);
+    ctx.fillText('陷阱区', originX + half / 2, padding + chartSize - 8);
+    ctx.fillText('保护区', midX + half / 2, padding + chartSize - 8);
+
+    // 分界线标注
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = '9px system-ui,sans-serif';
+    ctx.fillText('60', originX - 14, midY + 4);
+    ctx.fillText('60', midX, padding + chartSize + 14);
+
+    // 绘制企业位置
+    var dotX = originX + (marketScore / 100) * chartSize;
+    var dotY = padding + chartSize - (compScore / 100) * chartSize;
+
+    // 光晕
+    var glowColor = 'rgba(30,58,138,0.2)';
+    ctx.beginPath();
+    ctx.arc(dotX, dotY, 12, 0, Math.PI * 2);
+    ctx.fillStyle = glowColor;
+    ctx.fill();
+
+    // 圆点
+    ctx.beginPath();
+    ctx.arc(dotX, dotY, 6, 0, Math.PI * 2);
+    ctx.fillStyle = '#1E3A8A';
+    ctx.fill();
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 标注
+    ctx.fillStyle = '#1E3A8A';
+    ctx.font = 'bold 11px system-ui,sans-serif';
+    ctx.textAlign = 'left';
+    var labelX = dotX + 14;
+    var labelY = dotY - 6;
+    if (labelX > displaySize - 50) labelX = dotX - 14;
+    ctx.fillText('您的企业', labelX, labelY);
+  }
+
+  /* ========== 无数据显示 ========== */
+  function showNoData() {
+    var html = '';
+    html += '<div class="l2-no-data">';
+    html += '<div class="icon">📋</div>';
+    html += '<h2>暂无诊断数据</h2>';
+    html += '<p>请从问卷页提交后查看报告</p>';
+    html += '<a href="survey.html" style="display:inline-block;margin-top:20px;padding:12px 28px;border-radius:12px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;text-decoration:none;font-weight:700;font-size:15px;">前往问卷 →</a>';
+    html += '</div>';
+    document.getElementById('app').innerHTML = html;
+  }
+
+  /* ========== 启动 ========== */
+  renderReport();
+  </script>
+</body>
+</html>

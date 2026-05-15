@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="L2企业战略方向诊断问卷">
+  <title>L2战略诊断问卷</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1E3A8A', light: '#3B82F6' },
+            gold: { DEFAULT: '#F59E0B', dark: '#D97706' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/l2-style.css">
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?TODO_REPLACE_WITH_BAIDU_STATS_ID";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container" id="app">
+
+    <!-- 导入提示条 -->
+    <div class="l2-import-banner" id="importBanner" style="display:none;">
+      <span class="banner-icon">✅</span>
+      <span>已导入您的L1诊断数据，直接进入行业细节题</span>
+    </div>
+
+    <!-- 进度条 -->
+    <div class="l2-progress-wrap" id="progressWrap">
+      <div class="l2-progress-info">
+        <span class="l2-progress-label" id="stepLabel"></span>
+        <span class="l2-progress-text" id="stepCount"></span>
+      </div>
+      <div class="l2-progress-bar">
+        <div class="l2-progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- 内容区 -->
+    <div id="contentArea"></div>
+
+    <!-- 按钮区 -->
+    <div id="btnArea"></div>
+
+  </div>
+
+  <script src="js/l2-data.js"></script>
+  <script>
+  /* ========== 基础信息选项（Flow B使用） ========== */
+  var BASIC_INDUSTRIES = [
+    { value: 'internet', label: '互联网/信息技术' },
+    { value: 'manufacturing', label: '制造业' },
+    { value: 'finance', label: '金融保险' },
+    { value: 'healthcare', label: '医疗健康' },
+    { value: 'education', label: '教育培训' },
+    { value: 'retail', label: '零售贸易' },
+    { value: 'realestate', label: '房地产/建筑' },
+    { value: 'catering', label: '餐饮/酒店' },
+    { value: 'logistics', label: '物流/运输' },
+    { value: 'media', label: '文化/传媒' },
+    { value: 'energy', label: '能源/环保' },
+    { value: 'agriculture', label: '农业' },
+    { value: 'other', label: '其他' }
+  ];
+
+  var BASIC_SIZES = [
+    { value: 'small', label: '小型企业', sub: '员工 < 50人' },
+    { value: 'medium', label: '中型企业', sub: '员工 50-500人' },
+    { value: 'large', label: '大型企业', sub: '员工 > 500人' }
+  ];
+
+  var BASIC_REVENUES = [
+    { value: 'below_1m', label: '低于100万/年' },
+    { value: '1m_10m', label: '100万-1000万/年' },
+    { value: '10m_100m', label: '1000万-1亿/年' },
+    { value: 'above_100m', label: '超过1亿/年' }
+  ];
+
+  /* ========== 状态管理 ========== */
+  var STATE = {
+    // L1导入数据
+    fromL1: { market: null, comp: null, industry: '', scale: '', revenue: '', pref: '', pain: '' },
+    hasL1: false,
+    // Flow B 基础信息
+    basic: { industry: '', size: '', revenue: '' },
+    // 题目答案
+    marketAnswers: [],
+    compAnswers: [],
+    extraAnswers: {},
+    // 导航
+    step: 'basic',      // 'basic' | 'market' | 'competition' | 'extra' | 'done'
+    qIndex: 0,
+    locked: false
+  };
+
+  /* ========== 辅助映射（与L1保持一致） ========== */
+  function mapIndustry(val) {
+    for (var i = 0; i < BASIC_INDUSTRIES.length; i++) {
+      if (BASIC_INDUSTRIES[i].value === val) return BASIC_INDUSTRIES[i].label;
+    }
+    return val || '';
+  }
+
+  function mapScale(val) {
+    var m = { small: '20人以下', medium: '20-200', large: '200人以上' };
+    return m[val] || val || '';
+  }
+
+  function mapRevenue(val) {
+    var m = { below_1m: '100万以下', '1m_10m': '100-1000万', '10m_100m': '1000万-1亿', above_100m: '1亿以上' };
+    return m[val] || val || '';
+  }
+
+  /* ========== 初始化 ========== */
+  function init() {
+    var params = new URLSearchParams(window.location.search);
+    var market = parseInt(params.get('market'));
+    var comp = parseInt(params.get('comp'));
+
+    if (!isNaN(market) && !isNaN(comp)) {
+      // Flow A: 有L1数据
+      STATE.hasL1 = true;
+      STATE.fromL1.market = market;
+      STATE.fromL1.comp = comp;
+      STATE.fromL1.industry = params.get('industry') || '';
+      STATE.fromL1.scale = params.get('scale') || '';
+      STATE.fromL1.revenue = params.get('revenue') || '';
+      STATE.fromL1.pref = params.get('pref') || '';
+      STATE.fromL1.pain = params.get('pain') || '';
+      document.getElementById('importBanner').style.display = 'flex';
+      STATE.step = 'extra';
+      STATE.qIndex = 0;
+    } else {
+      // Flow B: 无L1数据
+      STATE.hasL1 = false;
+      STATE.step = 'basic';
+      STATE.qIndex = 0;
+    }
+
+    render();
+  }
+
+  /* ========== 主渲染 ========== */
+  function render() {
+    updateProgress();
+    if (STATE.step === 'basic') {
+      renderBasicInfo();
+    } else if (STATE.step === 'market') {
+      renderQuestion(L2_MARKET_QUESTIONS, STATE.qIndex, '市场吸引力评估');
+    } else if (STATE.step === 'competition') {
+      renderQuestion(L2_COMP_QUESTIONS, STATE.qIndex, '竞争地位评估');
+    } else if (STATE.step === 'extra') {
+      renderQuestion(L2_EXTRA_QUESTIONS, STATE.qIndex, '行业细节');
+    }
+  }
+
+  /* ========== 进度条 ========== */
+  function updateProgress() {
+    var total, done, label;
+
+    if (STATE.step === 'basic') {
+      total = 1; done = 0; label = '基础信息';
+    } else if (STATE.step === 'market') {
+      total = 4; done = STATE.qIndex; label = '市场吸引力评估';
+    } else if (STATE.step === 'competition') {
+      total = 4; done = STATE.qIndex; label = '竞争地位评估';
+    } else if (STATE.step === 'extra') {
+      total = 6; done = STATE.qIndex; label = '行业细节';
+    } else {
+      return;
+    }
+
+    // 如果是从L1跳过来的，总题数就是6；否则累加
+    var displayNum, displayTotal;
+    if (STATE.hasL1) {
+      displayNum = done + 1;
+      displayTotal = 6;
+    } else {
+      if (STATE.step === 'basic') {
+        displayNum = 1; displayTotal = 15;
+      } else if (STATE.step === 'market') {
+        displayNum = 1 + done + 1; displayTotal = 15;
+      } else if (STATE.step === 'competition') {
+        displayNum = 1 + 4 + done + 1; displayTotal = 15;
+      } else {
+        displayNum = 1 + 8 + done + 1; displayTotal = 15;
+      }
+    }
+
+    document.getElementById('stepLabel').textContent = label;
+    document.getElementById('stepCount').textContent = '第 ' + displayNum + ' 题 / 共 ' + displayTotal + ' 题';
+
+    var pct;
+    if (STATE.hasL1) {
+      pct = Math.round((done) / 6 * 100);
+    } else {
+      if (STATE.step === 'basic') pct = 0;
+      else if (STATE.step === 'market') pct = Math.round((1 + done) / 15 * 100);
+      else if (STATE.step === 'competition') pct = Math.round((5 + done) / 15 * 100);
+      else pct = Math.round((9 + done) / 15 * 100);
+    }
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  /* ========== 基础信息页（Flow B） ========== */
+  function renderBasicInfo() {
+    var content = document.getElementById('contentArea');
+    var html = '';
+    html += '<div class="l2-question-card">';
+    html += '<div class="l2-question-header">';
+    html += '<div class="l2-question-dimension">基础信息</div>';
+    html += '<h3 class="l2-question-text">请填写您企业的基本信息</h3>';
+    html += '<p class="text-xs text-gray-400 mt-2">严格保密，仅用于诊断分析</p>';
+    html += '</div>';
+
+    // 行业
+    html += '<div class="l2-form-group">';
+    html += '<label class="l2-form-label">所属行业</label>';
+    html += '<select class="l2-form-select" id="basicIndustry">';
+    html += '<option value="">-- 请选择 --</option>';
+    for (var i = 0; i < BASIC_INDUSTRIES.length; i++) {
+      var ind = BASIC_INDUSTRIES[i];
+      var sel = STATE.basic.industry === ind.value ? ' selected' : '';
+      html += '<option value="' + ind.value + '"' + sel + '>' + ind.label + '</option>';
+    }
+    html += '</select>';
+    html += '</div>';
+
+    // 规模
+    html += '<div class="l2-form-group">';
+    html += '<label class="l2-form-label">企业规模</label>';
+    html += '<div class="l2-radio-group" id="basicSize">';
+    for (var s = 0; s < BASIC_SIZES.length; s++) {
+      var sz = BASIC_SIZES[s];
+      var checked = STATE.basic.size === sz.value ? ' checked' : '';
+      html += '<div class="l2-radio-option">';
+      html += '<input type="radio" name="basicSize" value="' + sz.value + '" id="size-' + sz.value + '"' + checked + '>';
+      html += '<label for="size-' + sz.value + '">' + sz.label + '<br><span class="text-xs text-gray-400">' + sz.sub + '</span></label>';
+      html += '</div>';
+    }
+    html += '</div>';
+    html += '</div>';
+
+    // 营收
+    html += '<div class="l2-form-group">';
+    html += '<label class="l2-form-label">年营收区间</label>';
+    html += '<div class="l2-radio-group" id="basicRevenue">';
+    for (var r = 0; r < BASIC_REVENUES.length; r++) {
+      var rev = BASIC_REVENUES[r];
+      var rchecked = STATE.basic.revenue === rev.value ? ' checked' : '';
+      html += '<div class="l2-radio-option">';
+      html += '<input type="radio" name="basicRevenue" value="' + rev.value + '" id="rev-' + rev.value + '"' + rchecked + '>';
+      html += '<label for="rev-' + rev.value + '">' + rev.label + '</label>';
+      html += '</div>';
+    }
+    html += '</div>';
+    html += '</div>';
+
+    html += '</div>';
+    content.innerHTML = html;
+
+    // 按钮
+    var btnArea = document.getElementById('btnArea');
+    btnArea.innerHTML = '<button class="l2-btn-next" onclick="submitBasic()">下一步 →</button>';
+  }
+
+  function submitBasic() {
+    var industry = document.getElementById('basicIndustry');
+    var sizeEls = document.getElementsByName('basicSize');
+    var revenueEls = document.getElementsByName('basicRevenue');
+
+    var industryVal = industry ? industry.value : '';
+    var sizeVal = '';
+    for (var i = 0; i < sizeEls.length; i++) { if (sizeEls[i].checked) { sizeVal = sizeEls[i].value; break; } }
+    var revenueVal = '';
+    for (var j = 0; j < revenueEls.length; j++) { if (revenueEls[j].checked) { revenueVal = revenueEls[j].value; break; } }
+
+    if (!industryVal) { alert('请选择所属行业'); return; }
+    if (!sizeVal) { alert('请选择企业规模'); return; }
+    if (!revenueVal) { alert('请选择营收区间'); return; }
+
+    STATE.basic.industry = industryVal;
+    STATE.basic.size = sizeVal;
+    STATE.basic.revenue = revenueVal;
+
+    STATE.step = 'market';
+    STATE.qIndex = 0;
+    STATE.marketAnswers = [];
+    STATE.locked = false;
+    window.scrollTo(0, 0);
+    render();
+  }
+
+  /* ========== 题目渲染（逐题） ========== */
+  function renderQuestion(questions, qIndex, stepLabel) {
+    var q = questions[qIndex];
+    if (!q) return;
+
+    var totalQ = questions.length;
+    var isFinalQuestion = (STATE.step === 'extra' && qIndex === totalQ - 1);
+
+    var content = document.getElementById('contentArea');
+    var html = '';
+
+    // 如果是市场/竞争题，显示维度标签；否则显示题号
+    if (q.dimension) {
+      html += '<div class="l2-question-header">';
+      html += '<div class="l2-question-dimension">' + q.dimension + '</div>';
+      html += '<h3 class="l2-question-text">' + q.text + '</h3>';
+      html += '</div>';
+    } else {
+      html += '<div class="l2-question-header">';
+      html += '<div class="l2-question-dimension">第 ' + (qIndex + 1) + ' 题 / 共 ' + totalQ + ' 题</div>';
+      html += '<h3 class="l2-question-text">' + q.text + '</h3>';
+      html += '</div>';
+    }
+
+    // 选项
+    html += '<div id="questionOptions">';
+    for (var i = 0; i < q.options.length; i++) {
+      var opt = q.options[i];
+      html += '<div class="l2-option-card" data-value="' + opt.value + '" onclick="selectOption(this, \'' + opt.value + '\')">';
+      html += '<div>';
+      html += '<div class="font-medium text-gray-900 text-sm">' + opt.label + '</div>';
+      if (opt.desc) {
+        html += '<div class="text-xs text-gray-400 mt-0.5">' + opt.desc + '</div>';
+      }
+      html += '</div>';
+      html += '<div class="radio-circle"><span class="radio-dot"></span></div>';
+      html += '</div>';
+    }
+    html += '</div>';
+
+    content.innerHTML = html;
+
+    // 按钮
+    var btnArea = document.getElementById('btnArea');
+    var btnText = isFinalQuestion ? '生成我的战略报告' : '下一步 →';
+    var btnStyle = isFinalQuestion ? 'background:linear-gradient(135deg,#10B981,#059669);' : '';
+    btnArea.innerHTML = '<button class="l2-btn-next" id="btnNext" style="' + btnStyle + '" disabled onclick="submitAnswer()">' + btnText + '</button>';
+  }
+
+  /* ========== 选项交互 ========== */
+  function selectOption(el, value) {
+    if (STATE.locked) return;
+
+    // 取消其他选中
+    var opts = document.querySelectorAll('#questionOptions .l2-option-card');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].classList.remove('selected');
+    }
+    el.classList.add('selected');
+
+    // 保存答案
+    if (STATE.step === 'market') {
+      STATE.marketAnswers[STATE.qIndex] = value;
+    } else if (STATE.step === 'competition') {
+      STATE.compAnswers[STATE.qIndex] = value;
+    } else if (STATE.step === 'extra') {
+      var q = L2_EXTRA_QUESTIONS[STATE.qIndex];
+      STATE.extraAnswers[q.param] = value;
+    }
+
+    // 启用按钮
+    var btn = document.getElementById('btnNext');
+    if (btn) btn.disabled = false;
+  }
+
+  /* ========== 提交/下一步 ========== */
+  function submitAnswer() {
+    if (STATE.locked) return;
+    STATE.locked = true;
+
+    var questions;
+    if (STATE.step === 'market') questions = L2_MARKET_QUESTIONS;
+    else if (STATE.step === 'competition') questions = L2_COMP_QUESTIONS;
+    else questions = L2_EXTRA_QUESTIONS;
+
+    if (STATE.qIndex < questions.length - 1) {
+      // 还有下一题
+      STATE.qIndex++;
+      STATE.locked = false;
+      window.scrollTo(0, 0);
+      render();
+    } else {
+      // 当前步骤完成
+      STATE.locked = false;
+      window.scrollTo(0, 0);
+      advanceStep();
+    }
+  }
+
+  function advanceStep() {
+    if (STATE.hasL1) {
+      // Flow A: extra完成 → 提交
+      if (STATE.step === 'extra') {
+        submitAll();
+        return;
+      }
+    } else {
+      // Flow B
+      if (STATE.step === 'market') {
+        STATE.step = 'competition';
+        STATE.qIndex = 0;
+        STATE.compAnswers = [];
+        render();
+        return;
+      }
+      if (STATE.step === 'competition') {
+        STATE.step = 'extra';
+        STATE.qIndex = 0;
+        STATE.extraAnswers = {};
+        render();
+        return;
+      }
+      if (STATE.step === 'extra') {
+        submitAll();
+        return;
+      }
+    }
+  }
+
+  /* ========== 最终提交 → report.html ========== */
+  function submitAll() {
+    var params = new URLSearchParams();
+
+    if (STATE.hasL1) {
+      params.set('market', STATE.fromL1.market);
+      params.set('comp', STATE.fromL1.comp);
+      params.set('industry', STATE.fromL1.industry);
+      params.set('scale', STATE.fromL1.scale);
+      params.set('revenue', STATE.fromL1.revenue);
+      params.set('pref', STATE.fromL1.pref);
+      params.set('pain', STATE.fromL1.pain);
+    } else {
+      var mScore = calcMarketScore(STATE.marketAnswers);
+      var cScore = calcCompScore(STATE.compAnswers);
+      params.set('market', mScore);
+      params.set('comp', cScore);
+      params.set('industry', mapIndustry(STATE.basic.industry));
+      params.set('scale', mapScale(STATE.basic.size));
+      params.set('revenue', mapRevenue(STATE.basic.revenue));
+      params.set('pref', '');
+      params.set('pain', '');
+    }
+
+    // L2 extra answers
+    params.set('bizType', STATE.extraAnswers.bizType || '');
+    params.set('customerType', STATE.extraAnswers.customerType || '');
+    params.set('compAdvantage', STATE.extraAnswers.compAdvantage || '');
+    params.set('selfAdvantage', STATE.extraAnswers.selfAdvantage || '');
+    params.set('goal', STATE.extraAnswers.goal || '');
+    params.set('fundStatus', STATE.extraAnswers.fundStatus || '');
+
+    window.location.href = 'report.html?' + params.toString();
+  }
+
+  /* ========== 启动 ========== */
+  init();
+  </script>
+</body>
+</html>
