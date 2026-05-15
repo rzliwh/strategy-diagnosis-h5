@@ -68,8 +68,15 @@
 
     <!-- 收款码 -->
     <div class="mb-8">
-      <div class="inline-block p-3 border-2 border-dashed border-gray-200 rounded-2xl">
-        <img src="../images/wechat-pay-299.jpg" alt="微信扫码支付 ¥299" style="max-width:200px;height:auto;display:block;border-radius:12px;">
+      <div class="inline-block p-3 border-2 border-dashed border-gray-200 rounded-2xl relative">
+        <!-- 骨架占位 -->
+        <div id="qr-skeleton" class="w-[200px] h-[200px] bg-gray-100 rounded-xl animate-pulse flex items-center justify-center">
+          <span class="text-gray-300 text-3xl">💳</span>
+        </div>
+        <!-- 收款码图片，加载完成后覆盖骨架 -->
+        <img src="../images/wechat-pay-299.jpg" alt="微信扫码支付 ¥299"
+             style="max-width:200px;height:auto;display:block;border-radius:12px;position:absolute;top:12px;left:12px;"
+             onload="document.getElementById('qr-skeleton').style.display='none';this.style.position='static';">
       </div>
       <p class="text-sm text-gray-500 mt-3">微信扫码支付 ¥299</p>
     </div>
