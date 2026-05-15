@@ -484,6 +484,80 @@ select {
   }
 }
 
+/* ========== L2升级引导卡片 ========== */
+.l2-upgrade-card {
+  background: linear-gradient(135deg, #1E3A8A, #1E40AF);
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.l2-upgrade-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+.l2-upgrade-hint {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.l2-upgrade-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+}
+
+.l2-upgrade-features span + span {
+  /* dot separators handled inline */;
+}
+
+.l2-upgrade-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #1E3A8A;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: 12px;
+}
+
+.l2-upgrade-btn:active {
+  transform: scale(0.97);
+}
+
+.l2-upgrade-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
 /* ========== 触摸优化 ========== */
 @media (hover: none) and (pointer: coarse) {
   .option-card {

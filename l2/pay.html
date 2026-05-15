@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="L2战略诊断付款页 - ¥299">
+  <title>扫码支付 - L2战略诊断</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1E3A8A', light: '#3B82F6' },
+            gold: { DEFAULT: '#F59E0B', dark: '#D97706' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    body {
+      background: #F8FAFC;
+      font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      color: #1E293B;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .l2-container {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #ffffff;
+      padding: 24px 20px 40px;
+      text-align: center;
+    }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?TODO_REPLACE_WITH_BAIDU_STATS_ID";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container">
+
+    <!-- 页面头部 -->
+    <div class="mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);">
+        扫码支付 ¥299
+      </div>
+      <h2 class="text-xl font-extrabold text-gray-900 mt-2">微信扫码支付</h2>
+      <p class="text-sm text-gray-500 mt-1">支付完成后点击下方按钮进入诊断问卷</p>
+    </div>
+
+    <!-- 收款码 -->
+    <div class="mb-8">
+      <div class="inline-block p-3 border-2 border-dashed border-gray-200 rounded-2xl">
+        <img src="../images/wechat-pay-299.jpg" alt="微信扫码支付 ¥299" style="max-width:200px;height:auto;display:block;border-radius:12px;">
+      </div>
+      <p class="text-sm text-gray-500 mt-3">微信扫码支付 ¥299</p>
+    </div>
+
+    <!-- 我已付款按钮 -->
+    <button onclick="goToSurvey()" class="w-full py-4 rounded-2xl text-white font-bold text-lg mb-4" style="background:linear-gradient(135deg,#10B981,#059669);box-shadow:0 4px 16px rgba(16,185,129,0.3);">
+      ✅ 我已付款，开始填写问卷 →
+    </button>
+
+    <!-- 联系提示 -->
+    <p class="text-xs text-gray-400 mt-6">如有问题请联系微信：LaoLee01</p>
+
+  </div>
+
+  <script>
+    function goToSurvey() {
+      var url = 'survey.html' + window.location.search;
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>

@@ -387,33 +387,77 @@ function renderL2Guide(result) {
   var el = document.getElementById('report-l2');
   if (!el) return;
 
-  var l2 = result.l2Guide;
-  if (!l2) return;
+  // 构建URL参数
+  var industryLabel = getIndustryLabel(result.industry);
+  var scaleLabel = getScaleLabel(result.size);
+  var revenueLabel = getRevenueLabel(result.revenue);
+  var prefLetter = getDirectionLetter(result.direction);
+  var painLetter = getDigitalLetter(result.digitalAttitude);
+
+  var params = new URLSearchParams();
+  params.set('market', result.marketScore);
+  params.set('comp', result.compScore);
+  params.set('industry', industryLabel);
+  params.set('scale', scaleLabel);
+  params.set('revenue', revenueLabel);
+  params.set('pref', prefLetter);
+  params.set('pain', painLetter);
 
   var html = '';
-  html += '<div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-xl p-5">';
-  html += '<h3 class="text-lg font-bold text-gray-900 mb-2">' + l2.title + '</h3>';
-  html += '<p class="text-xs text-gray-600 leading-relaxed mb-4">' + l2.desc + '</p>';
-  html += '<div class="bg-white rounded-xl p-4 mb-4">';
-  html += '<h4 class="text-sm font-bold text-gray-800 mb-3">L2付费版包含：</h4>';
-  html += '<ul class="space-y-2">';
-  html += '<li class="flex items-start gap-2 text-xs text-gray-600">';
-  html += '<span class="text-yellow-500 mt-0.5">★</span> 个性化战略报告（10+页PDF）';
-  html += '</li>';
-  html += '<li class="flex items-start gap-2 text-xs text-gray-600">';
-  html += '<span class="text-yellow-500 mt-0.5">★</span> 行业对标数据分析';
-  html += '</li>';
-  html += '<li class="flex items-start gap-2 text-xs text-gray-600">';
-  html += '<span class="text-yellow-500 mt-0.5">★</span> 战略执行路线图';
-  html += '</li>';
-  html += '</ul>';
+  html += '<div class="l2-upgrade-card">';
+  html += '<p class="l2-upgrade-hint">想知道具体该怎么走？</p>';
+  html += '<div class="l2-upgrade-features">';
+  html += '<span>行业深度洞察</span>';
+  html += '<span>·</span>';
+  html += '<span>3个战略方向拆解</span>';
+  html += '<span>·</span>';
+  html += '<span>竞争对手分析框架</span>';
+  html += '<span>·</span>';
+  html += '<span>90天行动计划</span>';
   html += '</div>';
-  html += '<button onclick="alert(\'L2付费版即将上线，敬请期待！\')" class="w-full py-3 rounded-xl text-white font-bold text-sm" style="background:linear-gradient(135deg,#F59E0B,#D97706)">';
-  html += '立即解锁 L2 深度诊断 ￥299';
+  html += '<button onclick="goToL2(\'' + params.toString().replace(/'/g, "\\'") + '\')" class="l2-upgrade-btn">';
+  html += '查看完整战略分析报告 →';
   html += '</button>';
+  html += '<p class="l2-upgrade-price">¥299</p>';
   html += '</div>';
 
   el.innerHTML = html;
+}
+
+function goToL2(paramsStr) {
+  window.location.href = 'l2/index.html?' + paramsStr;
+}
+
+/* 辅助：行业值→中文标签 */
+function getIndustryLabel(value) {
+  for (var i = 0; i < INDUSTRIES.length; i++) {
+    if (INDUSTRIES[i].value === value) return INDUSTRIES[i].label;
+  }
+  return value || '';
+}
+
+/* 辅助：规模→显示文字 */
+function getScaleLabel(size) {
+  var map = { small: '20人以下', medium: '20-200', large: '200人以上' };
+  return map[size] || size || '';
+}
+
+/* 辅助：营收→显示文字 */
+function getRevenueLabel(revenue) {
+  var map = { below_1m: '100万以下', '1m_10m': '100-1000万', '10m_100m': '1000万-1亿', above_100m: '1亿以上' };
+  return map[revenue] || revenue || '';
+}
+
+/* 辅助：方向→字母 */
+function getDirectionLetter(dir) {
+  var map = { aggressive: 'A', steady: 'B', focus: 'C', transform: 'D' };
+  return map[dir] || '';
+}
+
+/* 辅助：数字化态度→字母 */
+function getDigitalLetter(att) {
+  var map = { allin: 'A', keypoint: 'B', follow: 'C', wait: 'D' };
+  return map[att] || '';
 }
 
 /* ========== 板块5：打赏引导 ========== */
