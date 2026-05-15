@@ -282,7 +282,12 @@
 
     // ===== 6. 竞争对手分析框架 =====
     html += renderCompetitorAnalysis(d);
-    html += '';
+
+    // ===== 6.5 二次收藏提醒 =====
+    html += '<div class="l2-save-banner" style="margin-bottom:24px;">';
+    html += '<span class="save-icon">💡</span>';
+    html += '<span>建议收藏此报告，方便日后回顾对照</span>';
+    html += '</div>';
 
     // ===== 7. L3升级引导 =====
     html += renderL3Guide();
@@ -321,10 +326,10 @@
       var compClass = 'tie', compLabel = '— 持平';
 
       if (dim === selfDim) {
-        youClass = 'win'; youLabel = '✅ 领先';
+        youClass = 'win'; youLabel = '✅ 你的优势';
       }
       if (dim === compDim) {
-        compClass = 'lose'; compLabel = '⚠️ 落后';
+        compClass = 'lose'; compLabel = '📌 竞对强项';
       }
 
       html += '<tr>';
@@ -358,7 +363,11 @@
     html += '<p style="font-size:20px;margin-bottom:8px;">📋</p>';
     html += '<h3>' + L3_GUIDE.title + '</h3>';
     html += '<p>' + L3_GUIDE.desc + '</p>';
-    html += '<p class="l3-service">' + L3_GUIDE.service + '</p>';
+    html += '<div style="text-align:left;display:inline-block;margin:12px 0 16px;">';
+    html += '<p style="font-size:14px;color:rgba(255,255,255,0.95);margin-bottom:6px;">L3服务包含：</p>';
+    html += '<p style="font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:4px;">• 战略定位深度拆解 + 90天执行路线图</p>';
+    html += '<p style="font-size:13px;color:rgba(255,255,255,0.85);">• 2小时一对一顾问咨询（微信/电话/腾讯会议）</p>';
+    html += '</div>';
     html += '<a class="l2-l3-btn" onclick="alert(\'L3咨询服务即将上线，敬请期待！\\n如有需要可联系微信：LaoLee01\')">' + L3_GUIDE.cta + '（' + L3_GUIDE.price + '）</a>';
     html += '</div>';
     return html;
