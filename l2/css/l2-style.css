@@ -365,21 +365,18 @@ body {
 }
 
 .l2-dir-tag {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 8px;
 }
 
 .l2-dir-tag.recommend {
-  background: #D1FAE5;
-  color: #065F46;
+  color: #16a34a;
 }
 
 .l2-dir-tag.caution {
-  background: #FEF3C7;
-  color: #92400E;
+  color: #d97706;
 }
 
 .l2-dir-tagline {
