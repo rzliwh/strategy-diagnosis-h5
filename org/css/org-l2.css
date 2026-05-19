@@ -1,0 +1,756 @@
+/**
+ * org-l2.css - L2页面专用样式
+ * 组织诊断H5 - L2深度诊断
+ */
+
+/* ========== L2 容器 ========== */
+.l2-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 20px 20px 40px;
+  position: relative;
+}
+
+/* ========== 返回链接 ========== */
+.l2-back-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #64748B;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.l2-back-link:hover {
+  color: #0F4C81;
+}
+
+/* ========== L2 页面标题 ========== */
+.l2-page-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 4px;
+}
+
+.l2-page-subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #94A3B8;
+  margin-bottom: 24px;
+}
+
+/* ========== L1 摘要卡片 ========== */
+.l1-summary-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.l1-summary-card .summary-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 10px;
+}
+
+.l1-summary-card .summary-item {
+  font-size: 13px;
+  color: #475569;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.l1-summary-card .summary-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3B82F6;
+  flex-shrink: 0;
+}
+
+/* ========== L2 价值列表 ========== */
+.l2-value-list {
+  margin-bottom: 24px;
+}
+
+.l2-value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.l2-value-item:last-child {
+  border-bottom: none;
+}
+
+.l2-value-item .value-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.l2-value-item .value-text {
+  flex: 1;
+}
+
+.l2-value-item .value-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 2px;
+}
+
+.l2-value-item .value-desc {
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+/* ========== L2 价格卡片 ========== */
+.l2-price-card {
+  background: linear-gradient(135deg, #0F4C81, #1E40AF);
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.l2-price-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+.l2-price-card .price-amount {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.l2-price-card .price-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+
+.l2-price-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #0F4C81;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+.l2-price-btn:active {
+  transform: scale(0.97);
+}
+
+.l2-bottom-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #94A3B8;
+  margin-top: 8px;
+}
+
+/* ========== 支付页 ========== */
+.pay-order-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.pay-order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #475569;
+}
+
+.pay-order-divider {
+  height: 1px;
+  background: #E2E8F0;
+  margin: 8px 0;
+}
+
+.pay-order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.pay-qr-card {
+  background: #ffffff;
+  border: 2px dashed #E2E8F0;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pay-qr-card .qr-image {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 12px;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  object-fit: contain;
+}
+
+.pay-qr-card .qr-hint {
+  font-size: 14px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.pay-notice {
+  font-size: 12px;
+  color: #94A3B8;
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+/* ========== Top3 深度拆解卡片 ========== */
+.top3-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: #ffffff;
+}
+
+.top3-card.severe {
+  border-left: 4px solid #EF4444;
+}
+
+.top3-card.warning {
+  border-left: 4px solid #F59E0B;
+}
+
+.top3-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.top3-rank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.top3-rank.severe { background: #EF4444; }
+.top3-rank.warning { background: #F59E0B; }
+
+.top3-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.top3-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+
+.top3-section-label:first-of-type {
+  margin-top: 0;
+}
+
+.top3-text {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.top3-list {
+  list-style: none;
+  padding: 0;
+}
+
+.top3-list li {
+  font-size: 13px;
+  color: #475569;
+  padding: 3px 0 3px 16px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.top3-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94A3B8;
+}
+
+/* ========== 90天路线图 ========== */
+.roadmap-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #ffffff;
+}
+
+.roadmap-phase {
+  padding: 20px;
+  border-bottom: 1px solid #F1F5F9;
+  position: relative;
+}
+
+.roadmap-phase:last-child {
+  border-bottom: none;
+}
+
+.roadmap-phase-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.roadmap-phase-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.roadmap-phase-num.p1 { background: #3B82F6; }
+.roadmap-phase-num.p2 { background: #10B981; }
+.roadmap-phase-num.p3 { background: #8B5CF6; }
+
+.roadmap-phase-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.roadmap-task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.roadmap-task-list li {
+  font-size: 13px;
+  color: #475569;
+  padding: 4px 0 4px 20px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.roadmap-task-list li::before {
+  content: '□';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: #94A3B8;
+  font-size: 13px;
+}
+
+.roadmap-milestone {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #F0FDF4;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #059669;
+  font-weight: 500;
+}
+
+/* ========== 延伸服务推荐卡片 ========== */
+.service-reco-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.service-reco-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #EFF6FF;
+  color: #0F4C81;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-reco-info {
+  flex: 1;
+}
+
+.service-reco-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 4px;
+}
+
+.service-reco-reason {
+  font-size: 12px;
+  color: #64748B;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.service-reco-link {
+  font-size: 12px;
+  color: #3B82F6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ========== 跨产品洞察卡片 ========== */
+.cross-product-card {
+  background: linear-gradient(135deg, #EFF6FF, #F0FDF4);
+  border: 1px solid #93C5FD;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.cross-product-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.cross-product-info {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.cross-product-challenge {
+  font-size: 13px;
+  color: #EF4444;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cross-product-actions {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+/* ========== L3 转化卡片 ========== */
+.l3-conversion-card {
+  background: linear-gradient(135deg, #0F4C81, #1E40AF);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.l3-conversion-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+.l3-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.l3-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.l3-features {
+  text-align: left;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.l3-features .l3-feature-item {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  padding: 3px 0 3px 16px;
+  position: relative;
+}
+
+.l3-features .l3-feature-item::before {
+  content: '•';
+  position: absolute;
+  left: 2px;
+  color: rgba(255,255,255,0.5);
+}
+
+.l3-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #0F4C81;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  position: relative;
+}
+
+.l3-btn:active {
+  transform: scale(0.97);
+}
+
+/* ========== 次转化卡片 ========== */
+.secondary-conversion-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.secondary-conversion-card .sc-hint {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.secondary-conversion-card .sc-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid #0F4C81;
+  border-radius: 14px;
+  color: #0F4C81;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.secondary-conversion-card .sc-btn:hover {
+  background: #EFF6FF;
+}
+
+/* ========== 免责声明 ========== */
+.l2-disclaimer {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.l2-disclaimer .disclaimer-text {
+  font-size: 12px;
+  color: #94A3B8;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.l2-reset-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid #0F4C81;
+  border-radius: 14px;
+  color: #0F4C81;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.l2-reset-btn:hover {
+  background: #EFF6FF;
+}
+
+/* ========== 问卷页复用 ========== */
+.l2-survey-container {
+  padding-bottom: 80px;
+}
+
+.l2-survey-next-btn-wrap {
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* ========== 报告模块分隔 ========== */
+.l2-report-module {
+  margin-bottom: 28px;
+}
+
+.l2-module-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F4C81;
+  margin-bottom: 12px;
+}
+
+/* ========== 阶段核心任务 ========== */
+.stage-core-tasks {
+  list-style: none;
+  padding: 0;
+}
+
+.stage-core-tasks li {
+  font-size: 13px;
+  color: #475569;
+  padding: 6px 0 6px 24px;
+  position: relative;
+  border-bottom: 1px solid #F1F5F9;
+  line-height: 1.5;
+}
+
+.stage-core-tasks li:last-child {
+  border-bottom: none;
+}
+
+.stage-core-tasks li::before {
+  content: attr(data-num);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #EFF6FF;
+  color: #0F4C81;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== 对比参考线 ========== */
+.l2-compare-badge {
+  display: inline-block;
+  font-size: 11px;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+/* ========== 收藏提醒横幅 ========== */
+.l2-tip-banner {
+  background: #FFF7E6;
+  border: 1px solid #FFE4B5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #8B6914;
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* ========== Top3 统一列表样式 ========== */
+.top3-section-content {
+  padding-left: 4px;
+}
+
+.top3-item {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.7;
+  padding: 5px 0 5px 18px;
+  position: relative;
+}
+
+.top3-item::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94A3B8;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="组织深度诊断报告 - 完整版">
+  <title>组织深度诊断报告</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/org-main.css">
+  <link rel="stylesheet" href="../css/org-l2.css">
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container">
+
+    <!-- 返回链接 -->
+    <a href="javascript:void(0)" onclick="window.location.href='../index.html'" class="l2-back-link">← 返回L1报告</a>
+
+    <h2 class="text-2xl font-extrabold text-gray-900 mb-6 text-center" style="font-size:1.5rem">深度诊断报告</h2>
+
+    <!-- 模块1：报告头部 + 雷达图 + 得分明细 -->
+    <div class="l2-report-module" id="report-header">
+      <!-- 由 renderModule1Header() 动态填充 -->
+    </div>
+
+    <!-- 模块2：阶段诊断结论（深度版） -->
+    <div class="l2-report-module" id="report-stage">
+      <!-- 由 renderModule2StageConclusion() 动态填充 -->
+    </div>
+
+    <!-- 模块3：薄弱维度分析 -->
+    <div class="l2-report-module" id="report-weak-dims">
+      <!-- 由 renderModule3WeakDims() 动态填充 -->
+    </div>
+
+    <!-- 模块4：Top3核心问题深度拆解 -->
+    <div class="l2-report-module" id="report-top3">
+      <!-- 由 renderModule4Top3() 动态填充 -->
+    </div>
+
+    <!-- 模块5：90天组织升级路线图 -->
+    <div class="l2-report-module" id="report-roadmap">
+      <!-- 由 renderModule5Roadmap() 动态填充 -->
+    </div>
+
+    <!-- 模块6：AI就绪度V2 -->
+    <div class="l2-report-module" id="report-ai">
+      <!-- 由 renderModule6AIReadiness() 动态填充 -->
+    </div>
+
+    <!-- 模块7：延伸服务推荐 -->
+    <div class="l2-report-module" id="report-services">
+      <!-- 由 renderModule7Services() 动态填充 -->
+    </div>
+
+    <!-- 模块8：跨产品洞察（条件显示） -->
+    <div class="l2-report-module" id="report-cross-product">
+      <!-- 由 renderModule8CrossProduct() 动态填充 -->
+    </div>
+
+    <!-- 模块9：L3转化 + 跨产品转化 -->
+    <div class="l2-report-module" id="report-l3">
+      <!-- 由 renderModule9L3Conversion() 动态填充 -->
+    </div>
+
+    <!-- 免责声明 -->
+    <div class="l2-report-module" id="report-disclaimer">
+      <!-- 由 renderL2Disclaimer() 动态填充 -->
+    </div>
+
+  </div>
+
+  <!-- JS文件 -->
+  <script src="js/org-l2-data.js"></script>
+  <script src="js/org-l2-report.js"></script>
+</body>
+</html>

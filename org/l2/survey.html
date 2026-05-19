@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="组织深度诊断 - 完整版问卷">
+  <title>组织深度诊断 · 完整版问卷</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/org-main.css">
+  <link rel="stylesheet" href="../css/org-l2.css">
+
+  <style>
+    .page-section { display: none; }
+    #page-survey { display: block; }
+    .option-card { cursor: pointer; }
+    button { cursor: pointer; }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container">
+
+    <!-- ====== 进度条 ====== -->
+    <div id="progress-container" style="display:block;position:sticky;top:0;z-index:50;background:#fff;padding:12px 20px 8px;border-bottom:1px solid #F1F5F9;margin:-20px -20px 20px;">
+      <div id="progress-bar" style="height:6px;background:linear-gradient(90deg,#0F4C81,#10B981);border-radius:3px;width:0%;transition:width 0.5s ease;"></div>
+      <span class="progress-text" id="progress-label"></span>
+    </div>
+
+    <!-- ====== 问卷页 ====== -->
+    <section class="page-section" id="page-survey" style="display:block;min-height:auto;padding:0;opacity:1;transform:none">
+      <div id="survey-question">
+        <!-- 由 showSurveyQuestion() 动态填充 -->
+      </div>
+
+      <div class="l2-survey-next-btn-wrap">
+        <button onclick="nextL2Question()" id="btn-survey-next" class="btn-primary" disabled>
+          下一步 →
+        </button>
+      </div>
+    </section>
+
+    <!-- ====== 加载页 ====== -->
+    <section class="page-section" id="page-loading" style="display:none;min-height:80vh;padding:0">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <div class="loading-bar-track">
+          <div id="loading-bar"></div>
+        </div>
+        <p id="loading-text" class="text-sm text-gray-500">正在深度分析组织流程...</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JS文件 -->
+  <script src="js/org-l2-data.js"></script>
+  <script src="js/org-l2-survey.js"></script>
+</body>
+</html>

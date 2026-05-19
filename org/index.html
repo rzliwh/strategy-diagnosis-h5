@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="组织诊断H5 - 3分钟了解您公司的组织健康状态">
+  <title>组织管理诊断</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="css/org-main.css">
+
+  <style>
+    .page-section { display: none; }
+    #page-welcome { display: block; }
+    .option-card { cursor: pointer; }
+    button { cursor: pointer; }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="app-container" id="app">
+
+    <!-- ====== 进度条 ====== -->
+    <div id="progress-container">
+      <div id="progress-bar" style="width:0%"></div>
+      <span class="progress-text" id="progress-label"></span>
+    </div>
+
+    <!-- ====== 欢迎页 ====== -->
+    <section class="page-section" id="page-welcome">
+      <div class="welcome-hero">
+        <div class="icon">🏢</div>
+        <h1 class="text-2xl font-extrabold text-gray-900 mb-2" style="font-size:1.5rem">组织管理诊断</h1>
+        <p class="text-sm text-gray-500 mb-1">5维度 · 组织健康评估</p>
+        <p class="text-xs text-gray-400 mb-8">13道题 · 约3分钟 · 免费</p>
+
+        <!-- 流程图 -->
+        <div class="flex items-center gap-2 text-xs text-gray-400 mb-10" style="display:flex;align-items:center;justify-content:center;gap:8px">
+          <span style="width:64px;height:1px;background:#E2E8F0;border-radius:1px"></span>
+          <span>答题</span>
+          <span style="width:64px;height:1px;background:#E2E8F0;border-radius:1px"></span>
+          <span>分析</span>
+          <span style="width:64px;height:1px;background:#E2E8F0;border-radius:1px"></span>
+          <span>报告</span>
+          <span style="width:64px;height:1px;background:#E2E8F0;border-radius:1px"></span>
+        </div>
+
+        <button onclick="goToSurvey()" id="btn-start" class="btn-primary">
+          开始诊断
+        </button>
+
+        <p class="text-xs text-gray-300 mt-6">完全免费 · 无需注册 · 即刻诊断</p>
+      </div>
+    </section>
+
+    <!-- ====== 问卷页 ====== -->
+    <section class="page-section" id="page-survey">
+      <div id="survey-question">
+        <!-- 由 renderSurveyQuestion() 动态填充 -->
+      </div>
+
+    </section>
+
+    <!-- ====== 加载页 ====== -->
+    <section class="page-section" id="page-loading">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <div class="loading-bar-track">
+          <div id="loading-bar"></div>
+        </div>
+        <p id="loading-text" class="text-sm text-gray-500">正在分析您的组织流程...</p>
+      </div>
+    </section>
+
+    <!-- ====== 报告页 ====== -->
+    <section class="page-section" id="page-report">
+      <h2 class="text-2xl font-extrabold text-gray-900 mb-6 text-center" style="font-size:1.5rem">诊断报告</h2>
+
+      <!-- 模块1：报告头部 -->
+      <div class="report-section" id="report-header">
+        <!-- 由 renderReportHeader() 动态填充 -->
+      </div>
+
+      <!-- 模块2：五维度雷达图 + 得分条 -->
+      <div class="report-section" id="report-radar">
+        <!-- 由 renderRadarAndBars() 动态填充 -->
+      </div>
+
+      <!-- 模块3：阶段诊断结论 -->
+      <div class="report-section" id="report-stage-conclusion">
+        <!-- 由 renderStageConclusion() 动态填充 -->
+      </div>
+
+      <!-- 模块4：薄弱维度分析与建议 -->
+      <div class="report-section" id="report-weak-dims">
+        <!-- 由 renderWeakDimensions() 动态填充 -->
+      </div>
+
+      <!-- 模块5：AI就绪度专项评估 -->
+      <div class="report-section" id="report-ai">
+        <!-- 由 renderAIReadiness() 动态填充 -->
+      </div>
+
+      <!-- 模块6：L2升级引导 -->
+      <div class="report-section" id="report-l2">
+        <!-- 由 renderL2Upgrade() 动态填充 -->
+      </div>
+
+      <!-- 免责声明 + 重新测试 -->
+      <div class="report-section" id="report-disclaimer">
+        <!-- 由 renderDisclaimer() 动态填充 -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JS文件（加载顺序重要） -->
+  <script src="js/org-data.js"></script>
+  <script src="js/org-chart.js"></script>
+  <script src="js/org-app.js"></script>
+</body>
+</html>

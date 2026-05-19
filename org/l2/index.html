@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="组织深度诊断 - 完整版20题">
+  <title>组织深度诊断 · 完整版</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/org-main.css">
+  <link rel="stylesheet" href="../css/org-l2.css">
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container">
+
+    <!-- 返回链接 -->
+    <a href="../index.html" class="l2-back-link">← 返回L1报告</a>
+
+    <!-- 标题 -->
+    <h1 class="l2-page-title">📊 组织深度诊断</h1>
+    <p class="l2-page-subtitle">完整版 · 12题新增 · 约6分钟</p>
+
+    <!-- L1诊断摘要卡片 -->
+    <div class="l1-summary-card" id="l1-summary">
+      <!-- 由 renderL1Summary() 动态填充 -->
+    </div>
+
+    <!-- L2价值列表 -->
+    <div class="l2-value-list">
+      <div class="l2-value-item">
+        <span class="value-icon">✅</span>
+        <div class="value-text">
+          <div class="value-title">完整深度诊断</div>
+          <div class="value-desc">从L1的2题/维度扩充至3-5题/维度，评估更全面精准</div>
+        </div>
+      </div>
+      <div class="l2-value-item">
+        <span class="value-icon">✅</span>
+        <div class="value-text">
+          <div class="value-title">Top3核心问题深度拆解</div>
+          <div class="value-desc">根因分析 + 影响评估 + 解决路径，直击要害</div>
+        </div>
+      </div>
+      <div class="l2-value-item">
+        <span class="value-icon">✅</span>
+        <div class="value-text">
+          <div class="value-title">90天组织升级路线图</div>
+          <div class="value-desc">分阶段（第1-30天/31-60天/61-90天）可执行计划</div>
+        </div>
+      </div>
+      <div class="l2-value-item">
+        <span class="value-icon">✅</span>
+        <div class="value-text">
+          <div class="value-title">延伸服务精准推荐</div>
+          <div class="value-desc">基于完整诊断，推荐绩效/薪酬/SOP等匹配服务</div>
+        </div>
+      </div>
+      <div class="l2-value-item">
+        <span class="value-icon">✅</span>
+        <div class="value-text">
+          <div class="value-title">战略诊断关联洞察</div>
+          <div class="value-desc">若同时有战略诊断数据，显示跨产品洞察</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 价格卡片 -->
+    <div class="l2-price-card">
+      <div class="price-amount">¥299</div>
+      <div class="price-label">组织深度诊断 · 完整版</div>
+      <a href="javascript:void(0)" onclick="goToPay()" class="l2-price-btn" style="display:block;text-decoration:none">
+        去付款299
+      </a>
+    </div>
+
+    <p class="l2-bottom-hint">💡 已完成L1诊断？回答完整版问卷，获取专属您的定制化分析报告</p>
+
+  </div>
+
+  <script>
+    /* ========== 从URL参数读取L1诊断信息 ========== */
+    var params = new URLSearchParams(window.location.search);
+    var dim1 = parseInt(params.get('dim1')) || 0;
+    var dim2 = parseInt(params.get('dim2')) || 0;
+    var dim3 = parseInt(params.get('dim3')) || 0;
+    var dim4 = parseInt(params.get('dim4')) || 0;
+    var dim5 = parseInt(params.get('dim5')) || 0;
+    var stage = params.get('stage') || '';
+    var role = params.get('role') || '';
+    var aiScore = parseInt(params.get('aiScore')) || 0;
+    var aiLevel = params.get('aiLevel') || '';
+
+    /* 找出最低分维度 */
+    var DIM_LABELS = ['流程与制度', '团队与执行力', '决策与授权', '文化与氛围', '组织健康感知'];
+    var dimScores = [dim1, dim2, dim3, dim4, dim5];
+    var dims = [];
+    for (var i = 0; i < DIM_LABELS.length; i++) {
+      dims.push({ name: DIM_LABELS[i], score: dimScores[i] });
+    }
+    dims.sort(function(a, b) { return a.score - b.score; });
+
+    function renderL1Summary() {
+      var el = document.getElementById('l1-summary');
+      if (!el) return;
+
+      var weakestDim = dims[0];
+      var html = '';
+      html += '<div class="summary-title">基于您的L1诊断，我们发现：</div>';
+      html += '<div class="summary-item"><span class="summary-dot"></span> 组织阶段：' + (stage || '未知') + '</div>';
+      html += '<div class="summary-item"><span class="summary-dot"></span> 最需提升：' + weakestDim.name + '（' + weakestDim.score + '/8分）</div>';
+      html += '<div class="summary-item"><span class="summary-dot"></span> AI就绪度：' + (aiLevel || '未知') + '</div>';
+      el.innerHTML = html;
+    }
+
+    function goToPay() {
+      var currentParams = window.location.search;
+      window.location.href = 'pay.html' + currentParams;
+    }
+
+    renderL1Summary();
+  </script>
+</body>
+</html>

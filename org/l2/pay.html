@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="组织深度诊断 - 确认订单">
+  <title>确认订单 · 组织深度诊断</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/org-main.css">
+  <link rel="stylesheet" href="../css/org-l2.css">
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="l2-container">
+
+    <!-- 返回链接 -->
+    <a href="javascript:void(0)" onclick="goBack()" class="l2-back-link">← 返回L2介绍页</a>
+
+    <!-- 标题 -->
+    <h1 class="l2-page-title">💳 确认订单</h1>
+    <p class="l2-page-subtitle">组织深度诊断 · 完整版</p>
+
+    <!-- 订单卡片 -->
+    <div class="pay-order-card">
+      <div class="pay-order-row">
+        <span>L1快速诊断（已完成）</span>
+        <span style="color:#10B981">✅ 已完成</span>
+      </div>
+      <div class="pay-order-row">
+        <span>L2完整诊断（本次）</span>
+        <span style="font-weight:700">¥299</span>
+      </div>
+      <div class="pay-order-divider"></div>
+      <div class="pay-order-total">
+        <span>合计</span>
+        <span style="color:#0F4C81">¥299</span>
+      </div>
+    </div>
+
+    <!-- L1摘要 -->
+    <div class="l1-summary-card" id="pay-summary">
+      <!-- 动态填充 -->
+    </div>
+
+    <!-- 收款码 -->
+    <div class="pay-qr-card">
+      <img src="../../images/wechat-pay-299.jpg" alt="微信收款码" class="qr-image" onerror="this.style.display='none';document.getElementById('qr-fallback').style.display='block';">
+      <div id="qr-fallback" style="display:none;padding:40px 0;color:#94A3B8;font-size:14px;">
+        [收款码占位]
+      </div>
+      <p class="qr-hint">扫码支付 ¥299</p>
+      <p style="font-size:12px;color:#94A3B8;margin-top:4px;">支付后点击下方按钮继续</p>
+    </div>
+
+    <!-- 继续按钮 -->
+    <button onclick="goToSurvey()" class="btn-primary" style="margin-bottom:12px">
+      我已付款，开始答题
+    </button>
+
+    <div class="pay-notice">
+      💬 如有疑问请联系微信：LaoLee01
+    </div>
+
+  </div>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var stage = params.get('stage') || '';
+    var role = params.get('role') || '';
+    var aiLevel = params.get('aiLevel') || '';
+
+    var DIM_LABELS = ['流程与制度', '团队与执行力', '决策与授权', '文化与氛围', '组织健康感知'];
+    var dimScores = [
+      parseInt(params.get('dim1')) || 0,
+      parseInt(params.get('dim2')) || 0,
+      parseInt(params.get('dim3')) || 0,
+      parseInt(params.get('dim4')) || 0,
+      parseInt(params.get('dim5')) || 0
+    ];
+
+    // 找最低分
+    var dims = [];
+    for (var i = 0; i < DIM_LABELS.length; i++) {
+      dims.push({ name: DIM_LABELS[i], score: dimScores[i] });
+    }
+    dims.sort(function(a, b) { return a.score - b.score; });
+
+    function renderPaySummary() {
+      var el = document.getElementById('pay-summary');
+      if (!el) return;
+      var weakestDim = dims[0];
+      var html = '';
+      html += '<div class="summary-title">您的快速诊断摘要：</div>';
+      html += '<div class="summary-item"><span class="summary-dot"></span> 组织阶段：' + (stage || '未知') + '</div>';
+      html += '<div class="summary-item"><span class="summary-dot"></span> 最弱维度：' + weakestDim.name + '（' + weakestDim.score + '/8分）</div>';
+      html += '<div class="summary-item"><span class="summary-dot"></span> AI就绪度：' + (aiLevel || '未知') + '</div>';
+      el.innerHTML = html;
+    }
+
+    function goBack() {
+      window.location.href = 'index.html' + window.location.search;
+    }
+
+    function goToSurvey() {
+      window.location.href = 'survey.html' + window.location.search;
+    }
+
+    renderPaySummary();
+  </script>
+</body>
+</html>
