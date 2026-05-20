@@ -54,6 +54,11 @@ function buildAllQuestions() {
   return all;
 }
 
+/* ========== 通用工具函数 ========== */
+function toPercent(score, max) {
+  return Math.round(score / max * 100);
+}
+
 /* ========== 诊断题目数量（Q2-Q11）========== */
 var DIAG_COUNT = PROCESS_QUESTIONS.length + TEAM_QUESTIONS.length + DECISION_QUESTIONS.length + CULTURE_QUESTIONS.length + HEALTH_QUESTIONS.length;
 
@@ -306,7 +311,7 @@ function renderReportHeader(result) {
   html += '<div class="report-tag">' + result.roleLabel + '</div>';
   html += '<span class="text-xs text-gray-400 ml-2">' + dateStr + '</span>';
   html += '<div class="report-divider"></div>';
-  html += '<div class="text-4xl font-extrabold mb-2" style="color:#0F4C81">' + result.scores.totalScore + '<span class="text-lg text-gray-400 font-normal"> / 40分</span></div>';
+  html += '<div class="text-4xl font-extrabold mb-2" style="color:#0F4C81">' + toPercent(result.scores.totalScore, 40) + '%</div>';
   html += '<div class="report-stage" style="background:' + stageData.bgColor + ';color:' + stageData.color + '">';
   html += '<span class="text-2xl mr-1">' + stageData.emoji + '</span>' + result.stage;
   html += '</div>';
@@ -343,7 +348,7 @@ function renderRadarAndBars(result) {
     html += '<div class="score-bar-track">';
     html += '<div class="score-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div>';
     html += '</div>';
-    html += '<span class="score-bar-value">' + scores[i] + '/8分</span>';
+    html += '<span class="score-bar-value">' + toPercent(scores[i], 8) + '%</span>';
     html += '</div>';
   }
 
@@ -353,7 +358,7 @@ function renderRadarAndBars(result) {
 
   // 绘制雷达图
   setTimeout(function() {
-    drawOrgRadarChart('org-radar-canvas', scores, DIM_LABELS);
+    drawOrgRadarChart('org-radar-canvas', scores.map(function(s) { return toPercent(s, 8); }), DIM_LABELS);
   }, 100);
 }
 
@@ -413,7 +418,7 @@ function renderWeakDimensions(result) {
       html += '<div class="suggestion-card">';
       html += '<div class="flex items-center justify-between mb-2">';
       html += '<span class="font-bold text-gray-900">' + dim.dimName + '</span>';
-      html += '<span class="text-sm font-bold" style="color:' + levelColor + '">' + dim.score + '/8分 · ' + levelLabel + '</span>';
+      html += '<span class="text-sm font-bold" style="color:' + levelColor + '">' + toPercent(dim.score, 8) + '% · ' + levelLabel + '</span>';
       html += '</div>';
       html += '<div class="w-full bg-gray-100 rounded-full h-2 mb-3">';
       html += '<div class="h-2 rounded-full" style="width:' + Math.round((dim.score / 8) * 100) + '%;background:' + levelColor + '"></div>';
@@ -503,7 +508,7 @@ function renderL2Upgrade(result) {
   html += '<button onclick="goToOrgL2(\'' + params.toString().replace(/'/g, "\\'") + '\')" class="l2-upgrade-btn">';
   html += '立即升级，获取完整诊断报告 →';
   html += '</button>';
-  html += '<p class="l2-upgrade-price">¥299</p>';
+  html += '<p class="l2-upgrade-price">¥199</p>';
   html += '</div>';
 
   el.innerHTML = html;

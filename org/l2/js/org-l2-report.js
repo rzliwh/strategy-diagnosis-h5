@@ -3,6 +3,11 @@
  * 组织诊断H5 - L2深度诊断
  */
 
+/* ========== 通用工具函数 ========== */
+function toPercent(score, max) {
+  return Math.round(score / max * 100);
+}
+
 /* ========== 全局结果对象 ========== */
 var L2_RESULT = null;
 
@@ -125,8 +130,7 @@ function renderModule1Header() {
   html += '<div class="text-center mb-2">';
   html += '<span class="text-sm text-gray-400">' + R.l1TotalScore + '/40分（L1）</span>';
   html += '<span class="text-sm text-gray-400 mx-2">→</span>';
-  html += '<span class="text-3xl font-extrabold" style="color:#0F4C81">' + R.scores.totalScore + '/80分</span>';
-  html += '<span class="text-xs text-gray-400 ml-1">（升级后）</span>';
+  html += '<span class="text-3xl font-extrabold" style="color:#0F4C81">' + toPercent(R.scores.totalScore, 80) + '%</span>';
   html += '</div>';
 
   // 阶段标签
@@ -153,7 +157,7 @@ function renderModule1Header() {
     html += '<div class="score-bar-track">';
     html += '<div class="score-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div>';
     html += '</div>';
-    html += '<span class="score-bar-value">' + R.scores.dimScores[i] + '/' + R.scores.dimMaxScores[i] + '分</span>';
+    html += '<span class="score-bar-value">' + toPercent(R.scores.dimScores[i], R.scores.dimMaxScores[i]) + '%</span>';
     html += '</div>';
   }
   html += '</div>';
@@ -169,19 +173,19 @@ function drawL2RadarChart() {
     window._l2RadarChartInstance.destroy();
   }
 
-  // 标准化到0-8范围用于雷达图显示
+  // 标准化到百分制用于雷达图显示
   var R = L2_RESULT;
   var scores = R.scores.dimScores;
   var maxScores = R.scores.dimMaxScores;
   var normalizedScores = [];
   for (var i = 0; i < scores.length; i++) {
-    normalizedScores.push(Math.round((scores[i] / maxScores[i]) * 8 * 10) / 10);
+    normalizedScores.push(toPercent(scores[i], maxScores[i]));
   }
 
   // L1对比数据
   var l1Normalized = [];
   for (var j = 0; j < R.l1DimScores.length; j++) {
-    l1Normalized.push(R.l1DimScores[j]);
+    l1Normalized.push(toPercent(R.l1DimScores[j], 8));
   }
 
   var labels = ['流程与制度', '团队与执行力', '决策与授权', '文化与氛围', '组织健康感知'];
@@ -244,9 +248,9 @@ function drawL2RadarChart() {
               var idx = context.dataIndex;
               var dsIdx = context.datasetIndex;
               if (dsIdx === 0) {
-                return 'L2: ' + R.scores.dimScores[idx] + '/' + R.scores.dimMaxScores[idx] + ' 分';
+                return 'L2: ' + toPercent(R.scores.dimScores[idx], R.scores.dimMaxScores[idx]) + '%';
               }
-              return 'L1: ' + R.l1DimScores[idx] + '/8 分';
+              return 'L1: ' + toPercent(R.l1DimScores[idx], 8) + '%';
             }
           }
         }
@@ -254,9 +258,9 @@ function drawL2RadarChart() {
       scales: {
         r: {
           min: 0,
-          max: 8,
+          max: 100,
           ticks: {
-            stepSize: 2,
+            stepSize: 20,
             font: { size: 9 },
             backdropColor: 'transparent',
             color: '#94A3B8'
@@ -329,7 +333,7 @@ function renderModule3WeakDims() {
       html += '<div class="suggestion-card">';
       html += '<div class="flex items-center justify-between mb-2">';
       html += '<span class="font-bold text-gray-900">' + dim.dimName + '</span>';
-      html += '<span class="text-sm font-bold" style="color:' + levelColor + '">' + dim.score + '/' + dim.maxScore + '分 · ' + levelLabel + '</span>';
+      html += '<span class="text-sm font-bold" style="color:' + levelColor + '">' + toPercent(dim.score, dim.maxScore) + '% · ' + levelLabel + '</span>';
       html += '</div>';
 
       // 进度条
@@ -373,7 +377,7 @@ function renderModule4Top3() {
     html += '<div class="top3-card ' + severityClass + '">';
     html += '<div class="top3-header">';
     html += '<span class="top3-rank ' + severityClass + '">' + (i + 1) + '</span>';
-    html += '<span class="top3-title">' + t.dimName + ' — ' + t.score + '/' + t.max + '分（失分' + Math.round(t.lossRate * 100) + '%）</span>';
+    html += '<span class="top3-title">' + t.dimName + ' — ' + toPercent(t.score, t.max) + '%（失分' + Math.round(t.lossRate * 100) + '%）</span>';
     html += '</div>';
 
     if (analysis) {
@@ -464,7 +468,7 @@ function renderModule6AIReadiness() {
   html += '</div>';
 
   // 得分（L1 + L2 合并）
-  html += '<div class="text-center text-sm text-gray-500 mb-2">综合得分：' + ai.score + ' / ' + ai.maxScore + ' 分（L1 + L2 合并评估）</div>';
+  html += '<div class="text-center text-sm text-gray-500 mb-2">综合得分：' + toPercent(ai.score, ai.maxScore) + '%（L1 + L2 合并评估）</div>';
 
   // 进度条
   html += '<div class="ai-level-bar-track">';

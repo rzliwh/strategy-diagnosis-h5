@@ -67,7 +67,7 @@ function drawOrgRadarChart(canvasId, scores, labels) {
         tooltip: {
           callbacks: {
             label: function(context) {
-              return context.parsed.r + ' / 8 分';
+              return Math.round(context.parsed.r) + '%';
             }
           }
         }
@@ -75,9 +75,9 @@ function drawOrgRadarChart(canvasId, scores, labels) {
       scales: {
         r: {
           min: 0,
-          max: 8,
+          max: 100,
           ticks: {
-            stepSize: 2,
+            stepSize: 20,
             font: { size: 9 },
             backdropColor: 'transparent',
             color: '#94A3B8'

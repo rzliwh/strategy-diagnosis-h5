@@ -50,27 +50,22 @@
       </div>
       <div class="pay-order-row">
         <span>L2完整诊断（本次）</span>
-        <span style="font-weight:700">¥299</span>
+        <span style="font-weight:700">¥199</span>
       </div>
       <div class="pay-order-divider"></div>
       <div class="pay-order-total">
         <span>合计</span>
-        <span style="color:#0F4C81">¥299</span>
+        <span style="color:#0F4C81">¥199</span>
       </div>
-    </div>
-
-    <!-- L1摘要 -->
-    <div class="l1-summary-card" id="pay-summary">
-      <!-- 动态填充 -->
     </div>
 
     <!-- 收款码 -->
     <div class="pay-qr-card">
-      <img src="../../images/wechat-pay-299.jpg" alt="微信收款码" class="qr-image" onerror="this.style.display='none';document.getElementById('qr-fallback').style.display='block';">
+      <img src="../../images/wechat-pay-199.jpg" alt="微信收款码" class="qr-image" onerror="this.style.display='none';document.getElementById('qr-fallback').style.display='block';">
       <div id="qr-fallback" style="display:none;padding:40px 0;color:#94A3B8;font-size:14px;">
         [收款码占位]
       </div>
-      <p class="qr-hint">扫码支付 ¥299</p>
+      <p class="qr-hint">扫码支付 ¥199</p>
       <p style="font-size:12px;color:#94A3B8;margin-top:4px;">支付后点击下方按钮继续</p>
     </div>
 
@@ -107,18 +102,6 @@
     }
     dims.sort(function(a, b) { return a.score - b.score; });
 
-    function renderPaySummary() {
-      var el = document.getElementById('pay-summary');
-      if (!el) return;
-      var weakestDim = dims[0];
-      var html = '';
-      html += '<div class="summary-title">您的快速诊断摘要：</div>';
-      html += '<div class="summary-item"><span class="summary-dot"></span> 组织阶段：' + (stage || '未知') + '</div>';
-      html += '<div class="summary-item"><span class="summary-dot"></span> 最弱维度：' + weakestDim.name + '（' + weakestDim.score + '/8分）</div>';
-      html += '<div class="summary-item"><span class="summary-dot"></span> AI就绪度：' + (aiLevel || '未知') + '</div>';
-      el.innerHTML = html;
-    }
-
     function goBack() {
       window.location.href = 'index.html' + window.location.search;
     }
@@ -127,7 +110,6 @@
       window.location.href = 'survey.html' + window.location.search;
     }
 
-    renderPaySummary();
   </script>
 </body>
 </html>
