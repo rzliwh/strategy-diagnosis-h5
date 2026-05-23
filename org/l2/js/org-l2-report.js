@@ -15,7 +15,43 @@ var L2_RESULT = null;
 function initL2Report() {
   var params = new URLSearchParams(window.location.search);
   L2_RESULT = buildL2Result(params);
-  renderL2Report();
+
+  // 模拟加载动画，完成后渲染报告
+  var bar = document.getElementById('loading-bar');
+  var text = document.getElementById('loading-text');
+  var pct = 0;
+  var messages = [
+    '正在深度分析组织流程...',
+    '正在评估团队执行力...',
+    '正在匹配组织健康模型...',
+    '正在生成诊断报告...'
+  ];
+
+  var timer = setInterval(function() {
+    pct += Math.floor(Math.random() * 8) + 3;
+    if (pct >= 100) {
+      pct = 100;
+      clearInterval(timer);
+      if (bar) bar.style.width = '100%';
+      if (text) text.textContent = '报告生成完成！';
+      setTimeout(function() {
+        renderL2Report();
+        var overlay = document.getElementById('report-loading');
+        var container = document.getElementById('report-container');
+        if (overlay) overlay.style.display = 'none';
+        if (container) container.style.display = 'block';
+        // 延迟绘制雷达图
+        setTimeout(function() {
+          drawL2RadarChart();
+        }, 200);
+      }, 500);
+      return;
+    }
+    if (bar) bar.style.width = pct + '%';
+    var msgIdx = Math.floor((pct / 100) * messages.length);
+    if (msgIdx >= messages.length) msgIdx = messages.length - 1;
+    if (text) text.textContent = messages[msgIdx];
+  }, 300);
 }
 
 function buildL2Result(params) {
@@ -101,11 +137,6 @@ function renderL2Report() {
   renderModule8CrossProduct();
   renderModule9L3Conversion();
   renderL2Disclaimer();
-
-  // 延迟绘制雷达图
-  setTimeout(function() {
-    drawL2RadarChart();
-  }, 200);
 }
 
 /* ========== 模块1：报告头部 + 80分雷达图 ========== */
