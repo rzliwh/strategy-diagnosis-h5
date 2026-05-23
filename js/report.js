@@ -425,7 +425,7 @@ function renderL2Guide(result) {
 }
 
 function goToL2(paramsStr) {
-  window.location.href = 'l2/index.html?' + paramsStr;
+  window.location.href = 'strategy/l2/index.html?' + paramsStr;
 }
 
 /* 辅助：行业值→中文标签 */
