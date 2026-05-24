@@ -72,10 +72,37 @@
       </div>
     </section>
 
+    <!-- ====== 报告页（同页渲染，不跳转） ====== -->
+    <section class="page-section" id="page-report" style="display:none;min-height:auto;padding:0">
+      <div id="survey-report-container">
+        <!-- 模块1：报告头部 + 雷达图 + 得分明细 -->
+        <div class="l2-report-module" id="report-header"></div>
+        <!-- 模块2：阶段诊断结论 -->
+        <div class="l2-report-module" id="report-stage"></div>
+        <!-- 模块3：薄弱维度分析 -->
+        <div class="l2-report-module" id="report-weak-dims"></div>
+        <!-- 模块4：Top3核心问题深度拆解 -->
+        <div class="l2-report-module" id="report-top3"></div>
+        <!-- 模块5：90天路线图 -->
+        <div class="l2-report-module" id="report-roadmap"></div>
+        <!-- 模块6：AI就绪度 -->
+        <div class="l2-report-module" id="report-ai"></div>
+        <!-- 模块7：延伸服务推荐 -->
+        <div class="l2-report-module" id="report-services"></div>
+        <!-- 模块8：跨产品洞察 -->
+        <div class="l2-report-module" id="report-cross-product"></div>
+        <!-- 模块9：L3转化 -->
+        <div class="l2-report-module" id="report-l3"></div>
+        <!-- 免责声明 -->
+        <div class="l2-report-module" id="report-disclaimer"></div>
+      </div>
+    </section>
+
   </div>
 
   <!-- JS文件 -->
   <script src="js/org-l2-data.js"></script>
+  <script src="js/org-l2-report.js"></script>
   <script src="js/org-l2-survey.js"></script>
 </body>
 </html>

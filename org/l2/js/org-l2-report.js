@@ -11,7 +11,7 @@ function toPercent(score, max) {
 /* ========== 全局结果对象 ========== */
 var L2_RESULT = null;
 
-/* ========== 初始化 ========== */
+/* ========== 初始化（report.html 直接访问时调用） ========== */
 function initL2Report() {
   try {
     var params = new URLSearchParams(window.location.search);
@@ -25,6 +25,12 @@ function initL2Report() {
     return;
   }
   hideLoadingOverlay();
+}
+
+/* ========== 内联渲染（survey 页面同页调用，数据由 survey 传入） ========== */
+function renderL2ReportFromData(l2Result) {
+  L2_RESULT = l2Result;
+  renderL2Report();
 }
 
 function hideLoadingOverlay() {
@@ -694,21 +700,22 @@ function startRetest() {
 }
 
 /* ========== DOM Ready ========== */
-// 启动加载条动画，给用户视觉反馈
-(function() {
-  var bar = document.getElementById('l2-load-bar');
-  var text = document.getElementById('l2-load-text');
-  if (!bar) return;
-  var pct = 0;
-  var msgs = ['正在深度分析组织流程...', '正在评估团队执行力...', '正在匹配组织健康模型...', '正在生成深度诊断报告...'];
-  var timer = setInterval(function() {
-    pct += Math.floor(Math.random() * 10) + 5;
-    if (pct >= 90) { pct = 90; clearInterval(timer); }
-    bar.style.width = pct + '%';
-    var idx = Math.min(Math.floor(pct / 25), msgs.length - 1);
-    if (text) text.textContent = msgs[idx];
-  }, 200);
-})();
-
-// 脚本在 body 末尾执行，DOM 已就绪，直接渲染
-initL2Report();
+// 只在 report.html 直接访问时自动初始化
+// survey 页面会通过 renderL2ReportFromData() 调用
+if (window.location.pathname.indexOf('report.html') !== -1) {
+  (function() {
+    var bar = document.getElementById('l2-load-bar');
+    var text = document.getElementById('l2-load-text');
+    if (!bar) return;
+    var pct = 0;
+    var msgs = ['正在深度分析组织流程...', '正在评估团队执行力...', '正在匹配组织健康模型...', '正在生成深度诊断报告...'];
+    var timer = setInterval(function() {
+      pct += Math.floor(Math.random() * 10) + 5;
+      if (pct >= 90) { pct = 90; clearInterval(timer); }
+      bar.style.width = pct + '%';
+      var idx = Math.min(Math.floor(pct / 25), msgs.length - 1);
+      if (text) text.textContent = msgs[idx];
+    }, 200);
+  })();
+  initL2Report();
+}

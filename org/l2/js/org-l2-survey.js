@@ -201,27 +201,50 @@ function goToL2Loading() {
   }, 300);
 }
 
-/* ========== 跳转报告页 ========== */
+/* ========== 同页渲染报告（参考L1模式，不跳转） ========== */
 function goToReport() {
-  var params = new URLSearchParams();
+  // 隐藏进度条和加载页
+  var progressEl = document.getElementById('progress-container');
+  if (progressEl) progressEl.style.display = 'none';
+  document.getElementById('page-loading').style.display = 'none';
 
-  // L1参数
-  params.set('dim1', L1_PARAMS.dim1);
-  params.set('dim2', L1_PARAMS.dim2);
-  params.set('dim3', L1_PARAMS.dim3);
-  params.set('dim4', L1_PARAMS.dim4);
-  params.set('dim5', L1_PARAMS.dim5);
-  params.set('stage', L1_PARAMS.stage);
-  params.set('role', L1_PARAMS.role);
-  params.set('aiScore', L1_PARAMS.aiScore);
-  params.set('aiLevel', L1_PARAMS.aiLevel);
+  // 基于 L1 参数 + L2 答案构建结果对象
+  var l1DimScores = [L1_PARAMS.dim1, L1_PARAMS.dim2, L1_PARAMS.dim3, L1_PARAMS.dim4, L1_PARAMS.dim5];
+  var scores = calcL2Scores(l1DimScores, L2_ANSWERS);
+  var stage = getL2Stage(scores.totalScore);
+  var stageData = L2_STAGE_INFO[stage] || {};
+  var weakDims = getL2WeakDimensions(scores.dimScores);
+  var top3 = calcTop3Problems(scores.dimScores);
+  var aiResult = calcL2AIReadiness(L1_PARAMS.aiScore, [L2_ANSWERS[10] || 0, L2_ANSWERS[11] || 0]);
+  var aiLevelData = L2_AI_LEVELS[aiResult.level] || {};
+  var showCrossProduct = shouldShowCrossProduct(scores);
+  var services = getRecommendedServices(scores.dimScores, aiResult);
 
-  // L2新增答案
-  for (var i = 0; i < L2_ANSWERS.length; i++) {
-    params.set('new_q' + (i + 1), L2_ANSWERS[i] || 0);
+  var result = {
+    role: L1_PARAMS.role,
+    l1DimScores: l1DimScores,
+    l1Stage: L1_PARAMS.stage,
+    l1TotalScore: l1DimScores[0] + l1DimScores[1] + l1DimScores[2] + l1DimScores[3] + l1DimScores[4],
+    scores: scores,
+    stage: stage,
+    stageData: stageData,
+    weakDims: weakDims,
+    top3: top3,
+    aiResult: aiResult,
+    aiLevelData: aiLevelData,
+    services: services,
+    showCrossProduct: showCrossProduct
+  };
+
+  // 切换到报告页并渲染（参考L1的showPage逻辑）
+  var reportEl = document.getElementById('page-report');
+  if (reportEl) {
+    reportEl.style.display = 'block';
+    reportEl.style.opacity = '1';
+    reportEl.style.transform = 'none';
   }
-
-  window.location.href = 'report.html?' + params.toString();
+  renderL2ReportFromData(result);
+  window.scrollTo(0, 0);
 }
 
 /* ========== DOM Ready ========== */
