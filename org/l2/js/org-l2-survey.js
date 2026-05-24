@@ -236,7 +236,8 @@ function goToReport() {
     aiResult: aiResult,
     aiLevelData: aiLevelData,
     services: services,
-    showCrossProduct: showCrossProduct
+    showCrossProduct: showCrossProduct,
+    l2Answers: L2_ANSWERS  // 保留原始答案，供报告个性化引用
   };
 
   // 切换到报告页并渲染（参考L1的showPage逻辑）

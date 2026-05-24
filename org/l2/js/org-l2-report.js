@@ -89,7 +89,8 @@ function buildL2Result(params) {
     aiResult: aiResult,
     aiLevelData: aiLevelData,
     services: services,
-    showCrossProduct: showCrossProduct
+    showCrossProduct: showCrossProduct,
+    l2Answers: l2NewAnswers  // 保留原始答案，供报告个性化引用
   };
 }
 
@@ -118,13 +119,13 @@ function getRecommendedServices(dimScores, aiResult) {
 var _chartJsReady = typeof Chart !== 'undefined';
 
 function renderL2Report() {
-  // 先渲染所有文本内容模块（9个模块+免责声明），不依赖Chart.js
+  // 渲染顺序：头部 → 阶段结论 → AI就绪度（紧接阶段，作为"下一阶段预告"）→ 薄弱维度 → Top3 → 路线图 → 服务 → 跨产品 → L3转化 → 免责
   renderModule1Header();
   renderModule2StageConclusion();
+  renderModule6AIReadiness();
   renderModule3WeakDims();
   renderModule4Top3();
   renderModule5Roadmap();
-  renderModule6AIReadiness();
   renderModule7Services();
   renderModule8CrossProduct();
   renderModule9L3Conversion();
@@ -413,6 +414,30 @@ function renderModule3WeakDims() {
 }
 
 /* ========== 模块4：Top3核心问题深度拆解 ========== */
+
+// 维度 → 最相关L2答案索引（用于报告引用用户具体选择）
+var DIM_ANSWER_REF = {
+  '流程与制度': 1,   // new_q2: 重复问题处理方式
+  '团队与执行力': 3,  // new_q4: 中层管理方式
+  '决策与授权': 6,    // new_q7: 业务决策拍板
+  '文化与氛围': 8,    // new_q9: 价值观体现
+  '组织健康感知': 9    // new_q10: 组织架构支撑
+};
+
+// 答案选项文案（索引1-4，对应value 1-4选项）
+var ANSWER_LABELS = {
+  1: { 1: '老员工带带，多问多学', 2: '有基础岗位说明但没有标准', 3: '有入职培训手册和标准流程', 4: '系统化入职培训体系，AI辅助' },
+  2: { 1: '每次重新讨论，靠经验灵活处理', 2: '有口头惯例但没有文字化', 3: '有文字化处理流程，基本按流程走', 4: '有流程+自动预警机制' },
+  3: { 1: '一片混乱，接手需要很长时间', 2: '有交接但隐性知识带走了', 3: '有交接文档，工作能基本延续', 4: '知识库完善，离职交接标准化' },
+  4: { 1: '靠感情和经验，没有明确管理方法', 2: '会开会布置任务但缺乏过程跟踪', 3: '有定期1on1和周会机制', 4: '系统化工具管理，数据可视化' },
+  5: { 1: '大部分人只是来上班，不关心公司目标', 2: '知道公司目标但和自己的关系不清晰', 3: '基本认同，日常工作与目标挂钩', 4: '团队高度认同，个人与组织目标一致' },
+  6: { 1: '部门墙严重，协作全靠老板协调', 2: '有协作需求时会沟通但主动性不足', 3: '有协作机制，大部分时候能顺畅配合', 4: '跨部门信息共享，主动补位' },
+  7: { 1: '老板自己拍板，直觉判断为主', 2: '老板主导，听取个别骨干意见后决定', 3: '有基本的决策流程，关键数据和意见会收集', 4: '系统化决策机制，数据驱动+授权范围内自主决策' },
+  8: { 1: '客户投诉或损失出现后才知道', 2: '老板感觉不对了去问才发现', 3: '中层会主动反馈但不够及时', 4: '数据看板实时呈现，关键指标异常自动预警' },
+  9: { 1: '写在墙上，没什么人真的照着做', 2: '老板偶尔提但没有系统倡导', 3: '大部分时候能感受到文化在指引行为', 4: '文化深入人心，成为招聘和晋升的隐形标准' },
+  10: { 1: '架构基本没变过，明显跟不上业务变化', 2: '有过调整但方向不清晰，越调越乱', 3: '能基本支撑当前业务，面对新业务有些吃力', 4: '架构灵活有前瞻性，能根据业务发展及时调整' }
+};
+
 function renderModule4Top3() {
   var el = document.getElementById('report-top3');
   if (!el) return;
@@ -423,18 +448,11 @@ function renderModule4Top3() {
   var html = '';
   html += '<h3 class="l2-module-title">Top3核心问题深度拆解</h3>';
 
-  var ranks = [
-    { label: '第1问题', emoji: '🔴', cssClass: 'severe' },
-    { label: '第2问题', emoji: '🟡', cssClass: 'warning' },
-    { label: '第3问题', emoji: '🟡', cssClass: 'warning' }
-  ];
-
   for (var i = 0; i < top3.length; i++) {
     var t = top3[i];
     var analysis = TOP3_ANALYSIS[t.dimName];
-    var rank = ranks[i];
-    // 严重程度：失分率>0.6 = severe, 否则warning
     var severityClass = t.lossRate > 0.6 ? 'severe' : 'warning';
+    var isSevere = t.lossRate > 0.6;
 
     html += '<div class="top3-card ' + severityClass + '">';
     html += '<div class="top3-header">';
@@ -443,6 +461,17 @@ function renderModule4Top3() {
     html += '</div>';
 
     if (analysis) {
+      // 个性化引用：引用用户的具体选项
+      var refIdx = DIM_ANSWER_REF[t.dimName];
+      if (refIdx !== undefined && R.l2Answers && ANSWER_LABELS[refIdx + 1]) {
+        var chosenValue = R.l2Answers[refIdx] || 0;
+        var chosenLabel = ANSWER_LABELS[refIdx + 1][chosenValue] || '';
+        if (chosenLabel) {
+          html += '<div class="top3-section-label">您的作答：</div>';
+          html += '<p class="top3-text" style="color:#0F4C81;font-style:italic;">"' + chosenLabel + '"</p>';
+        }
+      }
+
       // 问题表现
       html += '<div class="top3-section-label">问题表现：</div>';
       html += '<p class="top3-text">' + analysis.symptom + '</p>';
@@ -463,11 +492,12 @@ function renderModule4Top3() {
       }
       html += '</div>';
 
-      // 解决路径
-      html += '<div class="top3-section-label">解决路径（按优先级）：</div>';
+      // 解决路径（重度 vs 中度分层）
+      var currentSolutions = (isSevere && analysis.solutionsSevere) ? analysis.solutionsSevere : analysis.solutions;
+      html += '<div class="top3-section-label">解决路径（按优先级）' + (isSevere ? ' — 基础建设优先' : '') + '：</div>';
       html += '<div class="top3-section-content">';
-      for (var m = 0; m < analysis.solutions.length; m++) {
-        html += '<div class="top3-item">' + analysis.solutions[m] + '</div>';
+      for (var m = 0; m < currentSolutions.length; m++) {
+        html += '<div class="top3-item">' + currentSolutions[m] + '</div>';
       }
       html += '</div>';
     }
@@ -521,7 +551,8 @@ function renderModule6AIReadiness() {
   var levelWidth = Math.round((ai.score / ai.maxScore) * 100);
 
   var html = '';
-  html += '<h3 class="l2-module-title">AI就绪度专项评估（升级版）</h3>';
+  html += '<h3 class="l2-module-title">AI就绪度专项评估</h3>';
+  html += '<p class="text-xs text-gray-500 mb-3">组织升级的下一个驱动力，往往不是"再建一个制度"，而是用AI工具放大现有组织能力。以下评估您的AI应用基础：</p>';
   html += '<div class="ai-readiness-card">';
 
   // 档位
@@ -621,12 +652,12 @@ function renderModule8CrossProduct() {
     html += '<p class="mt-1">📍 您的战略定位：' + strStage + '</p>';
     html += '<p>🏢 您的组织现状：' + R.stage + '</p>';
     html += '</div>';
-    html += '<div class="cross-product-challenge">核心挑战：战略方向与组织执行力需要进一步匹配</div>';
+    html += '<div class="cross-product-challenge">交叉分析提示：您的战略定位（' + strStage + '）与组织现状（' + R.stage + '）之间的差距，决定了下一阶段的资源配置优先级。</div>';
   } else {
-    // 无战略数据，推荐做战略诊断
+    // 无战略数据，告知信息缺口而非推测
     html += '<div class="cross-product-info">';
-    html += '<p>您的组织执行力不错，但战略方向是否同样清晰？</p>';
-    html += '<p class="mt-1">一个好的战略能让组织能力发挥最大价值。建议同时完成战略诊断，获得更全面的企业健康画像。</p>';
+    html += '<p>您已完成组织诊断，覆盖5个维度、' + R.scores.totalScore + '分（满分80）。</p>';
+    html += '<p class="mt-1">战略方向是组织能力的"输入"——战略清晰度直接影响您的团队该往哪使劲。目前您尚未完成战略诊断，无法做"战略×组织"的交叉分析，组织能力画像还差一块拼图。</p>';
     html += '</div>';
   }
 
@@ -659,7 +690,7 @@ function renderModule9L3Conversion() {
   // 次转化：战略诊断（条件显示）
   if (R.showCrossProduct) {
     html += '<div class="secondary-conversion-card">';
-    html += '<p class="sc-hint">💡 您的组织执行力不错，但战略方向是否同样清晰？</p>';
+    html += '<p class="sc-hint">📋 您已完成组织诊断。战略方向是组织能力的"输入"——补上战略诊断，即可获得"战略×组织"的完整企业健康画像。</p>';
     html += '<a href="../../index.html" class="sc-btn">免费开始战略诊断 →</a>';
     html += '</div>';
   }
