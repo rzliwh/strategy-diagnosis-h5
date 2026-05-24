@@ -13,9 +13,28 @@ var L2_RESULT = null;
 
 /* ========== 初始化 ========== */
 function initL2Report() {
-  var params = new URLSearchParams(window.location.search);
-  L2_RESULT = buildL2Result(params);
-  renderL2Report();
+  try {
+    var params = new URLSearchParams(window.location.search);
+    L2_RESULT = buildL2Result(params);
+    renderL2Report();
+  } catch (e) {
+    var overlay = document.getElementById('report-loading-overlay');
+    if (overlay) {
+      overlay.innerHTML = '<div style="text-align:center;color:#EF4444;font-size:16px;">报告生成失败，请返回重试<br><small style="color:#94A3B8;">' + e.message + '</small></div>';
+    }
+    return;
+  }
+  hideLoadingOverlay();
+}
+
+function hideLoadingOverlay() {
+  var overlay = document.getElementById('report-loading-overlay');
+  if (!overlay) return;
+  overlay.style.transition = 'opacity 0.3s ease';
+  overlay.style.opacity = '0';
+  setTimeout(function() {
+    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+  }, 350);
 }
 
 function buildL2Result(params) {
@@ -675,5 +694,21 @@ function startRetest() {
 }
 
 /* ========== DOM Ready ========== */
+// 启动加载条动画，给用户视觉反馈
+(function() {
+  var bar = document.getElementById('l2-load-bar');
+  var text = document.getElementById('l2-load-text');
+  if (!bar) return;
+  var pct = 0;
+  var msgs = ['正在深度分析组织流程...', '正在评估团队执行力...', '正在匹配组织健康模型...', '正在生成深度诊断报告...'];
+  var timer = setInterval(function() {
+    pct += Math.floor(Math.random() * 10) + 5;
+    if (pct >= 90) { pct = 90; clearInterval(timer); }
+    bar.style.width = pct + '%';
+    var idx = Math.min(Math.floor(pct / 25), msgs.length - 1);
+    if (text) text.textContent = msgs[idx];
+  }, 200);
+})();
+
 // 脚本在 body 末尾执行，DOM 已就绪，直接渲染
 initL2Report();
