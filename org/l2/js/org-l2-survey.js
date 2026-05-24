@@ -167,7 +167,10 @@ function nextL2Question() {
 function goToL2Loading() {
   // 切换到加载页
   document.getElementById('page-survey').style.display = 'none';
-  document.getElementById('page-loading').style.display = 'block';
+  var loadingEl = document.getElementById('page-loading');
+  loadingEl.style.display = 'block';
+  loadingEl.style.opacity = '1';
+  loadingEl.style.transform = 'none';
 
   var bar = document.getElementById('loading-bar');
   var text = document.getElementById('loading-text');
