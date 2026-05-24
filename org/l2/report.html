@@ -6,19 +6,6 @@
   <meta name="description" content="组织深度诊断报告 - 完整版">
   <title>组织深度诊断报告</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
-          }
-        }
-      }
-    }
-  </script>
   <link rel="stylesheet" href="../css/org-main.css">
   <link rel="stylesheet" href="../css/org-l2.css">
 
@@ -96,5 +83,19 @@
   <!-- JS文件 -->
   <script src="js/org-l2-data.js"></script>
   <script src="js/org-l2-report.js"></script>
+
+  <!-- Tailwind CSS CDN（延迟加载，不阻塞页面渲染） -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

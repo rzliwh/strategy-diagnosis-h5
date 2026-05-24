@@ -675,6 +675,5 @@ function startRetest() {
 }
 
 /* ========== DOM Ready ========== */
-if (document.addEventListener) {
-  document.addEventListener('DOMContentLoaded', initL2Report);
-}
+// 脚本在 body 末尾执行，DOM 已就绪，直接渲染
+initL2Report();
