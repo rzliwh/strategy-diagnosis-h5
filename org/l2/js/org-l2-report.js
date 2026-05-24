@@ -90,7 +90,10 @@ function getRecommendedServices(dimScores, aiResult) {
 }
 
 /* ========== 主渲染 ========== */
+var _chartJsReady = typeof Chart !== 'undefined';
+
 function renderL2Report() {
+  // 先渲染所有文本内容模块（9个模块+免责声明），不依赖Chart.js
   renderModule1Header();
   renderModule2StageConclusion();
   renderModule3WeakDims();
@@ -102,10 +105,44 @@ function renderL2Report() {
   renderModule9L3Conversion();
   renderL2Disclaimer();
 
-  // 延迟绘制雷达图
-  setTimeout(function() {
+  // Chart.js 已就绪则立即绘制，否则异步加载
+  if (_chartJsReady) {
     drawL2RadarChart();
-  }, 200);
+  } else {
+    loadChartJsAndDraw();
+  }
+}
+
+function loadChartJsAndDraw() {
+  // 雷达图区域显示加载中占位
+  var canvas = document.getElementById('l2-radar-canvas');
+  if (canvas && canvas.parentNode) {
+    var placeholder = document.createElement('div');
+    placeholder.id = 'radar-loading';
+    placeholder.style.cssText = 'text-align:center;padding:60px 20px;color:#94A3B8;font-size:14px;min-height:200px;display:flex;align-items:center;justify-content:center;';
+    placeholder.textContent = '雷达图加载中…';
+    canvas.parentNode.insertBefore(placeholder, canvas);
+    canvas.style.display = 'none';
+  }
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js';
+  script.onload = function() {
+    _chartJsReady = true;
+    // 移除占位，显示canvas
+    var ph = document.getElementById('radar-loading');
+    if (ph) ph.remove();
+    if (canvas) canvas.style.display = 'block';
+    drawL2RadarChart();
+  };
+  script.onerror = function() {
+    var ph = document.getElementById('radar-loading');
+    if (ph) {
+      ph.textContent = '雷达图加载失败，请刷新页面重试';
+      ph.style.color = '#EF4444';
+    }
+  };
+  document.head.appendChild(script);
 }
 
 /* ========== 模块1：报告头部 + 80分雷达图 ========== */
