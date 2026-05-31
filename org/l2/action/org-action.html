@@ -569,14 +569,15 @@
     for (var i = 0; i < dims.length; i++) {
       var d = dims[i];
       var hd = HEADERS[d] || HEADERS['0'];
-      // Add separator between dimensions
+      // Divider line between dimensions
       if (i > 0) {
-        contentHtml += '<div class="action-section" style="text-align:center;padding:24px 0;">' +
-          '<div style="height:2px;background:linear-gradient(90deg,transparent,#93C5FD,transparent);margin-bottom:16px;"></div>' +
-          '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">' + hd.badge + '</div>' +
-          '<h2 class="text-xl font-extrabold text-gray-900 mt-3">' + hd.title + '</h2>' +
-          '</div>';
+        contentHtml += '<div style="height:2px;background:linear-gradient(90deg,transparent,#93C5FD,transparent);margin:24px 0 20px;"></div>';
       }
+      // Dimension header badge + title (always shown)
+      contentHtml += '<div class="action-section" style="text-align:center;padding-bottom:8px;">' +
+        '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">' + hd.badge + '</div>' +
+        '<h2 class="text-xl font-extrabold text-gray-900 mt-3">' + hd.title + '</h2>' +
+        '</div>';
       contentHtml += (CONTENTS[d] || CONTENTS['0']);
     }
     document.getElementById('dimContent').innerHTML = contentHtml;
