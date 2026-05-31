@@ -593,23 +593,46 @@ function renderModule7Services() {
   var R = L2_RESULT;
 
   var html = '';
-  html += '<h3 class="l2-module-title">🎯 延伸服务精准推荐</h3>';
-  html += '<p class="text-xs text-gray-500 mb-3">基于您的完整诊断，为您推荐以下匹配服务（最多3个）</p>';
+  html += '<h3 class="l2-module-title">🚀 拿到你的组织升级方案</h3>';
 
   if (R.services.length === 0) {
     html += '<div class="report-card text-center">';
     html += '<p class="text-green-600 font-medium">您的各维度表现良好，暂无特别推荐的服务</p>';
     html += '</div>';
   } else {
-    for (var i = 0; i < R.services.length; i++) {
-      var s = R.services[i];
-      html += '<div class="service-reco-card">';
-      html += '<span class="service-reco-num">' + (i + 1) + '</span>';
-      html += '<div class="service-reco-info">';
-      html += '<div class="service-reco-name">' + s.serviceName + ' <span class="text-xs text-gray-400">' + (s.price || '') + '</span></div>';
-      html += '<div class="service-reco-reason">推荐理由：' + s.reason + '</div>';
-      html += '<a href="#" class="service-reco-link">了解详情 →</a>';
-      html += '</div>';
+    var primary = R.services[0];  // 最弱维度
+
+    // 主推荐CTA卡片
+    html += '<div class="report-card" style="background:linear-gradient(135deg,#EFF6FF,#F0F9FF);border:2px solid #93C5FD;">';
+    html += '<p class="text-sm text-gray-700 leading-relaxed mb-1">根据你的诊断结果，<strong>优先推荐「' + primary.serviceName + '」</strong></p>';
+    html += '<p class="text-xs text-gray-500 mb-4">诊断告诉你哪个环节弱，方案告诉你怎么改。</p>';
+
+    html += '<div style="background:#fff;border-radius:12px;padding:14px;margin-bottom:14px;">';
+    html += '<p class="text-sm font-bold text-gray-800 mb-2">📦 包含内容</p>';
+    html += '<ul class="text-xs text-gray-600" style="list-style:none;padding:0;">';
+    html += '<li class="py-1">📘 90天分步执行手册 —— 每周干什么、谁来做、做到什么标准</li>';
+    html += '<li class="py-1">📋 3个可直接填写的模板 —— 拿来就能用</li>';
+    html += '<li class="py-1">📖 2个同类型企业的真实案例 —— 怎么做的、踩了什么坑</li>';
+    html += '<li class="py-1">📅 90天关键节点检查清单</li>';
+    html += '</ul>';
+    html += '</div>';
+
+    html += '<a href="action/index.html?dim=' + primary.dirParam + '" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#0F4C81,#1E40AF);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(15,76,129,0.3);">查看「' + primary.serviceName + '」行动方案 →</a>';
+    html += '<p class="text-xs text-gray-400 text-center mt-2">了解方案后，¥99 获取完整执行手册</p>';
+    html += '</div>';
+
+    // 次要弱维度提示
+    if (R.services.length > 1) {
+      html += '<div class="report-card" style="margin-top:14px;">';
+      html += '<p class="text-sm font-bold text-gray-700 mb-2">其他需要关注的维度</p>';
+      for (var i = 1; i < R.services.length; i++) {
+        var sec = R.services[i];
+        html += '<div style="padding:10px 0;border-bottom:1px solid #F1F5F9;">';
+        html += '<span class="text-sm text-gray-700 font-medium">' + sec.serviceName + '</span>';
+        html += '<span class="text-xs text-gray-500 ml-2">' + sec.reason + '</span>';
+        html += '</div>';
+      }
+      html += '<p class="text-xs text-gray-400 mt-3">以上维度将在后续版本中陆续上线行动方案</p>';
       html += '</div>';
     }
   }

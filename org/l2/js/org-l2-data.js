@@ -560,9 +560,10 @@ var SERVICE_RECOMMENDATIONS = [
   {
     dimIndex: 0,
     dimName: '流程与制度',
-    threshold: 14,  // < 14/20 推荐
+    threshold: 14,
     serviceName: '流程SOP体系建设',
-    price: '咨询报价',
+    dirParam: '0',
+    price: '¥99',
     reason: '您的流程制度体系还有较大优化空间，系统化的SOP建设能显著提升组织效率，减少重复性问题。'
   },
   {
@@ -570,23 +571,26 @@ var SERVICE_RECOMMENDATIONS = [
     dimName: '团队与执行力',
     threshold: 14,
     serviceName: '中层管理培训',
-    price: '咨询报价',
+    dirParam: '1',
+    price: '¥99',
     reason: '您的团队执行力需要系统性提升，中层管理者的目标拆解和团队管理能力是组织提效的关键突破口。'
   },
   {
     dimIndex: 2,
     dimName: '决策与授权',
-    threshold: 10,  // < 10/16 推荐
+    threshold: 10,
     serviceName: '管理升级咨询',
-    price: '咨询报价',
+    dirParam: '2',
+    price: '¥99',
     reason: '您的决策授权体系需要优化，清晰的授权边界能让老板专注战略、中层独立担当。'
   },
   {
     dimIndex: 3,
     dimName: '文化与氛围',
-    threshold: 8,   // < 8/12 推荐
+    threshold: 8,
     serviceName: '文化体系建设/领导力培训',
-    price: '咨询报价',
+    dirParam: '3',
+    price: '¥99',
     reason: '您的企业文化建设需要系统化支撑，文化和领导力是组织凝聚力的核心。'
   },
   {
@@ -594,7 +598,8 @@ var SERVICE_RECOMMENDATIONS = [
     dimName: '组织健康感知',
     threshold: 8,
     serviceName: '组织架构优化咨询',
-    price: '咨询报价',
+    dirParam: '4',
+    price: '¥99',
     reason: '您的组织架构和业务发展存在错配，优化的架构设计能为业务增长提供有力支撑。'
   }
 ];

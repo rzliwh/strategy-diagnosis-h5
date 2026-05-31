@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="组织诊断行动方案 - 组织升级执行手册">
+  <title>行动方案 · 组织升级执行手册</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/org-l2.css">
+
+  <style>
+    body { background: #F8FAFC; }
+    .intro-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .intro-section { margin-bottom: 28px; }
+    .intro-section-title {
+      font-size: 18px; font-weight: 700; color: #0F4C81; margin-bottom: 12px;
+      padding-left: 12px; border-left: 4px solid #3B82F6;
+    }
+    .intro-card {
+      background: #fff; border: 1px solid #E2E8F0; border-radius: 16px;
+      padding: 20px; margin-bottom: 14px;
+    }
+    .intro-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+
+    .direction-badge {
+      display: inline-block; padding: 6px 16px; border-radius: 20px;
+      font-size: 14px; font-weight: 700; margin-bottom: 8px;
+      background: linear-gradient(135deg,#0F4C81,#1E40AF); color: #fff;
+    }
+
+    .content-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px; border-bottom: 1px solid #F1F5F9;
+    }
+    .content-item:last-child { border-bottom: none; }
+    .content-icon { font-size: 24px; flex-shrink: 0; width: 40px; text-align: center; }
+
+    .pay-btn {
+      display: block; width: 100%; padding: 16px 20px; border-radius: 14px;
+      background: linear-gradient(135deg,#10B981,#059669);
+      color: #fff; font-size: 17px; font-weight: 700;
+      text-align: center; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(16,185,129,0.35);
+      margin-bottom: 12px;
+    }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="intro-container">
+
+    <!-- 页面头部 -->
+    <div class="text-center mb-8 pt-4">
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">📋 组织升级方案</h1>
+      <p class="text-base text-gray-500">针对你的薄弱维度<br>一套能执行的解决方案</p>
+      <p class="text-sm text-gray-400 mt-1">诊断定位问题，方案告诉你<br>每一步怎么改</p>
+    </div>
+
+    <!-- 推荐方向 -->
+    <div class="intro-section">
+      <div class="intro-card" style="text-align:center;">
+        <p class="text-sm text-gray-500 mb-2">根据你的组织诊断结果，推荐优先解决</p>
+        <div class="direction-badge" id="dirName">加载中...</div>
+      </div>
+    </div>
+
+    <!-- 方案包含内容 -->
+    <div class="intro-section">
+      <h2 class="intro-section-title">这个方案里有什么</h2>
+      <div class="intro-card">
+        <div class="content-item">
+          <span class="content-icon">📘</span>
+          <div>
+            <h3 style="font-size:15px;">90天分步执行手册</h3>
+            <p class="text-sm text-gray-500">第1-30天启动期、第31-60天执行期、第61-90天验证期，每周任务清晰列出。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📋</span>
+          <div>
+            <h3 style="font-size:15px;">3个可直接填写的模板</h3>
+            <p class="text-sm text-gray-500">拿来就能用的工作表格，没有管理顾问的术语，你自己就能填。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📖</span>
+          <div>
+            <h3 style="font-size:15px;">2个同类型企业的真实案例</h3>
+            <p class="text-sm text-gray-500">同类规模企业怎么做的、遇到了什么问题、怎么解决的。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📅</span>
+          <div>
+            <h3 style="font-size:15px;">90天关键节点检查清单</h3>
+            <p class="text-sm text-gray-500">4个关键时间点的自查清单，确保执行不跑偏。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 方案格式说明 -->
+    <div class="intro-section">
+      <h2 class="intro-section-title">方案是怎么组织的</h2>
+      <div class="intro-card">
+        <div class="content-item">
+          <span class="content-icon">🔍</span>
+          <div>
+            <h3 style="font-size:15px;">问题诊断 + 适配分析</h3>
+            <p class="text-sm text-gray-500">这个维度的问题到底出在哪、你的企业当前处于什么阶段、适不适合马上动手改。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📅</span>
+          <div>
+            <h3 style="font-size:15px;">分阶段执行路线图</h3>
+            <p class="text-sm text-gray-500">分三个阶段，每周具体做什么、谁来做、做到什么标准。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📝</span>
+          <div>
+            <h3 style="font-size:15px;">可填写模板</h3>
+            <p class="text-sm text-gray-500">空模板，打开就能用。每个字段都有填写说明。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📖</span>
+          <div>
+            <h3 style="font-size:15px;">真实案例故事</h3>
+            <p class="text-sm text-gray-500">不是理论课，是「那家公司跟你差不多大、遇到了类似问题、他们怎么做的」。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 适用说明 -->
+    <div class="intro-section">
+      <div class="intro-card" style="text-align:center;">
+        <p class="text-sm text-gray-600 leading-relaxed">
+          无论你是<strong>创始人</strong>还是<strong>管理者</strong>，<br>
+          方案的目标是让你<strong>今天看完，明天就知道该干什么</strong>。
+        </p>
+      </div>
+    </div>
+
+    <!-- 付款按钮区 -->
+    <div style="text-align:center;margin:32px 0 16px;">
+      <a href="#" id="btnPay" class="pay-btn">
+        去付款 ¥99 获得完整方案 →
+      </a>
+      <p class="text-xs text-gray-400">微信扫码支付，即时获取完整方案</p>
+      <p class="text-xs text-gray-400 mt-6">如有问题请联系微信：LaoLee01</p>
+    </div>
+
+  </div>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var dim = params.get('dim') || '0';
+
+    var DIM_NAMES = {
+      '0': '流程SOP体系建设',
+      '1': '中层管理培训',
+      '2': '管理升级咨询',
+      '3': '文化体系建设',
+      '4': '组织架构优化'
+    };
+
+    var name = DIM_NAMES[dim] || '组织升级';
+    document.getElementById('dirName').textContent = name;
+
+    var payUrl = 'pay.html?dim=' + dim;
+    document.getElementById('btnPay').href = payUrl;
+  </script>
+</body>
+</html>

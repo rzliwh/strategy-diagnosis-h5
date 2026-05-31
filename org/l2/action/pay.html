@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="解锁组织升级方案 - ¥99">
+  <title>解锁组织升级方案</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', light: '#3B82F6' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: #F8FAFC;
+      font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      color: #1E293B;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .pay-container {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #ffffff;
+      padding: 24px 20px 40px;
+      text-align: center;
+    }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="pay-container">
+
+    <!-- 页面头部 -->
+    <div class="mb-6 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">
+        解锁组织升级方案 ¥99
+      </div>
+      <h2 class="text-xl font-extrabold text-gray-900 mt-2">微信扫码支付</h2>
+      <p class="text-sm text-gray-500 mt-1" id="planName">支付完成后即可查看完整执行手册</p>
+    </div>
+
+    <!-- 内容预览 -->
+    <div class="mb-6" style="text-align:left;">
+      <div style="background:#EFF6FF;border:1px solid #93C5FD;border-radius:14px;padding:16px;">
+        <p class="text-sm font-bold mb-2" style="color:#0F4C81;">📦 你将获得</p>
+        <ul class="text-sm text-gray-700" style="list-style:none;padding:0;">
+          <li class="py-1">📘 <strong>90天执行手册</strong> —— 每周干什么、谁来做、做成什么样</li>
+          <li class="py-1">📋 <strong>3个配套模板</strong> —— 流程盘点表、SOP模板、优先级矩阵</li>
+          <li class="py-1">📖 <strong>2个真实案例</strong> —— 同类企业怎么做的、踩了什么坑</li>
+          <li class="py-1">📅 <strong>自我检查节点</strong> —— 4个关键时间点的自查清单</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 收款码 -->
+    <div class="mb-8">
+      <div style="display:inline-block;padding:12px;border:2px dashed #E2E8F0;border-radius:16px;">
+        <img id="qrImage" alt="微信扫码支付 ¥99"
+             style="width:200px;height:auto;display:block;border-radius:12px;"
+             onerror="this.style.display='none';var fb=document.getElementById('qr-fallback');if(fb)fb.style.display='flex';">
+        <div id="qr-fallback" style="display:none;width:200px;height:200px;background:#F8FAFC;border-radius:12px;align-items:center;justify-content:center;text-align:center;color:#94A3B8;font-size:13px;line-height:1.6;">
+          收款码加载失败<br>请联系微信：LaoLee01
+        </div>
+      </div>
+      <p class="text-sm text-gray-500 mt-3">微信扫码支付 ¥99</p>
+    </div>
+
+    <!-- 我已付款按钮 -->
+    <button id="btnPaid" onclick="goToActionPlan()" class="w-full py-4 rounded-2xl text-white font-bold text-lg mb-4" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);box-shadow:0 4px 16px rgba(15,76,129,0.3);">
+      ✅ 我已付款，查看执行方案 →
+    </button>
+
+    <!-- 联系提示 -->
+    <p class="text-xs text-gray-400 mt-6">如有问题请联系微信：LaoLee01</p>
+
+  </div>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var dim = params.get('dim') || '0';
+
+    var DIM_NAMES = {
+      '0': '流程SOP体系建设',
+      '1': '中层管理培训',
+      '2': '管理升级咨询',
+      '3': '文化体系建设',
+      '4': '组织架构优化'
+    };
+
+    // 收款码路径（兼容 GitHub Pages 和本地 file://）
+    var qrImg = document.getElementById('qrImage');
+    if (qrImg) {
+      if (window.location.hostname.indexOf('github.io') !== -1) {
+        qrImg.src = '/strategy-diagnosis-h5/images/wechat-pay-99.jpg';
+      } else {
+        qrImg.src = '../../../images/wechat-pay-99.jpg';
+      }
+    }
+
+    // 显示方案名称
+    var name = DIM_NAMES[dim] || '';
+    if (name) {
+      document.getElementById('planName').textContent = '支付完成后解锁「' + name + '」完整执行手册';
+    }
+
+    function goToActionPlan() {
+      window.location.href = 'org-action.html?dim=' + dim;
+    }
+  </script>
+</body>
+</html>

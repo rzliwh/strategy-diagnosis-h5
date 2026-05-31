@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="流程SOP体系建设 - 90天执行手册">
+  <title>流程SOP体系建设 · 组织升级方案</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#0F4C81',light:'#3B82F6'}}}}}</script>
+  <link rel="stylesheet" href="../css/org-l2.css">
+
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #0F4C81; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #3B82F6; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #EFF6FF; color: #0F4C81; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #0F4C81; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #DBEAFE; color: #0F4C81; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #EFF6FF); border: 1px solid #93C5FD; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #DBEAFE; color: #0F4C81; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="action-container">
+
+    <!-- ========== 页面头 ========== -->
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">
+        组织升级 · 流程优化
+      </div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">流程SOP体系建设</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">让公司的运作方式不再只<br>"装在老板脑子里"</p>
+    </div>
+
+    <div style="background:#EFF6FF;border:1px solid #93C5FD;border-radius:12px;padding:12px 16px;margin-bottom:20px;text-align:center;">
+      <span style="font-size:14px;color:#0F4C81;">📌</span>
+      <span style="font-size:13px;color:#475569;">建议收藏此页面，或将本页打印出来对照执行</span>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第一章 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          流程SOP的本质不是"把东西写下来放到抽屉里"，而是<strong>"让做对一件事不再依赖某个人的记忆和经验"</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          一个最常见的症状：公司里有一个老员工叫张姐，她什么都清楚——客户怎么跟进、报表怎么填、出了问题找谁。但张姐一请假，整个部门开始出乱子。张姐要离职，老板慌了。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          这不是张姐的问题，这是<strong>流程没有固化</strong>的问题。张姐的"大脑"里的东西，没有变成公司的"肌肉记忆"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          SOP体系建设就是做这件事：<strong>识别关键流程 → 写下来 → 培训团队 → 持续改进</strong>。不是一次写100个，而是先写最重要的10个，让它们真正被用起来。
+        </p>
+      </div>
+
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          一家做电商代运营的公司，30个人。老板最头疼的是：每个运营对接客户的方式都不一样——有人用Excel记录，有人用脑子记，有人跟客户承诺了不该承诺的事。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          他们花了3个月，梳理了<strong>8个核心SOP</strong>：新客户对接流程、日常报表流程、客户投诉处理流程、活动上线流程、数据复盘流程、合同续签流程、离职交接流程、跨部门协作流程。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          效果：新人上手时间从2周缩短到3天，客户投诉减少了60%，运营的加班时间平均减少了每周5小时。老板说："我终于不用每天接运营的电话问'这个怎么办'了。"
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>SOP不是限制创造力的，是释放时间的。你把重复的事情标准了，才有精力做需要判断的事情。</strong></p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第二章 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号——你该动手了</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 同一个问题被重复问超过3次，每次回答都不一样</li>
+          <li class="py-1">· 关键员工的离职会对业务产生显著冲击</li>
+          <li class="py-1">· 公司到了20人以上，老板已经没办法知道每个环节在发生什么</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况——先别急着上SOP</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 公司不到10人且业务模式还在频繁变化——SOP刚写完就过时了</li>
+          <li class="py-1">· 老板自己不愿意遵守流程——SOP最大的敌人不是员工不执行，是老板自己绕过去</li>
+        </ul>
+      </div>
+
+      <div class="action-card">
+        <h3>做之前，先想清楚这三件事</h3>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-2"><strong>1. 不是所有流程都要写</strong><br>只写"做了会影响钱、影响客户、影响质量"的核心流程。其他流程让它自然进化。</li>
+          <li class="py-2"><strong>2. 谁用谁来写</strong><br>不是老板写、不是HR写，是实际操作的员工来写第一版。写的目的是让下一个接手的人能看懂。</li>
+          <li class="py-2"><strong>3. SOP不是一次性的</strong><br>写完之后3个月内必须至少改一次。没用起来的SOP就是废纸。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第三章：90天执行路线图 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+
+      <!-- Phase 1 -->
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 盘点与排序</span>
+      <p class="text-sm text-gray-600 mb-3">这个阶段的目标不是写SOP，是搞清楚该写什么、从哪个开始。</p>
+
+      <div class="week-block">
+        <span class="week-num">Week 1-2</span>
+        <p class="text-sm text-gray-700 font-bold mb-2">盘点所有现有流程</p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 让每个部门负责人列出"我这最常干的20件事"</li>
+          <li class="py-1">· 用<strong>模板1（流程盘点表）</strong>逐条记录</li>
+          <li class="py-1">· 特别标注：这件事如果换个人做，一天内能不能上手？</li>
+        </ul>
+        <div class="checklist">
+          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
+          <ul>
+            <li>各部门提交流程盘点表</li>
+            <li>老板过一遍，确认没有遗漏的核心流程</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">Week 3-4</span>
+        <p class="text-sm text-gray-700 font-bold mb-2">排出优先级</p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 用<strong>模板2（SOP优先级矩阵）</strong>打分：影响大不大 × 风险高不高</li>
+          <li class="py-1">· 选Top 5-8个最该先写的流程</li>
+          <li class="py-1">· 每个Top流程指定一个负责人来写初稿（谁做这个活谁来写）</li>
+        </ul>
+        <div class="checklist">
+          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
+          <ul>
+            <li>优先级矩阵完成</li>
+            <li>Top流程确定（不超过8个）</li>
+            <li>每个流程负责人已指定</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 写SOP + 试用</span>
+      <p class="text-sm text-gray-600 mb-3">不追求完美，追求"另一个人能看懂、能照着做"。</p>
+
+      <div class="week-block">
+        <span class="week-num">Week 5-6</span>
+        <p class="text-sm text-gray-700 font-bold mb-2">出第一版SOP</p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 用<strong>模板3（SOP标准模板）</strong>逐流程填写</li>
+          <li class="py-1">· 每个SOP控制在2页以内，超过就是不够精炼</li>
+          <li class="py-1">· 包含：目的、适用范围、步骤（编号）、关键检查点、常见错误</li>
+        </ul>
+        <div class="checklist">
+          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
+          <ul>
+            <li>Top流程的SOP初稿完成</li>
+            <li>每个SOP不超过2页</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">Week 7-8</span>
+        <p class="text-sm text-gray-700 font-bold mb-2">内部试用 + 修改</p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 找另一个没写过这份SOP的同事来试：给他SOP，看着他做</li>
+          <li class="py-1">· 他卡住的地方就是SOP写不清楚的地方，改</li>
+          <li class="py-1">· 第一轮修改完成后，放在团队共享文件夹/群里，让大家随时能看到</li>
+        </ul>
+        <div class="checklist">
+          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
+          <ul>
+            <li>每个SOP至少被1个"非作者"试用过</li>
+            <li>根据反馈完成修改</li>
+            <li>SOP存放位置已确定，全员可访问</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 固化与迭代</span>
+      <p class="text-sm text-gray-600 mb-3">SOP写好了不是终点，是起点。</p>
+
+      <div class="week-block">
+        <span class="week-num">Week 9-10</span>
+        <p class="text-sm text-gray-700 font-bold mb-2">培训 + 考核</p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 开一次简短的培训会（30分钟就够了），讲清楚每份SOP的要点</li>
+          <li class="py-1">· 把SOP的执行与绩效考核挂钩：按照SOP走是基本要求</li>
+          <li class="py-1">· 但给例外出口：遇到SOP没覆盖的情况，先按常识处理，后补充进SOP</li>
+        </ul>
+        <div class="checklist">
+          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
+          <ul>
+            <li>全员培训完成</li>
+            <li>SOP执行纳入考核</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">Week 11-12</span>
+        <p class="text-sm text-gray-700 font-bold mb-2">复盘 + 迭代</p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 收集团队反馈：哪个SOP最好用？哪个几乎没用？为什么？</li>
+          <li class="py-1">· 修改"不好用"的SOP，简化或合并</li>
+          <li class="py-1">· 制定"SOP季度审查"制度：每季度检查一次，过时的就更新</li>
+        </ul>
+        <div class="checklist">
+          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
+          <ul>
+            <li>团队反馈收集完毕</li>
+            <li>SOP更新到第二版</li>
+            <li>季度审查时间表已设定</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-card" style="text-align:center;margin-top:16px;">
+        <p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p>
+        <p class="text-sm text-gray-600">
+          <strong>5-8个核心SOP跑起来了</strong>，关键流程不再依赖个人记忆，新人培训时间显著缩短，重复性问题明显减少。
+        </p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第四章：配套模板 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p>
+
+      <!-- 模板1 -->
+      <div class="template-card">
+        <span class="template-label">模板1</span>
+        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">流程盘点表</h3>
+        <p class="text-sm text-gray-500 mb-3">由各部门负责人填写，列出所有经常做的事情</p>
+        <table>
+          <tr><th>序号</th><th>事情名称</th><th>频率</th><th>谁在做</th><th>换人能否一天上手</th><th>重要性</th></tr>
+          <tr><td>1</td><td><span class="fill-line"></span></td><td>每日/每周/每月</td><td><span class="fill-line"></span></td><td>能/勉强/不能</td><td>高/中/低</td></tr>
+          <tr><td>2</td><td><span class="fill-line"></span></td><td>每日/每周/每月</td><td><span class="fill-line"></span></td><td>能/勉强/不能</td><td>高/中/低</td></tr>
+          <tr><td>3</td><td><span class="fill-line"></span></td><td>每日/每周/每月</td><td><span class="fill-line"></span></td><td>能/勉强/不能</td><td>高/中/低</td></tr>
+          <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+      </div>
+
+      <!-- 模板2 -->
+      <div class="template-card">
+        <span class="template-label">模板2</span>
+        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">SOP优先级矩阵</h3>
+        <p class="text-sm text-gray-500 mb-3">给候选流程打分——影响越大、风险越高，越该先写</p>
+        <table>
+          <tr><th>流程</th><th>影响（1-5分）</th><th>风险（1-5分）</th><th>总分</th><th>排位</th></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
+        </table>
+        <p class="text-xs text-gray-400 mt-2">影响分 = 这件事做不好对客户/收入/质量的影响有多大<br>风险分 = 这件事现在依赖"那个人"的程度有多高</p>
+      </div>
+
+      <!-- 模板3 -->
+      <div class="template-card">
+        <span class="template-label">模板3</span>
+        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">SOP标准模板</h3>
+        <p class="text-sm text-gray-500 mb-3">每个SOP按这个格式写，控制在一页纸</p>
+        <table>
+          <tr><th style="width:30%;">字段</th><th>内容</th></tr>
+          <tr><td>SOP名称</td><td><span class="fill-line"></span></td></tr>
+          <tr><td>目的</td><td>为什么要做这件事、不做会怎样</td></tr>
+          <tr><td>适用范围</td><td>哪个岗位/部门使用，什么情况下触发</td></tr>
+          <tr><td>步骤</td><td>1. ___ → 2. ___ → 3. ___ （每步不超过一行）</td></tr>
+          <tr><td>关键检查点</td><td>做到哪一步需要停下来检查什么</td></tr>
+          <tr><td>常见错误</td><td>新手最容易犯的3个错误</td></tr>
+          <tr><td>相关SOP</td><td>做完这个通常下一步要做什么</td></tr>
+          <tr><td>版本号</td><td>V1.0 / 日期 / 谁写的</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第五章：真实案例 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例</h2>
+
+      <div class="case-card">
+        <span class="case-tag">案例1 · 制造业</span>
+        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家40人的五金加工厂怎么从"靠老师傅"变成"靠SOP"</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          这家厂做了12年，最核心的工序——表面处理和质检——全靠三个干了8年以上的老师傅。老师傅说"看感觉"，新工人学半年也学不会。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          最危机的时候：其中一个老师傅生病住院两个月，产线良品率从95%掉到72%。老板说："我这时候才意识到，我的企业建立在三个人的经验之上。"
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>他们怎么做的：</strong>
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 第1步：让三个老师傅各带一个徒弟，徒弟负责记录师傅的每一个动作和判断</li>
+          <li class="py-1">· 第2步：把"看感觉"翻译成"看颜色偏黄就是反应不够、偏灰就是过了"</li>
+          <li class="py-1">· 第3步：用手机拍了关键步骤的对比照片（好的什么样、不好的什么样）</li>
+          <li class="py-1">· 第4步：编成12页图文SOP，贴在工位上</li>
+          <li class="py-1">· 第5步：新工人3周能独立操作（原来要6个月），良品率稳定在93%以上</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>他们踩的坑：</strong>一开始写得太学术化，工人看不懂。后来改成口语版——"看到这个颜色的，停，拿去找组长"——反而好用。
+        </p>
+      </div>
+
+      <div class="case-card">
+        <span class="case-tag">案例2 · 服务业</span>
+        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家25人的活动策划公司，做了"项目交接SOP"之后的变化</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          活动策划行业的特点是项目制，一个项目经理从头跟到尾。最痛的问题是：项目做了一半项目经理离职，后面接的人啥都不知道——方案聊到哪里了、客户提了哪些要求、供应商是哪家——全靠前一个人回来随时接电话。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>他们做的第一份SOP，不是最复杂的活动流程，而是"项目交接SOP"</strong>——一个人离职，另一个人接手，需要哪些东西？
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 定义了"项目交接包"的标准清单：客户联系人、已确认的方案版本、未确认的事项、已付/未付款、供应商列表及合同、截止日期倒计时</li>
+          <li class="py-1">· 换岗要求：交接包准备完才能走离职流程，否则HR不给签字</li>
+          <li class="py-1">· 效果：项目交接时间从无底洞缩短到半天，客户满意度从交接期的平均3.2分回升到4.5分</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>起步简单的道理：</strong>不要一上来就想写"如何办一场活动"这种巨复杂的SOP。从最痛的、最容易标准化的小流程开始，做了几个小SOP之后大家就愿意配合写大的了。
+        </p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第六章：自我检查清单 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">六、90天自我检查清单</h2>
+
+      <div class="action-card">
+        <h3>第30天检查</h3>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">☐ 流程盘点表完成了吗？（所有部门都交了）</li>
+          <li class="py-1">☐ 优先级Top 5-8确定了吗？</li>
+          <li class="py-1">☐ 每个流程的SOP负责人指定了吗？是实际操作的人吗？</li>
+          <li class="py-1">☐ 老板有没有公开表态"这件事是公司级的，不是某个部门的事"？</li>
+        </ul>
+      </div>
+
+      <div class="action-card">
+        <h3>第60天检查</h3>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">☐ 所有Top流程的SOP初版写完了吗？</li>
+          <li class="py-1">☐ 每个SOP被至少一个非作者试用过了吗？</li>
+          <li class="py-1">☐ 根据试用反馈修改了吗？</li>
+          <li class="py-1">☐ SOP存放位置清楚吗？团队随时能找到吗？</li>
+        </ul>
+      </div>
+
+      <div class="action-card">
+        <h3>第90天检查</h3>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">☐ 每次执行都按SOP走了吗？有几次偏离？偏离的原因是什么？</li>
+          <li class="py-1">☐ 新人培训时间缩短了多少？量化一下。</li>
+          <li class="py-1">☐ 重复性问题减少了多少？量化一下。</li>
+          <li class="py-1">☐ 季度SOP审查的日期定好了吗？写进日历了吗？</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;">
+        <p class="text-sm text-gray-700 leading-relaxed">
+          🏁 <strong>90天结束后，最重要的一件事</strong><br>
+          不是看SOP写得多漂亮，是看团队在没有人提醒的情况下，<br>是不是<strong>自然地在按照SOP做事</strong>。
+        </p>
+        <p class="text-sm text-gray-600 mt-2">如果答案是"是"——你已经把一个重要流程从"依赖人"变成了"依赖系统"。</p>
+      </div>
+    </div>
+
+    <!-- ========== 底部分隔 ========== -->
+    <div style="text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #F1F5F9;">
+      <p class="text-xs text-gray-400">如需更多支持，请联系微信：LaoLee01</p>
+    </div>
+
+  </div>
+</body>
+</html>
