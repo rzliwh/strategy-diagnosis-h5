@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="战略诊断行动方案 - 90天执行手册">
+  <title>行动方案 · 90天执行手册</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1E3A8A', light: '#3B82F6' },
+            gold: { DEFAULT: '#F59E0B', dark: '#D97706' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+
+  <style>
+    body { background: #F8FAFC; }
+    .intro-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+
+    .intro-section { margin-bottom: 28px; }
+    .intro-section-title {
+      font-size: 18px; font-weight: 700; color: #1E3A8A; margin-bottom: 12px;
+      padding-left: 12px; border-left: 4px solid #3B82F6;
+    }
+    .intro-card {
+      background: #fff; border: 1px solid #E2E8F0; border-radius: 16px;
+      padding: 20px; margin-bottom: 14px;
+    }
+    .intro-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+
+    .direction-badge {
+      display: inline-block; padding: 6px 16px; border-radius: 20px;
+      font-size: 14px; font-weight: 700; margin-bottom: 8px;
+      background: linear-gradient(135deg,#1E3A8A,#1E40AF); color: #fff;
+    }
+
+    .content-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px; border-bottom: 1px solid #F1F5F9;
+    }
+    .content-item:last-child { border-bottom: none; }
+    .content-icon { font-size: 24px; flex-shrink: 0; width: 40px; text-align: center; }
+
+    .pay-btn {
+      display: block; width: 100%; padding: 16px 20px; border-radius: 14px;
+      background: linear-gradient(135deg,#F59E0B,#D97706);
+      color: #fff; font-size: 17px; font-weight: 700;
+      text-align: center; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.35);
+      margin-bottom: 12px;
+    }
+  </style>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?c1350882bbca6aeedd57dec0c4376483";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="intro-container">
+
+    <!-- 页面头部 -->
+    <div class="text-center mb-8 pt-4">
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">📋 行动方案</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">诊断告诉你去哪，方案告诉你<br>每一步具体怎么走</p>
+    </div>
+
+    <!-- 推荐方向 -->
+    <div class="intro-section">
+      <div class="intro-card" style="text-align:center;">
+        <p class="text-sm text-gray-500 mb-2">根据你的诊断结果，推荐方向</p>
+        <div class="direction-badge" id="dirName">加载中...</div>
+      </div>
+    </div>
+
+    <!-- 方案包含内容 -->
+    <div class="intro-section">
+      <h2 class="intro-section-title">这个方案里有什么</h2>
+      <div class="intro-card">
+        <div class="content-item">
+          <span class="content-icon">📘</span>
+          <div>
+            <h3 style="font-size:15px;">90天分步执行手册</h3>
+            <p class="text-sm text-gray-500">每周干什么、谁来做、做到什么标准。三个阶段的完整路线图。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📋</span>
+          <div>
+            <h3 style="font-size:15px;">3个可直接填写的模板</h3>
+            <p class="text-sm text-gray-500">拿来就能用的工作表格，不需要自己从零设计。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📖</span>
+          <div>
+            <h3 style="font-size:15px;">2个同类型企业的真实案例</h3>
+            <p class="text-sm text-gray-500">同类企业怎么做的、遇到了什么问题、怎么解决的。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📅</span>
+          <div>
+            <h3 style="font-size:15px;">90天关键节点检查清单</h3>
+            <p class="text-sm text-gray-500">4个关键时间点的自查清单，确保执行不跑偏。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 方案格式说明 -->
+    <div class="intro-section">
+      <h2 class="intro-section-title">方案长什么样</h2>
+      <div class="intro-card">
+        <div class="content-item">
+          <span class="content-icon">🔍</span>
+          <div>
+            <h3 style="font-size:15px;">方向解读 + 适配判断</h3>
+            <p class="text-sm text-gray-500">这个方向到底在说什么，你企业当前适不适合走这条路。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📅</span>
+          <div>
+            <h3 style="font-size:15px;">分阶段执行路线图</h3>
+            <p class="text-sm text-gray-500">第1-30天启动期、第31-60天执行期、第61-90天验证期，每周任务清晰列出。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📝</span>
+          <div>
+            <h3 style="font-size:15px;">可填写模板</h3>
+            <p class="text-sm text-gray-500">空的表格模板，打开就能用。每个字段都有说明。</p>
+          </div>
+        </div>
+        <div class="content-item">
+          <span class="content-icon">📖</span>
+          <div>
+            <h3 style="font-size:15px;">真实案例故事</h3>
+            <p class="text-sm text-gray-500">不是成功学鸡汤，是具体的企业怎么做、遇到了什么坑、花了多少钱。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 适用说明 -->
+    <div class="intro-section">
+      <div class="intro-card" style="text-align:center;">
+        <p class="text-sm text-gray-600 leading-relaxed">
+          无论你是<strong>创始人</strong>自己用，还是<strong>核心团队</strong>一起看，<br>
+          这份方案的目标是让你<strong>知道自己接下来90天该干什么</strong>。
+        </p>
+      </div>
+    </div>
+
+    <!-- 付款按钮区 -->
+    <div style="text-align:center;margin:32px 0 16px;">
+      <a href="#" id="btnPay" class="pay-btn">
+        去付款 ¥100 获得完整方案 →
+      </a>
+      <p class="text-xs text-gray-400">微信扫码支付，即时获取完整方案</p>
+      <p class="text-xs text-gray-400 mt-6">如有问题请联系微信：LaoLee01</p>
+    </div>
+
+  </div>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var dir = params.get('dir') || '';
+
+    var DIR_NAMES = {
+      'niche-focus': '聚焦细分赛道',
+      'differentiation': '打造差异化卖点',
+      'ai-overtake': '用AI实现弯道超车',
+      'market-expand': '加大投入扩大份额',
+      'mode-replicate': '横向复制成功模式',
+      'build-moat': '建立行业壁垒',
+      'focus-shrink': '聚焦收缩保留精华',
+      'new-track': '寻找新赛道转型',
+      'cooperation': '寻求合作共赢',
+      'deepen-customer': '深耕客户提升复购',
+      'extend-product': '微创新延伸产品线',
+      'ai-reduce-cost': '用AI降低运营成本'
+    };
+
+    // 显示方向名称
+    var name = DIR_NAMES[dir] || '未知方向';
+    document.getElementById('dirName').textContent = name;
+
+    // 设置付款链接
+    var payUrl = 'pay.html?dir=' + dir;
+    document.getElementById('btnPay').href = payUrl;
+  </script>
+</body>
+</html>
