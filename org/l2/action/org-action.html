@@ -71,7 +71,8 @@
   </div>
 
   <script>
-    var dim = new URLSearchParams(window.location.search).get('dim') || '0';
+    var dimStr = new URLSearchParams(window.location.search).get('dim') || '0';
+    var dims = dimStr.split(',');
 
     var HEADERS = {"0":{"badge":"组织升级 · 流程优化","title":"流程SOP体系建设","subtitle":"让公司的运作方式不再只<br>\"装在老板脑子里\""},"1":{"badge":"组织升级 · 团队提效","title":"中层管理培训","subtitle":"让中层从\"传话的\"变成<br>\"能扛事的\""},"2":{"badge":"组织升级 · 决策优化","title":"管理升级咨询","subtitle":"把决策权从老板一个人手里<br>交到应该做决策的人手里"},"3":{"badge":"组织升级 · 文化落地","title":"文化体系建设","subtitle":"让公司的价值观不再<br>\"写在墙上、停在嘴上\""},"4":{"badge":"组织升级 · 架构进化","title":"组织架构优化","subtitle":"让组织架构匹配业务阶段<br>而不是一直穿小时候的衣服"}};
 
@@ -554,20 +555,35 @@
         </p></div></div><div class="action-section"><h2 class="action-section-title">六、90天自我检查清单</h2><div class="action-card"><h3>第30天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 5条核心业务流程图完成了吗？卡点标注了责任人吗？</li><li class="py-1">☐ 架构审计表填完并评分了吗？高层的优先级共识有了吗？</li><li class="py-1">☐ 最突出的2-3个架构问题列出来了吗？有解决方案了吗？</li></ul></div><div class="action-card"><h3>第60天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 多头汇报情况处理完了吗？每个岗位都只有一个主汇报人了吗？</li><li class="py-1">☐ 新业务独立出来了吗？有唯一负责人和90天目标了吗？</li><li class="py-1">☐ 新架构的过渡方案写出来了吗？（怎么从旧切换到新，不停摆）</li></ul></div><div class="action-card"><h3>第90天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 新架构全员沟通会完成了吗？每个员工知道自己向谁汇报和新的OKR了吗？</li><li class="py-1">☐ 新架构下跑了完整业务周了吗？跨部门还在卡吗？</li><li class="py-1">☐ 至少1-2处微调完成了吗？新架构V1.1定版了吗？</li></ul></div><div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;"><p class="text-sm text-gray-700 leading-relaxed">🏁 <strong>90天结束后，最重要的一件事</strong><br>不是看架构图画得多漂亮，是看<strong>跨部门的事能不能在不经老板协调的情况下顺畅流转</strong>。<br>如果以前需要老板协调的跨部门问题减少了50%以上，架构调对了。</p></div></div>`,
     };
 
-    // Render header
-    var h = HEADERS[dim] || HEADERS['0'];
+    // Generate header with "共X个维度"
+    var titleText = dims.length > 1 ? '组织升级方案（共' + dims.length + '个维度）' : (HEADERS[dimStr] && HEADERS[dimStr].title || '组织升级');
+    var subtitleText = dims.length > 1 ? '一次解决你的全部薄弱环节' : (HEADERS[dimStr] && HEADERS[dimStr].subtitle || '');
     document.getElementById('pageHeader').innerHTML =
-      '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">' + h.badge + '</div>' +
-      '<h1 class="text-2xl font-extrabold text-gray-900 mb-2">' + h.title + '</h1>' +
+      '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">组织升级方案</div>' +
+      '<h1 class="text-2xl font-extrabold text-gray-900 mb-2">' + titleText + '</h1>' +
       '<p class="text-base text-gray-500">90天执行手册</p>' +
-      '<p class="text-sm text-gray-400 mt-1">' + h.subtitle + '</p>';
+      '<p class="text-sm text-gray-400 mt-1">' + subtitleText + '</p>';
 
-    // Render content
-    document.getElementById('dimContent').innerHTML = CONTENTS[dim] || CONTENTS['0'];
+    // Render content: loop through all dims and concatenate
+    var contentHtml = '';
+    for (var i = 0; i < dims.length; i++) {
+      var d = dims[i];
+      var hd = HEADERS[d] || HEADERS['0'];
+      // Add separator between dimensions
+      if (i > 0) {
+        contentHtml += '<div class="action-section" style="text-align:center;padding:24px 0;">' +
+          '<div style="height:2px;background:linear-gradient(90deg,transparent,#93C5FD,transparent);margin-bottom:16px;"></div>' +
+          '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">' + hd.badge + '</div>' +
+          '<h2 class="text-xl font-extrabold text-gray-900 mt-3">' + hd.title + '</h2>' +
+          '</div>';
+      }
+      contentHtml += (CONTENTS[d] || CONTENTS['0']);
+    }
+    document.getElementById('dimContent').innerHTML = contentHtml;
 
     // Update page title
-    document.title = (h.title || '组织升级') + ' · 组织升级方案';
-    document.querySelector('meta[name="description"]').setAttribute('content', (h.title || '组织升级') + ' - 90天执行手册');
+    document.title = titleText + ' · 组织升级方案';
+    document.querySelector('meta[name="description"]').setAttribute('content', titleText + ' - 90天执行手册');
   </script>
 </body>
 </html>

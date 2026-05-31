@@ -81,8 +81,8 @@
     <!-- 推荐方向 -->
     <div class="intro-section">
       <div class="intro-card" style="text-align:center;">
-        <p class="text-sm text-gray-500 mb-2">根据你的组织诊断结果，推荐优先解决</p>
-        <div class="direction-badge" id="dirName">加载中...</div>
+        <p class="text-sm text-gray-500 mb-2">你的组织诊断发现以下维度需要升级</p>
+        <div id="dirNames" style="display:flex;flex-direction:column;gap:8px;align-items:center;"></div>
       </div>
     </div>
 
@@ -172,7 +172,8 @@
 
   <script>
     var params = new URLSearchParams(window.location.search);
-    var dim = params.get('dim') || '0';
+    var dimStr = params.get('dim') || '0';
+    var dims = dimStr.split(',');
 
     var DIM_NAMES = {
       '0': '流程SOP体系建设',
@@ -182,10 +183,18 @@
       '4': '组织架构优化'
     };
 
-    var name = DIM_NAMES[dim] || '组织升级';
-    document.getElementById('dirName').textContent = name;
+    // 渲染多个维度标签
+    var container = document.getElementById('dirNames');
+    var html = '';
+    for (var i = 0; i < dims.length; i++) {
+      var d = dims[i];
+      var name = DIM_NAMES[d] || '';
+      html += '<div class="direction-badge">' + name + '</div>';
+    }
+    container.innerHTML = html;
 
-    var payUrl = 'pay.html?dim=' + dim;
+    // 设置付款链接
+    var payUrl = 'pay.html?dim=' + dimStr;
     document.getElementById('btnPay').href = payUrl;
   </script>
 </body>

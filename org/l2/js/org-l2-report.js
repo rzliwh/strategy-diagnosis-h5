@@ -600,11 +600,19 @@ function renderModule7Services() {
     html += '<p class="text-green-600 font-medium">您的各维度表现良好，暂无特别推荐的服务</p>';
     html += '</div>';
   } else {
-    var primary = R.services[0];  // 最弱维度
+    // 拼合所有弱维度的 dirParam
+    var allDims = [];
+    for (var i = 0; i < R.services.length; i++) {
+      allDims.push(R.services[i].dirParam);
+    }
+    var dimParam = allDims.join(',');
+
+    var primary = R.services[0];
+    var dimCountText = R.services.length > 1 ? '涵盖' + R.services.length + '个维度' : '';
 
     // 主推荐CTA卡片
     html += '<div class="report-card" style="background:linear-gradient(135deg,#EFF6FF,#F0F9FF);border:2px solid #93C5FD;">';
-    html += '<p class="text-sm text-gray-700 leading-relaxed mb-1">根据你的诊断结果，<strong>优先推荐「' + primary.serviceName + '」</strong></p>';
+    html += '<p class="text-sm text-gray-700 leading-relaxed mb-1">根据你的诊断结果，<strong>优先解决「' + primary.serviceName + '」</strong>' + dimCountText + '</p>';
     html += '<p class="text-xs text-gray-500 mb-4">诊断告诉你哪个环节弱，方案告诉你怎么改。</p>';
 
     html += '<div style="background:#fff;border-radius:12px;padding:14px;margin-bottom:14px;">';
@@ -617,22 +625,22 @@ function renderModule7Services() {
     html += '</ul>';
     html += '</div>';
 
-    html += '<a href="action/index.html?dim=' + primary.dirParam + '" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#0F4C81,#1E40AF);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(15,76,129,0.3);">查看「' + primary.serviceName + '」行动方案 →</a>';
-    html += '<p class="text-xs text-gray-400 text-center mt-2">了解方案后，¥99 获取完整执行手册</p>';
+    html += '<a href="action/index.html?dim=' + dimParam + '" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#0F4C81,#1E40AF);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(15,76,129,0.3);">查看组织升级方案 →</a>';
+    html += '<p class="text-xs text-gray-400 text-center mt-2">一份方案覆盖你的全部薄弱维度，¥99</p>';
     html += '</div>';
 
     // 次要弱维度提示
     if (R.services.length > 1) {
       html += '<div class="report-card" style="margin-top:14px;">';
-      html += '<p class="text-sm font-bold text-gray-700 mb-2">其他需要关注的维度</p>';
-      for (var i = 1; i < R.services.length; i++) {
-        var sec = R.services[i];
+      html += '<p class="text-sm font-bold text-gray-700 mb-2">本方案同时覆盖以下维度</p>';
+      for (var j = 1; j < R.services.length; j++) {
+        var sec = R.services[j];
         html += '<div style="padding:10px 0;border-bottom:1px solid #F1F5F9;">';
-        html += '<span class="text-sm text-gray-700 font-medium">' + sec.serviceName + '</span>';
+        html += '<span class="text-sm text-gray-700 font-medium">✅ ' + sec.serviceName + '</span>';
         html += '<span class="text-xs text-gray-500 ml-2">' + sec.reason + '</span>';
         html += '</div>';
       }
-      html += '<p class="text-xs text-gray-400 mt-3">以上维度将在后续版本中陆续上线行动方案</p>';
+      html += '<p class="text-xs text-gray-400 mt-3">以上维度已包含在本方案中，无需额外付款</p>';
       html += '</div>';
     }
   }

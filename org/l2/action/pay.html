@@ -86,7 +86,8 @@
 
   <script>
     var params = new URLSearchParams(window.location.search);
-    var dim = params.get('dim') || '0';
+    var dimStr = params.get('dim') || '0';
+    var dims = dimStr.split(',');
 
     var DIM_NAMES = {
       '0': '流程SOP体系建设',
@@ -107,13 +108,13 @@
     }
 
     // 显示方案名称
-    var name = DIM_NAMES[dim] || '';
+    var name = dims.length > 1 ? dims.length + '个维度' : (DIM_NAMES[dimStr] || '');
     if (name) {
       document.getElementById('planName').textContent = '支付完成后解锁「' + name + '」完整执行手册';
     }
 
     function goToActionPlan() {
-      window.location.href = 'org-action.html?dim=' + dim;
+      window.location.href = 'org-action.html?dim=' + dimStr;
     }
   </script>
 </body>
