@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="流程SOP体系建设 - 90天执行手册">
-  <title>流程SOP体系建设 · 组织升级方案</title>
+  <meta name="description" content="组织升级方案 - 90天执行手册">
+  <title>组织升级方案</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#0F4C81',light:'#3B82F6'}}}}}</script>
@@ -55,34 +55,37 @@
 <body>
   <div class="action-container">
 
-    <!-- ========== 页面头 ========== -->
-    <div class="text-center mb-8 pt-4">
-      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">
-        组织升级 · 流程优化
-      </div>
-      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">流程SOP体系建设</h1>
-      <p class="text-base text-gray-500">90天执行手册</p>
-      <p class="text-sm text-gray-400 mt-1">让公司的运作方式不再只<br>"装在老板脑子里"</p>
-    </div>
+    <div class="text-center mb-8 pt-4" id="pageHeader"></div>
 
     <div style="background:#EFF6FF;border:1px solid #93C5FD;border-radius:12px;padding:12px 16px;margin-bottom:20px;text-align:center;">
       <span style="font-size:14px;color:#0F4C81;">📌</span>
       <span style="font-size:13px;color:#475569;">建议收藏此页面，或将本页打印出来对照执行</span>
     </div>
 
-    <!-- ================================================================ -->
-    <!-- 第一章 -->
-    <!-- ================================================================ -->
-    <div class="action-section">
-      <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+    <div id="dimContent"></div>
 
-      <div class="action-card">
-        <h3>详细解读</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
+    <div style="text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #F1F5F9;">
+      <p class="text-xs text-gray-400">如需更多支持，请联系微信：LaoLee01</p>
+    </div>
+
+  </div>
+
+  <script>
+    var dim = new URLSearchParams(window.location.search).get('dim') || '0';
+
+    var HEADERS = {"0":{"badge":"组织升级 · 流程优化","title":"流程SOP体系建设","subtitle":"让公司的运作方式不再只<br>\"装在老板脑子里\""},"1":{"badge":"组织升级 · 团队提效","title":"中层管理培训","subtitle":"让中层从\"传话的\"变成<br>\"能扛事的\""},"2":{"badge":"组织升级 · 决策优化","title":"管理升级咨询","subtitle":"把决策权从老板一个人手里<br>交到应该做决策的人手里"},"3":{"badge":"组织升级 · 文化落地","title":"文化体系建设","subtitle":"让公司的价值观不再<br>\"写在墙上、停在嘴上\""},"4":{"badge":"组织升级 · 架构进化","title":"组织架构优化","subtitle":"让组织架构匹配业务阶段<br>而不是一直穿小时候的衣服"}};
+
+    var CONTENTS = {
+      0: `
+      <div class="action-section">
+        <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+        <div class="action-card">
+          <h3>详细解读</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
           流程SOP的本质不是"把东西写下来放到抽屉里"，而是<strong>"让做对一件事不再依赖某个人的记忆和经验"</strong>。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mt-3">
-          一个最常见的症状：公司里有一个老员工叫张姐，她什么都清楚——客户怎么跟进、报表怎么填、出了问题找谁。但张姐一请假，整个部门开始出乱子。张姐要离职，老板慌了。
+          一个最常见的症状：公司里有一个老员工叫张姐，她什么都清楚，客户怎么跟进、报表怎么填、出了问题找谁。但张姐一请假，整个部门开始出乱子。张姐要离职，老板慌了。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mt-3">
           这不是张姐的问题，这是<strong>流程没有固化</strong>的问题。张姐的"大脑"里的东西，没有变成公司的"肌肉记忆"。
@@ -90,12 +93,11 @@
         <p class="text-sm text-gray-600 leading-relaxed mt-3">
           SOP体系建设就是做这件事：<strong>识别关键流程 → 写下来 → 培训团队 → 持续改进</strong>。不是一次写100个，而是先写最重要的10个，让它们真正被用起来。
         </p>
-      </div>
-
-      <div class="action-card">
-        <h3>用个例子你就明白了</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          一家做电商代运营的公司，30个人。老板最头疼的是：每个运营对接客户的方式都不一样——有人用Excel记录，有人用脑子记，有人跟客户承诺了不该承诺的事。
+        </div>
+        <div class="action-card">
+          <h3>用个例子你就明白了</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          一家做电商代运营的公司，30个人。老板最头疼的是：每个运营对接客户的方式都不一样，有人用Excel记录，有人用脑子记，有人跟客户承诺了不该承诺的事。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mt-3">
           他们花了3个月，梳理了<strong>8个核心SOP</strong>：新客户对接流程、日常报表流程、客户投诉处理流程、活动上线流程、数据复盘流程、合同续签流程、离职交接流程、跨部门协作流程。
@@ -104,213 +106,35 @@
           效果：新人上手时间从2周缩短到3天，客户投诉减少了60%，运营的加班时间平均减少了每周5小时。老板说："我终于不用每天接运营的电话问'这个怎么办'了。"
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>SOP不是限制创造力的，是释放时间的。你把重复的事情标准了，才有精力做需要判断的事情。</strong></p>
-      </div>
-    </div>
-
-    <!-- ================================================================ -->
-    <!-- 第二章 -->
-    <!-- ================================================================ -->
-    <div class="action-section">
-      <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
-      <div class="fit-yes">
-        <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号——你该动手了</p>
-        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
-          <li class="py-1">· 同一个问题被重复问超过3次，每次回答都不一样</li>
-          <li class="py-1">· 关键员工的离职会对业务产生显著冲击</li>
-          <li class="py-1">· 公司到了20人以上，老板已经没办法知道每个环节在发生什么</li>
-        </ul>
-      </div>
-      <div class="fit-no">
-        <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况——先别急着上SOP</p>
-        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
-          <li class="py-1">· 公司不到10人且业务模式还在频繁变化——SOP刚写完就过时了</li>
-          <li class="py-1">· 老板自己不愿意遵守流程——SOP最大的敌人不是员工不执行，是老板自己绕过去</li>
-        </ul>
-      </div>
-
-      <div class="action-card">
-        <h3>做之前，先想清楚这三件事</h3>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-2"><strong>1. 不是所有流程都要写</strong><br>只写"做了会影响钱、影响客户、影响质量"的核心流程。其他流程让它自然进化。</li>
-          <li class="py-2"><strong>2. 谁用谁来写</strong><br>不是老板写、不是HR写，是实际操作的员工来写第一版。写的目的是让下一个接手的人能看懂。</li>
-          <li class="py-2"><strong>3. SOP不是一次性的</strong><br>写完之后3个月内必须至少改一次。没用起来的SOP就是废纸。</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ================================================================ -->
-    <!-- 第三章：90天执行路线图 -->
-    <!-- ================================================================ -->
-    <div class="action-section">
-      <h2 class="action-section-title">三、90天执行路线图</h2>
-
-      <!-- Phase 1 -->
-      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 盘点与排序</span>
-      <p class="text-sm text-gray-600 mb-3">这个阶段的目标不是写SOP，是搞清楚该写什么、从哪个开始。</p>
-
-      <div class="week-block">
-        <span class="week-num">Week 1-2</span>
-        <p class="text-sm text-gray-700 font-bold mb-2">盘点所有现有流程</p>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">· 让每个部门负责人列出"我这最常干的20件事"</li>
-          <li class="py-1">· 用<strong>模板1（流程盘点表）</strong>逐条记录</li>
-          <li class="py-1">· 特别标注：这件事如果换个人做，一天内能不能上手？</li>
-        </ul>
-        <div class="checklist">
-          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
-          <ul>
-            <li>各部门提交流程盘点表</li>
-            <li>老板过一遍，确认没有遗漏的核心流程</li>
-          </ul>
         </div>
       </div>
-
-      <div class="week-block">
-        <span class="week-num">Week 3-4</span>
-        <p class="text-sm text-gray-700 font-bold mb-2">排出优先级</p>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">· 用<strong>模板2（SOP优先级矩阵）</strong>打分：影响大不大 × 风险高不高</li>
-          <li class="py-1">· 选Top 5-8个最该先写的流程</li>
-          <li class="py-1">· 每个Top流程指定一个负责人来写初稿（谁做这个活谁来写）</li>
-        </ul>
-        <div class="checklist">
-          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
-          <ul>
-            <li>优先级矩阵完成</li>
-            <li>Top流程确定（不超过8个）</li>
-            <li>每个流程负责人已指定</li>
-          </ul>
+      <div class="action-section">
+        <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
+        <div class="fit-yes">
+          <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号，你该动手了</p>
+          <ul class="text-sm text-green-800" style="list-style:none;padding:0;"><li class="py-1">· 同一个问题被重复问超过3次，每次回答都不一样</li>
+<li class="py-1">· 关键员工的离职会对业务产生显著冲击</li>
+<li class="py-1">· 公司到了20人以上，老板已经没办法知道每个环节在发生什么</li></ul>
         </div>
-      </div>
-
-      <!-- Phase 2 -->
-      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 写SOP + 试用</span>
-      <p class="text-sm text-gray-600 mb-3">不追求完美，追求"另一个人能看懂、能照着做"。</p>
-
-      <div class="week-block">
-        <span class="week-num">Week 5-6</span>
-        <p class="text-sm text-gray-700 font-bold mb-2">出第一版SOP</p>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">· 用<strong>模板3（SOP标准模板）</strong>逐流程填写</li>
-          <li class="py-1">· 每个SOP控制在2页以内，超过就是不够精炼</li>
-          <li class="py-1">· 包含：目的、适用范围、步骤（编号）、关键检查点、常见错误</li>
-        </ul>
-        <div class="checklist">
-          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
-          <ul>
-            <li>Top流程的SOP初稿完成</li>
-            <li>每个SOP不超过2页</li>
-          </ul>
+        <div class="fit-no">
+          <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况，先别急着上SOP</p>
+          <ul class="text-sm text-red-800" style="list-style:none;padding:0;"><li class="py-1">· 公司不到10人且业务模式还在频繁变化，SOP刚写完就过时了</li>
+<li class="py-1">· 老板自己不愿意遵守流程，SOP最大的敌人不是员工不执行，是老板自己绕过去</li></ul>
         </div>
-      </div>
-
-      <div class="week-block">
-        <span class="week-num">Week 7-8</span>
-        <p class="text-sm text-gray-700 font-bold mb-2">内部试用 + 修改</p>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">· 找另一个没写过这份SOP的同事来试：给他SOP，看着他做</li>
-          <li class="py-1">· 他卡住的地方就是SOP写不清楚的地方，改</li>
-          <li class="py-1">· 第一轮修改完成后，放在团队共享文件夹/群里，让大家随时能看到</li>
-        </ul>
-        <div class="checklist">
-          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
-          <ul>
-            <li>每个SOP至少被1个"非作者"试用过</li>
-            <li>根据反馈完成修改</li>
-            <li>SOP存放位置已确定，全员可访问</li>
-          </ul>
+        <div class="action-card">
+          <h3>做之前，先想清楚这三件事</h3>
+          <ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-2"><strong>1. 不是所有流程都要写</strong><br>只写"做了会影响钱、影响客户、影响质量"的核心流程。其他流程让它自然进化。</li>
+<li class="py-2"><strong>2. 谁用谁来写</strong><br>不是老板写、不是HR写，是实际操作的员工来写第一版。写的目的是让下一个接手的人能看懂。</li>
+<li class="py-2"><strong>3. SOP不是一次性的</strong><br>写完之后3个月内必须至少改一次。没用起来的SOP就是废纸。</li></ul>
         </div>
-      </div>
-
-      <!-- Phase 3 -->
-      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 固化与迭代</span>
-      <p class="text-sm text-gray-600 mb-3">SOP写好了不是终点，是起点。</p>
-
-      <div class="week-block">
-        <span class="week-num">Week 9-10</span>
-        <p class="text-sm text-gray-700 font-bold mb-2">培训 + 考核</p>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">· 开一次简短的培训会（30分钟就够了），讲清楚每份SOP的要点</li>
-          <li class="py-1">· 把SOP的执行与绩效考核挂钩：按照SOP走是基本要求</li>
-          <li class="py-1">· 但给例外出口：遇到SOP没覆盖的情况，先按常识处理，后补充进SOP</li>
-        </ul>
-        <div class="checklist">
-          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
-          <ul>
-            <li>全员培训完成</li>
-            <li>SOP执行纳入考核</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="week-block">
-        <span class="week-num">Week 11-12</span>
-        <p class="text-sm text-gray-700 font-bold mb-2">复盘 + 迭代</p>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">· 收集团队反馈：哪个SOP最好用？哪个几乎没用？为什么？</li>
-          <li class="py-1">· 修改"不好用"的SOP，简化或合并</li>
-          <li class="py-1">· 制定"SOP季度审查"制度：每季度检查一次，过时的就更新</li>
-        </ul>
-        <div class="checklist">
-          <p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p>
-          <ul>
-            <li>团队反馈收集完毕</li>
-            <li>SOP更新到第二版</li>
-            <li>季度审查时间表已设定</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="action-card" style="text-align:center;margin-top:16px;">
-        <p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p>
-        <p class="text-sm text-gray-600">
-          <strong>5-8个核心SOP跑起来了</strong>，关键流程不再依赖个人记忆，新人培训时间显著缩短，重复性问题明显减少。
-        </p>
-      </div>
-    </div>
-
-    <!-- ================================================================ -->
-    <!-- 第四章：配套模板 -->
-    <!-- ================================================================ -->
-    <div class="action-section">
-      <h2 class="action-section-title">四、配套模板</h2>
-      <p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p>
-
-      <!-- 模板1 -->
-      <div class="template-card">
-        <span class="template-label">模板1</span>
-        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">流程盘点表</h3>
-        <p class="text-sm text-gray-500 mb-3">由各部门负责人填写，列出所有经常做的事情</p>
-        <table>
-          <tr><th>序号</th><th>事情名称</th><th>频率</th><th>谁在做</th><th>换人能否一天上手</th><th>重要性</th></tr>
+      </div><div class="action-section"><h2 class="action-section-title">三、90天执行路线图</h2><span class="phase-badge phase-1">Phase 1 · 第1-30天 · 盘点与排序</span><p class="text-sm text-gray-600 mb-3">这个阶段的目标不是写SOP，是搞清楚该写什么、从哪个开始。</p><div class="week-block"><span class="week-num">Week 1-2</span><p class="text-sm text-gray-700 font-bold mb-2">盘点所有现有流程</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 让每个部门负责人列出"我这最常干的20件事"</li><li class="py-1">· 用<strong>模板1（流程盘点表）</strong>逐条记录</li><li class="py-1">· 特别标注：这件事如果换个人做，一天内能不能上手？</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>各部门提交流程盘点表</li><li>老板过一遍，确认没有遗漏的核心流程</li></ul></div></div><div class="week-block"><span class="week-num">Week 3-4</span><p class="text-sm text-gray-700 font-bold mb-2">排出优先级</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板2（SOP优先级矩阵）</strong>打分：影响大不大 × 风险高不高</li><li class="py-1">· 选Top 5-8个最该先写的流程</li><li class="py-1">· 每个Top流程指定一个负责人来写初稿（谁做这个活谁来写）</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>优先级矩阵完成</li><li>Top流程确定（不超过8个）</li><li>每个流程负责人已指定</li></ul></div></div><span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 写SOP + 试用</span><p class="text-sm text-gray-600 mb-3">不追求完美，追求"另一个人能看懂、能照着做"。</p><div class="week-block"><span class="week-num">Week 5-6</span><p class="text-sm text-gray-700 font-bold mb-2">出第一版SOP</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板3（SOP标准模板）</strong>逐流程填写</li><li class="py-1">· 每个SOP控制在2页以内，超过就是不够精炼</li><li class="py-1">· 包含：目的、适用范围、步骤（编号）、关键检查点、常见错误</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>Top流程的SOP初稿完成</li><li>每个SOP不超过2页</li></ul></div></div><div class="week-block"><span class="week-num">Week 7-8</span><p class="text-sm text-gray-700 font-bold mb-2">内部试用 + 修改</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 找另一个没写过这份SOP的同事来试：给他SOP，看着他做</li><li class="py-1">· 他卡住的地方就是SOP写不清楚的地方，改</li><li class="py-1">· 第一轮修改完成后，放在团队共享文件夹/群里，让大家随时能看到</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>每个SOP至少被1个非作者试用过</li><li>根据反馈完成修改</li><li>SOP存放位置已确定，全员可访问</li></ul></div></div><span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 固化与迭代</span><p class="text-sm text-gray-600 mb-3">SOP写好了不是终点，是起点。</p><div class="week-block"><span class="week-num">Week 9-10</span><p class="text-sm text-gray-700 font-bold mb-2">培训 + 考核</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 开一次简短的培训会（30分钟就够了），讲清楚每份SOP的要点</li><li class="py-1">· 把SOP的执行与绩效考核挂钩：按照SOP走是基本要求</li><li class="py-1">· 但给例外出口：遇到SOP没覆盖的情况，先按常识处理，后补充进SOP</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>全员培训完成</li><li>SOP执行纳入考核</li></ul></div></div><div class="week-block"><span class="week-num">Week 11-12</span><p class="text-sm text-gray-700 font-bold mb-2">复盘 + 迭代</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 收集团队反馈：哪个SOP最好用？哪个几乎没用？为什么？</li><li class="py-1">· 修改"不好用"的SOP，简化或合并</li><li class="py-1">· 制定"SOP季度审查"制度：每季度检查一次，过时的就更新</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>团队反馈收集完毕</li><li>SOP更新到第二版</li><li>季度审查时间表已设定</li></ul></div></div><div class="action-card" style="text-align:center;margin-top:16px;"><p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p><p class="text-sm text-gray-600"><strong>5-8个核心SOP跑起来了</strong>，关键流程不再依赖个人记忆，新人培训时间显著缩短，重复性问题明显减少。</p></div></div><div class="action-section"><h2 class="action-section-title">四、配套模板</h2><p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p><div class="template-card"><span class="template-label">模板1</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">流程盘点表</h3><p class="text-sm text-gray-500 mb-3">由各部门负责人填写，列出所有经常做的事情</p><table><tr><th>序号</th><th>事情名称</th><th>频率</th><th>谁在做</th><th>换人能否一天上手</th><th>重要性</th></tr>
           <tr><td>1</td><td><span class="fill-line"></span></td><td>每日/每周/每月</td><td><span class="fill-line"></span></td><td>能/勉强/不能</td><td>高/中/低</td></tr>
           <tr><td>2</td><td><span class="fill-line"></span></td><td>每日/每周/每月</td><td><span class="fill-line"></span></td><td>能/勉强/不能</td><td>高/中/低</td></tr>
           <tr><td>3</td><td><span class="fill-line"></span></td><td>每日/每周/每月</td><td><span class="fill-line"></span></td><td>能/勉强/不能</td><td>高/中/低</td></tr>
-          <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr>
-        </table>
-      </div>
-
-      <!-- 模板2 -->
-      <div class="template-card">
-        <span class="template-label">模板2</span>
-        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">SOP优先级矩阵</h3>
-        <p class="text-sm text-gray-500 mb-3">给候选流程打分——影响越大、风险越高，越该先写</p>
-        <table>
-          <tr><th>流程</th><th>影响（1-5分）</th><th>风险（1-5分）</th><th>总分</th><th>排位</th></tr>
+          <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr></table></div><div class="template-card"><span class="template-label">模板2</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">SOP优先级矩阵</h3><p class="text-sm text-gray-500 mb-3">给候选流程打分，影响越大、风险越高，越该先写</p><table><tr><th>流程</th><th>影响（1-5分）</th><th>风险（1-5分）</th><th>总分</th><th>排位</th></tr>
           <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
           <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
-          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
-        </table>
-        <p class="text-xs text-gray-400 mt-2">影响分 = 这件事做不好对客户/收入/质量的影响有多大<br>风险分 = 这件事现在依赖"那个人"的程度有多高</p>
-      </div>
-
-      <!-- 模板3 -->
-      <div class="template-card">
-        <span class="template-label">模板3</span>
-        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">SOP标准模板</h3>
-        <p class="text-sm text-gray-500 mb-3">每个SOP按这个格式写，控制在一页纸</p>
-        <table>
-          <tr><th style="width:30%;">字段</th><th>内容</th></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr></table><p class="text-xs text-gray-400 mt-2">影响分 = 这件事做不好对客户/收入/质量的影响有多大<br>风险分 = 这件事现在依赖"那个人"的程度有多高</p></div><div class="template-card"><span class="template-label">模板3</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">SOP标准模板</h3><p class="text-sm text-gray-500 mb-3">每个SOP按这个格式写，控制在一页纸</p><table><tr><th style="width:30%;">字段</th><th>内容</th></tr>
           <tr><td>SOP名称</td><td><span class="fill-line"></span></td></tr>
           <tr><td>目的</td><td>为什么要做这件事、不做会怎样</td></tr>
           <tr><td>适用范围</td><td>哪个岗位/部门使用，什么情况下触发</td></tr>
@@ -318,29 +142,13 @@
           <tr><td>关键检查点</td><td>做到哪一步需要停下来检查什么</td></tr>
           <tr><td>常见错误</td><td>新手最容易犯的3个错误</td></tr>
           <tr><td>相关SOP</td><td>做完这个通常下一步要做什么</td></tr>
-          <tr><td>版本号</td><td>V1.0 / 日期 / 谁写的</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <!-- ================================================================ -->
-    <!-- 第五章：真实案例 -->
-    <!-- ================================================================ -->
-    <div class="action-section">
-      <h2 class="action-section-title">五、真实案例</h2>
-
-      <div class="case-card">
-        <span class="case-tag">案例1 · 制造业</span>
-        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家40人的五金加工厂怎么从"靠老师傅"变成"靠SOP"</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          这家厂做了12年，最核心的工序——表面处理和质检——全靠三个干了8年以上的老师傅。老师傅说"看感觉"，新工人学半年也学不会。
+          <tr><td>版本号</td><td>V1.0 / 日期 / 谁写的</td></tr></table></div></div><div class="action-section"><h2 class="action-section-title">五、真实案例</h2><div class="case-card"><span class="case-tag">案例1 · 制造业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家40人的五金加工厂怎么从"靠老师傅"变成"靠SOP"</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家厂做了12年，最核心的工序，表面处理和质检，全靠三个干了8年以上的老师傅。老师傅说"看感觉"，新工人学半年也学不会。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mt-2">
           最危机的时候：其中一个老师傅生病住院两个月，产线良品率从95%掉到72%。老板说："我这时候才意识到，我的企业建立在三个人的经验之上。"
         </p>
-        <p class="text-sm text-gray-600 leading-relaxed mt-2">
-          <strong>他们怎么做的：</strong>
-        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2"><strong>他们怎么做的：</strong></p>
         <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
           <li class="py-1">· 第1步：让三个老师傅各带一个徒弟，徒弟负责记录师傅的每一个动作和判断</li>
           <li class="py-1">· 第2步：把"看感觉"翻译成"看颜色偏黄就是反应不够、偏灰就是过了"</li>
@@ -349,18 +157,12 @@
           <li class="py-1">· 第5步：新工人3周能独立操作（原来要6个月），良品率稳定在93%以上</li>
         </ul>
         <p class="text-sm text-gray-600 leading-relaxed mt-2">
-          <strong>他们踩的坑：</strong>一开始写得太学术化，工人看不懂。后来改成口语版——"看到这个颜色的，停，拿去找组长"——反而好用。
-        </p>
-      </div>
-
-      <div class="case-card">
-        <span class="case-tag">案例2 · 服务业</span>
-        <h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家25人的活动策划公司，做了"项目交接SOP"之后的变化</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          活动策划行业的特点是项目制，一个项目经理从头跟到尾。最痛的问题是：项目做了一半项目经理离职，后面接的人啥都不知道——方案聊到哪里了、客户提了哪些要求、供应商是哪家——全靠前一个人回来随时接电话。
+          <strong>他们踩的坑：</strong>一开始写得太学术化，工人看不懂。后来改成口语版，"看到这个颜色的，停，拿去找组长"，反而好用。
+        </p></div><div class="case-card"><span class="case-tag">案例2 · 服务业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家25人的活动策划公司，做了"项目交接SOP"之后的变化</h3><p class="text-sm text-gray-600 leading-relaxed">
+          活动策划行业的特点是项目制，一个项目经理从头跟到尾。最痛的问题是：项目做了一半项目经理离职，后面接的人啥都不知道，方案聊到哪里了、客户提了哪些要求、供应商是哪家，全靠前一个人回来随时接电话。
         </p>
         <p class="text-sm text-gray-600 leading-relaxed mt-2">
-          <strong>他们做的第一份SOP，不是最复杂的活动流程，而是"项目交接SOP"</strong>——一个人离职，另一个人接手，需要哪些东西？
+          <strong>他们做的第一份SOP，不是最复杂的活动流程，而是"项目交接SOP"</strong>，一个人离职，另一个人接手，需要哪些东西？
         </p>
         <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
           <li class="py-1">· 定义了"项目交接包"的标准清单：客户联系人、已确认的方案版本、未确认的事项、已付/未付款、供应商列表及合同、截止日期倒计时</li>
@@ -369,60 +171,403 @@
         </ul>
         <p class="text-sm text-gray-600 leading-relaxed mt-2">
           <strong>起步简单的道理：</strong>不要一上来就想写"如何办一场活动"这种巨复杂的SOP。从最痛的、最容易标准化的小流程开始，做了几个小SOP之后大家就愿意配合写大的了。
+        </p></div></div><div class="action-section"><h2 class="action-section-title">六、90天自我检查清单</h2><div class="action-card"><h3>第30天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 流程盘点表完成了吗？（所有部门都交了）</li><li class="py-1">☐ 优先级Top 5-8确定了吗？</li><li class="py-1">☐ 每个流程的SOP负责人指定了吗？是实际操作的人吗？</li><li class="py-1">☐ 老板有没有公开表态"这件事是公司级的，不是某个部门的事"？</li></ul></div><div class="action-card"><h3>第60天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 所有Top流程的SOP初版写完了吗？</li><li class="py-1">☐ 每个SOP被至少一个非作者试用过了吗？</li><li class="py-1">☐ 根据试用反馈修改了吗？</li><li class="py-1">☐ SOP存放位置清楚吗？团队随时能找到吗？</li></ul></div><div class="action-card"><h3>第90天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 每次执行都按SOP走了吗？有几次偏离？偏离的原因是什么？</li><li class="py-1">☐ 新人培训时间缩短了多少？量化一下。</li><li class="py-1">☐ 重复性问题减少了多少？量化一下。</li><li class="py-1">☐ 季度SOP审查的日期定好了吗？写进日历了吗？</li></ul></div><div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;"><p class="text-sm text-gray-700 leading-relaxed">🏁 <strong>90天结束后，最重要的一件事</strong><br>不是看SOP写得多漂亮，是看团队在没有人提醒的情况下，是不是<strong>自然地在按照SOP做事</strong>。<br>如果答案是"是"，你已经把一个重要流程从"依赖人"变成了"依赖系统"。</p></div></div>`,
+      1: `
+      <div class="action-section">
+        <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+        <div class="action-card">
+          <h3>详细解读</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          中层管理培训解决的<strong>不是"中层不会干活"</strong>，而是<strong>"中层不知道自己是管理者，不是超级执行者"</strong>。
         </p>
-      </div>
-    </div>
-
-    <!-- ================================================================ -->
-    <!-- 第六章：自我检查清单 -->
-    <!-- ================================================================ -->
-    <div class="action-section">
-      <h2 class="action-section-title">六、90天自我检查清单</h2>
-
-      <div class="action-card">
-        <h3>第30天检查</h3>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">☐ 流程盘点表完成了吗？（所有部门都交了）</li>
-          <li class="py-1">☐ 优先级Top 5-8确定了吗？</li>
-          <li class="py-1">☐ 每个流程的SOP负责人指定了吗？是实际操作的人吗？</li>
-          <li class="py-1">☐ 老板有没有公开表态"这件事是公司级的，不是某个部门的事"？</li>
-        </ul>
-      </div>
-
-      <div class="action-card">
-        <h3>第60天检查</h3>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">☐ 所有Top流程的SOP初版写完了吗？</li>
-          <li class="py-1">☐ 每个SOP被至少一个非作者试用过了吗？</li>
-          <li class="py-1">☐ 根据试用反馈修改了吗？</li>
-          <li class="py-1">☐ SOP存放位置清楚吗？团队随时能找到吗？</li>
-        </ul>
-      </div>
-
-      <div class="action-card">
-        <h3>第90天检查</h3>
-        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
-          <li class="py-1">☐ 每次执行都按SOP走了吗？有几次偏离？偏离的原因是什么？</li>
-          <li class="py-1">☐ 新人培训时间缩短了多少？量化一下。</li>
-          <li class="py-1">☐ 重复性问题减少了多少？量化一下。</li>
-          <li class="py-1">☐ 季度SOP审查的日期定好了吗？写进日历了吗？</li>
-        </ul>
-      </div>
-
-      <div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;">
-        <p class="text-sm text-gray-700 leading-relaxed">
-          🏁 <strong>90天结束后，最重要的一件事</strong><br>
-          不是看SOP写得多漂亮，是看团队在没有人提醒的情况下，<br>是不是<strong>自然地在按照SOP做事</strong>。
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          最常见的症状：公司从10个人发展到30个人，老板发现"下面的人越来越不听使唤"。仔细一看，不是下面的人不听使唤，是中层管理者还在像以前一样自己干活、替手下干活、帮老板干活，唯独没干的，是"让手下能独立干活的活"。
         </p>
-        <p class="text-sm text-gray-600 mt-2">如果答案是"是"——你已经把一个重要流程从"依赖人"变成了"依赖系统"。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          中层管理者的核心工作不是"自己做"，而是<strong>"目标拆解 + 过程追踪 + 反馈辅导"</strong>。但大多数公司的中层是从业务骨干里提拔的，他以前是整个公司最厉害的销售，现在要他带5个销售，结果他一个人做了部门80%的业绩。这不是他的问题，是没人教过他管理者该干什么。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          中层培训不是送出去上两天课，而是<strong>建立一套"中层管理者该做什么、怎么考核、怎么辅导"的内部机制</strong>。
+        </p>
+        </div>
+        <div class="action-card">
+          <h3>用个例子你就明白了</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          一家做医疗器械销售的公司，45个人，有5个销售组长。每个组长都是公司前两年的销冠。老板最大的痛苦是：组长们月月超额完成自己的业绩，但整个团队30个人的总业绩，居然有15个人连续两个季度没达标。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          深入一看，发现这5个组长从来不辅导手下。开会就是报数字，没达标就批评两句，然后继续自己冲业绩。组员不知道客户怎么谈、不知道怎么跟进、不知道价格底线在哪。组长觉得"我说过了啊"，组员觉得"你没跟我说过啊"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          他们改了中层的考核方式：组长的KPI变成3个数字，<strong>团队总业绩、组员平均达标率、新人3个月留存率</strong>。同时规定：组长每个客户自己只能谈"超过50万的单子"，其他的必须转给组员。还建立了每周1on1的制度，不是汇报，是组长辅导组员。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          6个月后，15个没达标的人里有11个达标了。组长个人业绩降了30%，但团队总业绩涨了45%。老板说："我终于明白了一件事，<strong>中层管理者的产出不是他自己的业绩，是整个团队的业绩</strong>。"
+        </p>
+        </div>
       </div>
-    </div>
+      <div class="action-section">
+        <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
+        <div class="fit-yes">
+          <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号，你该动手了</p>
+          <ul class="text-sm text-green-800" style="list-style:none;padding:0;"><li class="py-1">· 中层管理者还是在用"自己干活"的方式当管理，团队业绩基本等于他个人的产出</li>
+<li class="py-1">· 老板发现团队越大人均产出越低，自己越来越累</li>
+<li class="py-1">· 中层开会只是汇报工作，不做目标拆解和过程辅导</li></ul>
+        </div>
+        <div class="fit-no">
+          <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况，先别急着上培训</p>
+          <ul class="text-sm text-red-800" style="list-style:none;padding:0;"><li class="py-1">· 公司不到15人，老板自己直接带一线，这时候建中层体系为时过早</li>
+<li class="py-1">· 中层管理者本身不想做管理、只想做业务，培训解决不了意愿问题</li></ul>
+        </div>
+        <div class="action-card">
+          <h3>做之前，先想清楚这三件事</h3>
+          <ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-2"><strong>1. 先改考核，再搞培训</strong><br>中层不改考核方式，培训就是浪费时间。把中层的KPI从"个人业绩"改成"团队产出"。</li>
+<li class="py-2"><strong>2. 老板先示范</strong><br>老板怎么带中层，中层就怎么带一线。如果你对中层只有"汇报"，中层对一线也只有"汇报"。</li>
+<li class="py-2"><strong>3. 选对人比培训人更重要</strong><br>不是每个业务骨干都适合做管理。选那些"愿意把功劳给手下"的人来带团队。</li></ul>
+        </div>
+      </div><div class="action-section"><h2 class="action-section-title">三、90天执行路线图</h2><span class="phase-badge phase-1">Phase 1 · 第1-30天 · 诊断中层现状</span><p class="text-sm text-gray-600 mb-3">先搞清楚中层管理者现在到底在干什么、该干什么、差距在哪。</p><div class="week-block"><span class="week-num">Week 1-2</span><p class="text-sm text-gray-700 font-bold mb-2">中层时间审计</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 让每个中层用<strong>模板1（中层时间日志）</strong>记录一周：每天每小时在干什么</li><li class="py-1">· 分类：自己做业务 / 帮手下干 / 开会汇报 / 辅导手下 / 做行政杂事</li><li class="py-1">· 目标不是批评，是让中层自己看到"原来我70%的时间在做业务员的活"</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>所有中层完成一周时间日志</li><li>老板过一遍，不说话，先让中层自己汇报感受</li></ul></div></div><div class="week-block"><span class="week-num">Week 3-4</span><p class="text-sm text-gray-700 font-bold mb-2">定义"好中层"的标准</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板2（中层管理能力自我评估表）</strong>让中层自评</li><li class="py-1">· 老板同时打分，对比差距最大的3项</li><li class="py-1">· 确定"中层管理的核心清单"：目标设定、任务分配、过程检查、反馈辅导4件事</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>评估表完成</li><li>差距最大的3项已确定</li><li>"中层管理核心清单"全公司公示</li></ul></div></div><span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 练基本功</span><p class="text-sm text-gray-600 mb-3">不搞大课培训，每周练一个管理动作，做完了下一周再练下一个。</p><div class="week-block"><span class="week-num">Week 5-6</span><p class="text-sm text-gray-700 font-bold mb-2">练第一件事：目标设定</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 每个中层给自己团队设定"90天3个关键结果"，用数字写，不能模糊</li><li class="py-1">· 老板过一遍：这3个数字达到了，团队算不算成功？</li><li class="py-1">· 开一次"目标对齐会"：不是念数字，是讲"为什么定这个、怎么想到的、有什么风险"</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>每个团队90天目标已公示</li><li>老板审核通过</li><li>目标对齐会完成</li></ul></div></div><div class="week-block"><span class="week-num">Week 7-8</span><p class="text-sm text-gray-700 font-bold mb-2">练第二件事：一对一沟通</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 每个中层每周跟每个直接下属做一次15分钟的一对一（不是汇报，是辅导）</li><li class="py-1">· 对话模板：1. 这周做了什么 2. 遇到了什么困难 3. 下周计划是什么 4. 需要我帮什么</li><li class="py-1">· 老板每周随机旁听一个中层的一对一，听完给反馈</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>一对一100%覆盖直接下属</li><li>老板旁听过至少1次</li><li>中层反馈"一对一帮到了什么"</li></ul></div></div><span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 考核闭环</span><p class="text-sm text-gray-600 mb-3">把中层的考核从"自己干了多少"改成"团队产出了多少"。</p><div class="week-block"><span class="week-num">Week 9-10</span><p class="text-sm text-gray-700 font-bold mb-2">改考核，做回顾</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板3（中层管理考核卡）</strong>重新定义中层的KPI</li><li class="py-1">· 新KPI必须包含：团队总业绩/产出 + 下属成长率 + 关键人才留存</li><li class="py-1">· 做一次90天中期的1on1：过去两个月，你觉得最大的变化是什么？</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>新KPI公示</li><li>中期1on1完成</li><li>中层对新考核没有重大异议</li></ul></div></div><div class="week-block"><span class="week-num">Week 11-12</span><p class="text-sm text-gray-700 font-bold mb-2">建"管理者社区"</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 每月一次中层管理者交流会（1小时以内）：分享一个自己带人成功或失败的案例</li><li class="py-1">· 老板先讲一个自己不成功的例子，带头降低防御心理</li><li class="py-1">· 把好的分享整理成"中层管理手册"第一版</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>第一次管理者交流会完成</li><li>至少2个案例被记录</li><li>"中层管理手册"初版完成</li></ul></div></div><div class="action-card" style="text-align:center;margin-top:16px;"><p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p><p class="text-sm text-gray-600"><strong>中层管理者从"超级执行者"变成了"团队教练"</strong>，老板不再每天帮中层处理一线问题，团队人效明显提升。</p></div></div><div class="action-section"><h2 class="action-section-title">四、配套模板</h2><p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p><div class="template-card"><span class="template-label">模板1</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">中层时间日志</h3><p class="text-sm text-gray-500 mb-3">中层管理者连续记录一周，每小时在干什么</p><table><tr><th>时间段</th><th>做了什么</th><th>类型</th><th>这件事谁是受益者</th></tr>
+          <tr><td>9:00-10:00</td><td><span class="fill-line"></span></td><td>自己干/帮手下干/开会/辅导/行政</td><td><span class="fill-line"></span></td></tr>
+          <tr><td>10:00-11:00</td><td><span class="fill-line"></span></td><td>自己干/帮手下干/开会/辅导/行政</td><td><span class="fill-line"></span></td></tr>
+          <tr><td>…</td><td></td><td></td><td></td></tr></table></div><div class="template-card"><span class="template-label">模板2</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">中层管理能力自我评估表</h3><p class="text-sm text-gray-500 mb-3">中层自评 vs 老板打分，找差距</p><table><tr><th>能力项</th><th>自评（1-5）</th><th>老板评（1-5）</th><th>差距</th></tr>
+          <tr><td>目标设定：能把公司目标拆成团队可执行的计划</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
+          <tr><td>任务分配：能把活分给对的人，给对的时间</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
+          <tr><td>过程检查：不走极端，不微观管理也不放羊</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr>
+          <tr><td>反馈辅导：不是批评，是让对方知道怎么做更好</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td></td></tr></table><p class="text-xs text-gray-400 mt-2">差距最大的一项，就是90天培训的重点</p></div><div class="template-card"><span class="template-label">模板3</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">中层管理考核卡</h3><p class="text-sm text-gray-500 mb-3">取代原来的个人业绩KPI</p><table><tr><th style="width:25%;">考核项</th><th>权重</th><th>目标值</th><th>计算方法</th></tr>
+          <tr><td>团队总产出（收入/项目/交付）</td><td>50%</td><td><span class="fill-line"></span></td><td>团队所有人产出之和</td></tr>
+          <tr><td>下属平均达标率</td><td>25%</td><td><span class="fill-line"></span></td><td>达标人数÷团队总人数</td></tr>
+          <tr><td>新人3个月存活率</td><td>15%</td><td><span class="fill-line"></span></td><td>留存人数÷过去3月入职人数</td></tr>
+          <tr><td>关键人才离职率</td><td>10%</td><td><span class="fill-line"></span></td><td>主动离职÷团队人数</td></tr></table></div></div><div class="action-section"><h2 class="action-section-title">五、真实案例</h2><div class="case-card"><span class="case-tag">案例1 · 电商行业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家60人的电商公司，中层从"超级销售"变成"团队教练"</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家公司有6个销售组长，每个人都是从一线销售提拔上来的Top Performer。管理者开会的时候你会发现一个奇怪的现象：每个组长汇报的时候，PPT里全是自己的业绩，团队里其他人的名字几乎不提。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          老板做了一件事：把组长的提成结构改了。原来组长拿"自己业绩提成+团队提成（很少）"，改成"团队业绩提成（占大头）+ 自己业绩提成（只限战略性客户）"。同时规定：组长不允许接标准客户，标准客户必须转给组员。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2"><strong>关键是配套的支持：</strong></p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 前两周专门"转客户"：组长把手上的标准客户平均分配给组员，自己只保留5个最大的战略客户</li>
+          <li class="py-1">· 建立"周一目标会+周三检查会+周五复盘会"的节奏，不是汇报，是辅导</li>
+          <li class="py-1">· 老板亲自带了一个月的一对一：每次一对一结束，组长交一份"我今天学到了什么"</li>
+          <li class="py-1">· 三个月后团队总业绩涨了35%，组员达标率从58%涨到82%</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>最大的教训：</strong>改考核之前，先要让中层有时间做管理。如果组长手上还压了一堆客户，他根本没空辅导手下，考核改了也没用。
+        </p></div><div class="case-card"><span class="case-tag">案例2 · 科技行业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家45人的SaaS公司，用"管理基本功"把中层流动率从40%降到5%</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家公司最大的问题是中层离职率高。每年走掉将近一半的中层管理者，老板很困惑："我给他们多少钱都不够吗？"离职访谈发现，中层走的真正原因是"我太累了，我既要冲业绩又要带人，我感觉自己什么都做不好"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          他们做了系统的改变：每个新晋升的中层，第一个月不用冲业绩。第一个月只做五件事：1. 认识每个下属的优劣势；2. 了解每个下属未来一年的发展意愿；3. 完成"目标拆解"训练；4. 完成前三次一对一的练习（由HR旁听给反馈）；5. 写一份"团队90天计划"。
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 效果：新中层的"第一个月业绩真空"在第二、第三个月被团队效率提升补回来了</li>
+          <li class="py-1">· 中层离职率从40%降到5%，下属离职率也从25%降到了10%</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>道理很简单：</strong>你让人家当管理者，就要给人家时间学习怎么当管理者。一边让人家冲业绩一边让人家带人，结果是两样都做不好。
+        </p></div></div><div class="action-section"><h2 class="action-section-title">六、90天自我检查清单</h2><div class="action-card"><h3>第30天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 所有中层完成了一周时间日志吗？他们自己看到自己的时间分配了吗？</li><li class="py-1">☐ "好中层"的标准定义出来了吗？中层和老板一致吗？</li><li class="py-1">☐ 中层管理核心清单（目标设定、任务分配、过程检查、反馈辅导）公示了吗？</li></ul></div><div class="action-card"><h3>第60天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 每个团队的90天3个关键目标公开了吗？是不是数字化的？</li><li class="py-1">☐ 一对一沟通机制建立了吗？100%覆盖直接下属了吗？</li><li class="py-1">☐ 老板旁听过至少一次一对一并给出反馈了吗？</li></ul></div><div class="action-card"><h3>第90天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 中层的新考核卡实施了吗？是否包含团队产出+下属成长+关键人才留存？</li><li class="py-1">☐ 第一次管理者交流会完成了吗？有案例被记录下来吗？</li><li class="py-1">☐ 中层现在花在"辅导下属"上的时间比例提高了吗？量化一下。</li></ul></div><div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;"><p class="text-sm text-gray-700 leading-relaxed">🏁 <strong>90天结束后，最重要的一件事</strong><br>不是看中层上了多少课，是看<strong>他们的团队能不能独立跑起来</strong>。<br>如果答案是"能"，你就有了一个不需要你每天盯着的管理梯队。</p></div></div>`,
+      2: `
+      <div class="action-section">
+        <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+        <div class="action-card">
+          <h3>详细解读</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          管理升级咨询解决的核心问题是<strong>"要么老板拍板拍死了公司，要么没人敢拍板拖死了业务"</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          最多的抱怨来自中层："我就是个传话的。客户要一个报价，我得跟老板确认；供应商要谈个账期，我得跟老板确认；招个人给多少工资，我还得跟老板确认。有时候老板出差，事情就卡三天。"
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          但老板的抱怨是相反的："我也不想什么事都找我。可是上次让他自己决定，他给一个客户直接降了20%，我一个月利润全没了。我敢放吗？"
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          这不是谁对谁错的问题，是<strong>决策体系没有设计好</strong>。好的授权不是"你以后自己看着办"，而是<strong>"多少钱以内的、什么类型的事、在什么规则下，你可以自己定，不用问我"</strong>。
+        </p>
+        </div>
+        <div class="action-card">
+          <h3>用个例子你就明白了</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          一家做建材贸易的公司，年营收8000万，老板50岁。他每天从早上7点忙到晚上11点，手机24小时不敢关。中层9个人，没有一个人敢在超过5000块的事情上自己拍板。连客户请吃饭的地点，都要问老板"能不能去"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          后来帮他们设计了一套分级决策机制：<strong>把公司里所有决策分成A/B/C三级</strong>。A级（战略级，比如进入新品类、超过50万的投资）老板拍板。B级（运营级，比如金额在5000-5万之间的采购、人员编制内的招聘、常规客户的价格浮动在15%以内）部门负责人拍板。C级（执行级，比如日常工作安排、标准合同的使用、报销审批）主管自己拍板。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          同时定了规则：B级决策要留记录，每月老板抽看10%的决策记录。错了不是追责，是<strong>"这个决策当时的信息够不够？流程要不要改？"</strong>。连续三次同类错误才需要调整授权范围。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          两个月后，老板的手机每天接到的电话从40多个降到不到10个。他第一次能在周六陪女儿去公园。他说："我以前觉得不放权是为了安全，现在发现<strong>不放权才是最大的风险，我要是哪天病了，公司立刻停摆</strong>。"
+        </p>
+        </div>
+      </div>
+      <div class="action-section">
+        <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
+        <div class="fit-yes">
+          <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号，该做决策升级了</p>
+          <ul class="text-sm text-green-800" style="list-style:none;padding:0;"><li class="py-1">· 超过一定金额的事，全公司只有老板能拍板，老板出差公司就停摆</li>
+<li class="py-1">· 中层不敢做决定，连自己职责范围的事也要"问问老板"</li>
+<li class="py-1">· 老板每天处理大量运营事务，没时间思考战略和方向</li></ul>
+        </div>
+        <div class="fit-no">
+          <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况，先别急着放权</p>
+          <ul class="text-sm text-red-800" style="list-style:none;padding:0;"><li class="py-1">· 公司核心业务还在验证阶段，方向没定，这时候需要老板集中决策快速试错</li>
+<li class="py-1">· 中层还没有基本的数据意识和判断能力，先培训，再授权</li></ul>
+        </div>
+        <div class="action-card">
+          <h3>做之前，先想清楚这三件事</h3>
+          <ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-2"><strong>1. 授权不是全放，是分级</strong><br>把决策分成A/B/C三级，每级划清边界：什么金额、什么类型、什么风险等级。</li>
+<li class="py-2"><strong>2. 授权=边界+信息+容错</strong><br>光说"你以后自己决定"是甩锅。要给边界、给信息、给"做错了我不会罚你"的安全感。</li>
+<li class="py-2"><strong>3. 从最小授权开始</strong><br>第一周只授权C级，等C级跑顺了再做B级。不要一步到位。</li></ul>
+        </div>
+      </div><div class="action-section"><h2 class="action-section-title">三、90天执行路线图</h2><span class="phase-badge phase-1">Phase 1 · 第1-30天 · 盘点决策现状</span><p class="text-sm text-gray-600 mb-3">先搞清楚现在所有决策都卡在谁那里、为什么。</p><div class="week-block"><span class="week-num">Week 1-2</span><p class="text-sm text-gray-700 font-bold mb-2">决策日志</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板1（决策日志表）</strong>：让每个中层记录一周内做的每一个决定</li><li class="py-1">· 每个决定标注：金额/风险/急迫度/最后谁拍的板/花了多长时间</li><li class="py-1">· 重点标注：等了超过24小时才拍板的决定</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>所有中层提交决策日志</li><li>老板过一遍：哪些决定本来不该找我的？</li></ul></div></div><div class="week-block"><span class="week-num">Week 3-4</span><p class="text-sm text-gray-700 font-bold mb-2">画"决策分级地图"</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板2（决策分级矩阵）</strong>把公司所有常见决策分成A/B/C三级</li><li class="py-1">· A级=战略级(老板)，B级=运营级(部门负责人)，C级=执行级(主管/个人)</li><li class="py-1">· 明确每一级的边界：金额范围、风险等级、决策需要的最少信息</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>决策分级地图完成</li><li>每个部门负责人明确自己的B级决策范围</li></ul></div></div><span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 小范围试点放权</span><p class="text-sm text-gray-600 mb-3">先放C级决策，跑顺了再放B级。不要一上来就大放权。</p><div class="week-block"><span class="week-num">Week 5-6</span><p class="text-sm text-gray-700 font-bold mb-2">C级放权 + 记录</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· C级决策（日常执行类）正式下放，不再需要审批</li><li class="py-1">· 但要求留记录：做了什么决定、基于什么信息、结果是什么</li><li class="py-1">· 老板不审每个决定，只每周看汇总</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>C级决策全部下放</li><li>决策记录制度运行</li><li>老板没有"忍不住插手"</li></ul></div></div><div class="week-block"><span class="week-num">Week 7-8</span><p class="text-sm text-gray-700 font-bold mb-2">B级试点放权</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 选1-2个最成熟的中层，试点下放B级决策权限（金额在预算内、风险可控的事项）</li><li class="py-1">· 设定"红灯线"：超过某个金额或涉及法律合规的事项仍需上报</li><li class="py-1">· 试点中层每两周跟老板Review一次B级决策：哪些做得对，哪些还可以改进</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>B级试点启动</li><li>红灯线清晰</li><li>第一次Review完成</li></ul></div></div><span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 制度化</span><p class="text-sm text-gray-600 mb-3">把决策体系固化成制度，不再靠老板的心情决定今天放不放权。</p><div class="week-block"><span class="week-num">Week 9-10</span><p class="text-sm text-gray-700 font-bold mb-2">全面推广 + 纠错机制</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· B级决策在所有部门负责人推广</li><li class="py-1">· 建立"决策复盘"机制：决策出错了，不是追责，是分析：信息够不够？当时判断逻辑对不对？流程要不要调整？</li><li class="py-1">· 用<strong>模板3（月度决策复盘表）</strong>做月度Review</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>B级决策全面推广</li><li>第一次决策复盘会完成</li></ul></div></div><div class="week-block"><span class="week-num">Week 11-12</span><p class="text-sm text-gray-700 font-bold mb-2">固化 + 校准</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 收集团队对分级决策体系的反馈：哪些决策权还不够？哪些放得太快了？</li><li class="py-1">· 调整决策分级，更新V2版</li><li class="py-1">· 老板公开说一句话："我以后尽量不越级拍板。如果我越级拍了，你们可以提醒我。"</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>决策分级V2完成</li><li>老板公开表态</li><li>团队反馈收集完毕</li></ul></div></div><div class="action-card" style="text-align:center;margin-top:16px;"><p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p><p class="text-sm text-gray-600"><strong>70%以上的运营决策不再需要老板</strong>，老板每周节省10+小时的决策时间，中层独立判断能力明显提升。</p></div></div><div class="action-section"><h2 class="action-section-title">四、配套模板</h2><p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p><div class="template-card"><span class="template-label">模板1</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">决策日志表</h3><p class="text-sm text-gray-500 mb-3">每个中层记录一周内做的每一个决策，找到最该放权的</p><table><tr><th>日期</th><th>决策内容</th><th>金额</th><th>最后谁拍的板</th><th>拍板花了多久</th></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td>老板/部门负责人/自己</td><td><span class="fill-line"></span></td></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td>老板/部门负责人/自己</td><td><span class="fill-line"></span></td></tr>
+          <tr><td>…</td><td></td><td></td><td></td><td></td></tr></table><p class="text-xs text-gray-400 mt-2">标注：等了超过24小时的，就是最该放权的决策</p></div><div class="template-card"><span class="template-label">模板2</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">决策分级矩阵</h3><p class="text-sm text-gray-500 mb-3">把公司所有常见决策分成A/B/C三级</p><table><tr><th>决策类别</th><th>举例</th><th>金额上限</th><th>决策人</th><th>需要告知谁</th><th>留什么记录</th></tr>
+          <tr><td>A级 战略级</td><td>新业务线投入、50万+支出</td><td>50万以上</td><td>老板</td><td>全员</td><td>董事会纪要</td></tr>
+          <tr><td>B级 运营级</td><td>供应商变更、5万内采购</td><td>5000-5万</td><td>部门负责人</td><td>老板/相关方</td><td>决策记录+邮件</td></tr>
+          <tr><td>C级 执行级</td><td>日常工作、标准报价</td><td>5000以内</td><td>主管/个人</td><td>部门内</td><td>周报备注</td></tr></table></div><div class="template-card"><span class="template-label">模板3</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">月度决策复盘表</h3><p class="text-sm text-gray-500 mb-3">不是追责，是分析决策过程，持续优化判断力</p><table><tr><th style="width:20%;">字段</th><th>内容</th></tr>
+          <tr><td>决策内容</td><td><span class="fill-line"></span></td></tr>
+          <tr><td>当时掌握的信息</td><td>都知道了什么？有什么是该知道但不知道的？</td></tr>
+          <tr><td>判断逻辑</td><td>当时的分析框架是什么？</td></tr>
+          <tr><td>实际结果</td><td>跟预期差多少？差距的原因是什么？</td></tr>
+          <tr><td>教训/经验</td><td>下次类似情况，会做什么不一样的事？</td></tr></table></div></div><div class="action-section"><h2 class="action-section-title">五、真实案例</h2><div class="case-card"><span class="case-tag">案例1 · 制造业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家年营收5000万的食品加工厂，老板第一次不需要签采购单</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家厂有120人，老板每天最重要的工作之一是签采购单。大到几十万的设备采购，小到几千块的包装材料，所有单子都要他签。他最忙的时候一天要签30多张单子，有时候出差三天，回来桌上的单子堆成山。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          帮他梳理了分级决策之后，定了几条简单规则：设备和固定资产单笔超过5万的需要老板签。常规原材料（包装、辅料）在年度预算内的，采购经理直接签，不用上报。新供应商引入需要老板批，但老供应商的常规订单不用。
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 过渡期设计很关键：第一个月"三级签"，采购经理签→财务复核→老板抽查20%</li>
+          <li class="py-1">· 第二个月"二级签"，采购经理签→财务复核，老板只抽查5%</li>
+          <li class="py-1">· 第三个月开始正常授权，但保留了"红色警报"：如果采购单价超过上季度平均价15%以上，财务暂停支付并通知老板</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>老板一开始也害怕。</strong>但第一周结束后他发现：他抽查的20%单子里没有一个是乱来的。采购经理说了一句大实话："以前反正单子最后是你签，我不需要判断。现在要我负责任了，我反而会想得更仔细。"
+        </p></div><div class="case-card"><span class="case-tag">案例2 · 服务业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家35人的教育培训公司，用"决策框架"替代"直觉拍板"</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家公司做企业培训，创始人是个行业老炮，15年经验，拍板极快极准。问题是35个人了，所有重大决定仍然靠他"过一眼"。比如要不要接某个客户的项目、要不要新开一门课、要不要给某个老师涨薪。他的判断确实准，但他成了全公司唯一的瓶颈。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          他们设计了一个"决策框架"替代直觉：
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 决定用哪个老师给客户讲课 → 用"客户行业匹配度+过往客户评分+老师的档期"三因素打分表，80分以上直接定，不用问老板</li>
+          <li class="py-1">· 决定接不接新客户的项目 → 用"项目金额、人力占用、品牌影响、回款风险"四个维度，部门负责人根据总分决定</li>
+          <li class="py-1">· 效果：之前老板每天处理8-10个"能不能这么做"的问题，现在2-3个。部门负责人的决策90%以上在事后看是对的</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>创始人的感悟：</strong>"我以为我的直觉是别人学不会的，后来发现是因为我没有给别人一个做判断的框架。给了框架，大部分人能做对。我的直觉的价值是在框架覆盖不了的那10%的地方。"
+        </p></div></div><div class="action-section"><h2 class="action-section-title">六、90天自我检查清单</h2><div class="action-card"><h3>第30天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 决策日志完成了吗？所有中层交了吗？</li><li class="py-1">☐ 最常被卡在老板那里超过24小时的3类决策是什么？</li><li class="py-1">☐ 决策分级地图画好了吗？A/B/C三级的边界清晰吗？</li></ul></div><div class="action-card"><h3>第60天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ C级决策全部下放了吗？有一个人"不知道现在可以自己定了"的情况吗？</li><li class="py-1">☐ B级试点启动了吗？至少1-2个中层在试点吗？</li><li class="py-1">☐ 红灯线清晰吗？试点中层知道什么情况下必须上报吗？</li></ul></div><div class="action-card"><h3>第90天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ B级决策全面推广了吗？所有部门负责人都覆盖了吗？</li><li class="py-1">☐ 决策复盘机制建立了吗？第一次复盘会完成了吗？</li><li class="py-1">☐ 老板每天花在审批决策上的时间减少了吗？量化一下。</li></ul></div><div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;"><p class="text-sm text-gray-700 leading-relaxed">🏁 <strong>90天结束后，最重要的一件事</strong><br>不是看老板有多放心，是看<strong>决策速度变快了多少</strong>。<br>如果以前一个决定要等老板出差回来（48小时），现在B/C级决策当天就能定，体系就起作用了。</p></div></div>`,
+      3: `
+      <div class="action-section">
+        <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+        <div class="action-card">
+          <h3>详细解读</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          文化体系建设解决的<strong>不是"让大家更开心一点"</strong>，而是<strong>"在没有制度覆盖的地方，员工做出的选择跟公司想要的一致"</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          制度能管住行为的下限，你不能迟到、不能贪污、不能泄露客户信息。但制度管不住行为的上限，客户骂了你，你是怼回去还是安抚？同事做错了影响了你，你是抱怨还是帮忙？周末客户临时有需求，你是装没看到还是回消息？
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          文化就是做这些选择的默认答案。它不是团建吃顿饭、墙上贴句话，是<strong>"在这个公司里，什么样的人被提拔、什么行为被奖励、什么事情绝对不能做"</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          文化建设最核心的三个动作：<strong>说清楚（把价值观翻译成具体的"做和不做"）、带头做（老板和管理者先做到）、反复说（在招聘、考核、晋升里一遍一遍强调）</strong>。
+        </p>
+        </div>
+        <div class="action-card">
+          <h3>用个例子你就明白了</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          一家做企业服务的公司，50个人，发展很快。老板自己是个特别重视客户的人，但慢慢发现团队对待客户的方式越来越敷衍。客服部接投诉电话变成"安抚一下、拖一拖、最后送个礼品了事"。没人想真正解决客户的问题。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          追问之下发现，问题出在考核上：客服部的KPI是"电话接听量"和"平均通话时长"。电话接得越多、挂得越快，绩效越高。在这种考核下，没人会花40分钟认认真真搞清楚客户问题，因为这会"影响绩效"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          他们把客服部的KPI改成了<strong>"客户问题24小时解决率"和"客户3个月内复购率"</strong>。同时老板每个月亲自旁听2个客服电话，公开表扬处理得好的案例。还定了"每周客户之声"的会议：每个部门负责人周五轮流来讲"我这周听到的最重要的客户反馈"，不是念报表，是讲具体故事。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          三个月后，客户续费率从71%涨到了88%。一个老客户在续费时说："我们本来想换别家的，但你们的客服上个月为了帮我们解决一个问题，晚上9点还在跟进。这种态度，我们愿意多付钱。"
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>文化不是墙上那几个字。文化是你不在场的时候，你的员工怎么对待你的客户。</strong></p>
+        </div>
+      </div>
+      <div class="action-section">
+        <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
+        <div class="fit-yes">
+          <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号，文化该系统化了</p>
+          <ul class="text-sm text-green-800" style="list-style:none;padding:0;"><li class="py-1">· 招聘进来的新人融入困难，老员工觉得"新人不懂我们的规矩"</li>
+<li class="py-1">· 公司价值观只在老板讲话里出现，不在考核和晋升中体现</li>
+<li class="py-1">· 不同部门对待同一类事情的标准明显不一样，A部门觉得"客户第一"，B部门觉得"利润第一"</li></ul>
+        </div>
+        <div class="fit-no">
+          <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况，先别急着上文化体系</p>
+          <ul class="text-sm text-red-800" style="list-style:none;padding:0;"><li class="py-1">· 公司不到20人且老板的做事方式就是文化，人少的时候文化靠口头传递就够了</li>
+<li class="py-1">· 公司正在裁员或重大转型，动荡时期不适合做文化大动作，先稳定军心</li></ul>
+        </div>
+        <div class="action-card">
+          <h3>做之前，先想清楚这三件事</h3>
+          <ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-2"><strong>1. 文化不是创造出来的，是提取出来的</strong><br>别去想"我要建一个什么文化"，先去问"我们过去遇到困难时，什么样的人留下来了、被提拔了"。</li>
+<li class="py-2"><strong>2. 文化落地的唯一标准是考核</strong><br>你说的价值观，有没有对应到考核行为里？没有考核支撑的文化就是口头文化。</li>
+<li class="py-2"><strong>3. 老板是文化最大的变量</strong><br>老板自己做了违反公司价值观的事，那文化就一句话，听老板的，别看墙上写的。</li></ul>
+        </div>
+      </div><div class="action-section"><h2 class="action-section-title">三、90天执行路线图</h2><span class="phase-badge phase-1">Phase 1 · 第1-30天 · 提取文化基因</span><p class="text-sm text-gray-600 mb-3">文化不是凭空想出来的，是把已经存在的优秀基因提取出来、讲清楚。</p><div class="week-block"><span class="week-num">Week 1-2</span><p class="text-sm text-gray-700 font-bold mb-2">收集文化故事</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板1（文化故事采集表）</strong>：让团队每人写1个"在这个公司我最自豪的一件事"</li><li class="py-1">· 不是写价值观口号，是写具体的事：什么时候、什么事、谁做的、让你感到什么</li><li class="py-1">· 老板也写3个：你印象最深的3个员工做对了什么事</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>80%以上提交了故事</li><li>老板的3个故事已写完</li></ul></div></div><div class="week-block"><span class="week-num">Week 3-4</span><p class="text-sm text-gray-700 font-bold mb-2">提炼文化基因</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 把所有故事放在一起看：反复出现的词是什么？共同的行为模式是什么？</li><li class="py-1">· 用<strong>模板2（文化基因提炼表）</strong>：把故事翻译成3-5条"我们这里做的事vs不做的事"</li><li class="py-1">· 不是写"诚信、创新、客户第一"这种万能词，是写"我们这里，客户投诉24小时内一定有人回电话"这种具体行为</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>文化基因提炼完成</li><li>不是万能词，是具体行为</li><li>老板确认"这确实是我们"</li></ul></div></div><span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 让文化进入日常管理</span><p class="text-sm text-gray-600 mb-3">文化不进入考核，就是HR部门的一场自嗨。</p><div class="week-block"><span class="week-num">Week 5-6</span><p class="text-sm text-gray-700 font-bold mb-2">文化行为化</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 把每条文化基因翻译成"正行为"和"负行为"</li><li class="py-1">· 正行为=做了能体现这个文化的事（如"主动把客户问题记录到共享文档"）</li><li class="py-1">· 负行为=做了违背这个文化的事（如"客户投诉超过48小时没回应且没说明原因"）</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>每条文化基因有正负行为定义</li><li>不是"态度好/态度差"这种没法量化的描述</li></ul></div></div><div class="week-block"><span class="week-num">Week 7-8</span><p class="text-sm text-gray-700 font-bold mb-2">把文化嵌入现有考核</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 在月度绩效Review里加一项"文化行为反馈"（不用打分，用故事，"这个月他在文化上做对了什么？"）</li><li class="py-1">· 老板主持一次"文化故事会"：分享最近一个月最能体现公司文化的1个正面案例和1个反面案例</li><li class="py-1">· 试用期新人在转正时，除了业绩，必须有一个"文化适配说明"</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>月度Review中加入文化行为反馈</li><li>第一次文化故事会完成</li><li>转正流程加入文化适配说明</li></ul></div></div><span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 从考核到习惯</span><p class="text-sm text-gray-600 mb-3">当文化行为变成了"这个公司大家默认这么做"，文化就真正落地了。</p><div class="week-block"><span class="week-num">Week 9-10</span><p class="text-sm text-gray-700 font-bold mb-2">荣誉机制（不是发钱）</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 设立一个"文化之星"的月选：不是领导提名，是同事之间互相提名</li><li class="py-1">· 提名标准：谁做了一件"完全可以不做，但因为做了而体现了我们文化"的事</li><li class="py-1">· 获奖的人在公司全员群里分享："我当时为什么这么做"</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>文化之星机制启动</li><li>第一次全部由同事提名（不是领导指定）</li></ul></div></div><div class="week-block"><span class="week-num">Week 11-12</span><p class="text-sm text-gray-700 font-bold mb-2">复盘 + 迭代</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板3（文化健康度自查表）</strong>做全团队匿名调查：你觉得文化在使用中吗？</li><li class="py-1">· 收集最薄弱的1-2个文化基因，制定改进计划</li><li class="py-1">· 老板做一次"文化与我的关系"内部分享，讲自己的故事</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>文化健康度调查完成</li><li>改进计划已制定</li><li>老板分享完成</li></ul></div></div><div class="action-card" style="text-align:center;margin-top:16px;"><p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p><p class="text-sm text-gray-600"><strong>团队在做决策时会自觉用"我们这里的标准"来想问题</strong>，文化不再是墙上的字，是日常行为的默认选项。</p></div></div><div class="action-section"><h2 class="action-section-title">四、配套模板</h2><p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p><div class="template-card"><span class="template-label">模板1</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">文化故事采集表</h3><p class="text-sm text-gray-500 mb-3">让每个人写1件"在这个公司我最自豪的事"</p><table><tr><th style="width:25%;">字段</th><th>内容</th></tr>
+          <tr><td>发生了什么事</td><td>什么时候、谁做的、具体做了什么</td></tr>
+          <tr><td>为什么自豪</td><td>这件事让你觉得"我在这个公司是对的"的原因是什么</td></tr>
+          <tr><td>体现了什么</td><td>你认为这件事体现了公司什么样的做事方式</td></tr>
+          <tr><td>如果再来一次</td><td>你希望公司在类似情况下做什么不一样的事？</td></tr></table></div><div class="template-card"><span class="template-label">模板2</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">文化基因提炼表</h3><p class="text-sm text-gray-500 mb-3">把故事翻译成具体的行为标准</p><table><tr><th style="width:20%;">文化基因</th><th>一句话定义</th><th>我们这样做的事</th><th>我们不这样做的事</th></tr>
+          <tr><td>如：把客户的事当自己的事</td><td><span class="fill-line"></span></td><td>· 客户投诉24小时内响应<br>· 主动跟进直到问题关闭</td><td>· 客户不问我们也不管<br>· "这不归我管"</td></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td></tr>
+          <tr><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td></tr></table><p class="text-xs text-gray-400 mt-2">一句话定义要具体到行为层面，不能用万能词</p></div><div class="template-card"><span class="template-label">模板3</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">文化健康度自查表</h3><p class="text-sm text-gray-500 mb-3">匿名调查，每月或每季度做一次</p><table><tr><th style="width:15%;">#</th><th>问题（1-5分打分）</th></tr>
+          <tr><td>1</td><td>我能用一句话说清楚我们公司的文化是什么</td></tr>
+          <tr><td>2</td><td>我看到的日常行为跟公司说的价值观是一致的</td></tr>
+          <tr><td>3</td><td>被奖励和被提拔的人，确实是在践行我们文化的人</td></tr>
+          <tr><td>4</td><td>如果我看到有人做了违反文化的事，我觉得说出来是安全的</td></tr>
+          <tr><td>5</td><td>老板最近做的一件事，体现了我们的文化</td></tr></table></div></div><div class="action-section"><h2 class="action-section-title">五、真实案例</h2><div class="case-card"><span class="case-tag">案例1 · 零售行业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家200人的连锁零售公司，用"文化故事"替代"文化手册"</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家公司有20家门店，之前也做过文化手册，厚厚一本，印了2000份，放在前台。结果发现半年后，80%的员工说不全公司有什么价值观。更典型的场景是：新员工培训的时候HR照着PPT念了半小时，"我们的核心价值观是……"，下面的人刷手机。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          他们干脆把文化手册扔了，做了一件事：<strong>"每周一个文化故事"</strong>。
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 每周五晚，所有门店群发一句话："本周文化故事：XX店的小王做了一件XX事"</li>
+          <li class="py-1">· 不是空泛表扬，是讲具体：什么时候、发生了什么事、小王是怎么处理的、体现了我们什么样的做事方式</li>
+          <li class="py-1">· 老板每周亲自转发，加一句话点评（不超过3行）</li>
+          <li class="py-1">· 三个月120个故事，从中归纳出"我们这家公司最看重的5种行为"</li>
+          <li class="py-1">· 新员工培训不再是念PPT，是讲20个故事，然后让新人自己总结："你听的这些故事里，你觉得我们这家公司到底在坚持什么？"</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>意想不到的效果：</strong>那些被写进故事的员工，离职率降了60%。因为"我在这个公司是有名字、有故事的人，不是工号。"
+        </p></div><div class="case-card"><span class="case-tag">案例2 · 科技行业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家80人的软件公司，把考核变成文化落地的加速器</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家公司一直强调"工程师文化"，崇尚技术深度、鼓励分享、重视代码质量。但公司越做越大，项目越来越急，技术分享会从每周一次变成每月一次，再变成"看情况"。项目经理为了赶进度，开始容忍"能跑就行"的代码。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          创始人意识到：文化在退化。他做了三件事：
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 1. 把"技术分享频率"写进了高级工程师的晋升必要条件，没有在过去12个月内做过至少4次公开技术分享的人，不能升</li>
+          <li class="py-1">· 2. 在季度考核里加了"代码Review质量"这一项，不是由HR评估，是由技术委员会评估</li>
+          <li class="py-1">· 3. 每周五下午设为"无会议时间"，专门留给技术学习和分享，创始人自己带头参加</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          半年后，技术分享恢复到了每周一场，而且不是被动的。更关键的是，新入职的工程师说："我来之前听说你们公司技术氛围好，来了之后发现是真的，不是HR招聘文案。"
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>核心洞察：</strong>文化不会自己维持。公司在增长，新来的人越来越多，老文化的稀释速度远比你想象得快。如果你不把它装进考核和晋升里，它就会被"赶进度"吃掉。
+        </p></div></div><div class="action-section"><h2 class="action-section-title">六、90天自我检查清单</h2><div class="action-card"><h3>第30天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 文化故事收集完成了吗？80%以上提交了吗？</li><li class="py-1">☐ 从故事中提炼出的3-5条"我们这里的做事方式"确定了吗？</li><li class="py-1">☐ 是不是用具体行为描述的，而不是"诚信、创新、客户第一"这种万能词？</li></ul></div><div class="action-card"><h3>第60天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 每条文化基因有正负行为定义了吗？</li><li class="py-1">☐ 月度Review中加入文化行为了吗？第一次文化故事会完成了吗？</li><li class="py-1">☐ 转正流程加入文化适配说明了吗？</li></ul></div><div class="action-card"><h3>第90天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 文化之星机制启动了吗？全部提名是来自同事的吗？</li><li class="py-1">☐ 文化健康度调查完成了吗？最薄弱的1-2个文化基因是什么？</li><li class="py-1">☐ 新人入职一个月后，能说清楚"我们这家公司看重什么"吗？随便问一个试试。</li></ul></div><div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;"><p class="text-sm text-gray-700 leading-relaxed">🏁 <strong>90天结束后，最重要的一件事</strong><br>不是看墙上贴了多少标语，是看<strong>团队在做选择时默认答案是不是跟公司想的一致</strong>。<br>如果当面问一个新人"你觉得这个公司最看重什么"，他能举出一个最近发生的具体例子，文化就落地了。</p></div></div>`,
+      4: `
+      <div class="action-section">
+        <h2 class="action-section-title">一、这个维度到底在说什么</h2>
+        <div class="action-card">
+          <h3>详细解读</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          组织架构优化的本质是<strong>"让公司的骨架匹配上公司的肌肉"</strong>。公司10个人的时候好用的架构，到了30人很可能就是最大的障碍。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          最常见的信号：部门之间开始互相抱怨。销售说"产品太慢了，客户要的东西两个月拿不出来"，产品说"销售什么都答应客户，不靠谱"。市场说"销售从来不跟进我们做的线索"，销售说"市场做的线索质量太差了"。如果这些问题在增加，不是谁对谁错的问题，是<strong>架构让他们看到的只有自己部门的利益，看不到公司的整体目标</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          另一个信号是汇报关系混乱：一个员工有两个老板、中层不知道自己对谁负责、新业务挂在老部门下面没人管、有人干活没人考核、有人被考核但不知道怎么干。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          组织架构优化的原则很简单：<strong>"一个人只对一个老板负责"、"一个结果只在一个部门的OKR里"、"一个新业务要有明确的负责人而不是'大家配合'"</strong>。
+        </p>
+        </div>
+        <div class="action-card">
+          <h3>用个例子你就明白了</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+          一家做B2B供应链的公司，从创业时的15人涨到了65人。组织架构还是按创始初期的模式：一个大销售部（管销售也管跟单）、一个综合运营部（管市场、管客服、管行政、管人事）、一个产品+技术部，再加财务。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          问题爆发在第三年：三个大客户同时抱怨跟单不及时，销售部说"运营部安排的跟单人不够"，运营部说"我们管7件事哪里忙得过来"。跨了三个部门的任何一件事，最后都回到老板那里协调。老板变成了"全公司最大的协调员"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          他们做了三件事：<strong>第一，把综合运营部拆成市场部、客服部、行政人力部。</strong>第二，把跟单从销售部挪到客服部，销售只管"从线索到成交"，客服管"从成交到收款"。第三，建立"产研月会"机制，让产品、技术、销售三方每个月面对面过一遍需求优先级，而不是各自闷头干。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          三个月后，跨部门扯皮的邮件减少了70%。大客户续约率从89%涨到96%。老板说了一句很有意思的话："我以前以为组织架构就是画一张图，现在才知道<strong>架构图上面的每一条汇报线，都是钱的流向</strong>。线画错了，钱就流到不该去的地方。"
+        </p>
+        </div>
+      </div>
+      <div class="action-section">
+        <h2 class="action-section-title">二、你的企业适不适合现在做</h2>
+        <div class="fit-yes">
+          <p class="text-sm font-bold text-green-800 mb-1">✅ 三个信号，架构该变了</p>
+          <ul class="text-sm text-green-800" style="list-style:none;padding:0;"><li class="py-1">· 跨部门一件事需要3个以上的人协调才能推动，组织架构制造了信息壁垒</li>
+<li class="py-1">· 有人需要向两个老板汇报，多头领导是组织低效的根源之一</li>
+<li class="py-1">· 新业务挂在老部门下面得不到资源，也没有清晰的负责人</li></ul>
+        </div>
+        <div class="fit-no">
+          <p class="text-sm font-bold text-red-800 mb-1">⚠️ 两个情况，先别急着调架构</p>
+          <ul class="text-sm text-red-800" style="list-style:none;padding:0;"><li class="py-1">· 公司正在经历核心业务转型，架构应该跟着业务走，而不是反过来</li>
+<li class="py-1">· 公司规模不到30人，小公司的架构优势就是灵活，别急着锁死</li></ul>
+        </div>
+        <div class="action-card">
+          <h3>做之前，先想清楚这三件事</h3>
+          <ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-2"><strong>1. 先理清业务流，再画组织图</strong><br>不要先想"部门怎么分"。先画出"从客户线索到收到钱，信息怎么流、谁干哪一段"。架构跟着流走。</li>
+<li class="py-2"><strong>2. 一个人一个老板</strong><br>如果一个人要跟两个老板汇报，那要么合到一个部门，要么拆成两个岗位。多头汇报是组织病。</li>
+<li class="py-2"><strong>3. 新业务要独立</strong><br>新业务挂在老部门下面永远做不大。因为老部门的KPI跟新业务的目标天然冲突。</li></ul>
+        </div>
+      </div><div class="action-section"><h2 class="action-section-title">三、90天执行路线图</h2><span class="phase-badge phase-1">Phase 1 · 第1-30天 · 诊断架构问题</span><p class="text-sm text-gray-600 mb-3">不是上来就画新架构图，是先搞清楚现在的架构到底哪卡住了。</p><div class="week-block"><span class="week-num">Week 1-2</span><p class="text-sm text-gray-700 font-bold mb-2">画"实际工作流"</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 列出公司Top 5最重要的业务流程（从客户线索到收到钱）</li><li class="py-1">· 用<strong>模板1（业务流程图）</strong>画出每个流程：信息怎么流、谁干哪一段、在哪卡</li><li class="py-1">· 标注卡点：这个环节的信息、决策、执行分别卡在谁那里？</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>5条核心业务流程图完成</li><li>每个卡点标注了责任人</li></ul></div></div><div class="week-block"><span class="week-num">Week 3-4</span><p class="text-sm text-gray-700 font-bold mb-2">架构审计</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板2（组织架构审计表）</strong>逐项检查：汇报线清晰吗？职责重叠吗？有空白地带吗？</li><li class="py-1">· 重点看：有没有人向两个老板汇报？有没有部门干了不该它干的活？有没有活没人干？</li><li class="py-1">· 高层集体过一遍审计结果：哪些是"暂时可以忍的"，哪些是"不改就要出事的"</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>架构审计完成</li><li>问题清单已排序</li><li>高层达成共识</li></ul></div></div><span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 小调不推倒</span><p class="text-sm text-gray-600 mb-3">建筑不能住着人拆。先调最痛的地方，不动整体框架。</p><div class="week-block"><span class="week-num">Week 5-6</span><p class="text-sm text-gray-700 font-bold mb-2">解决多头汇报</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 凡是向两个人汇报的岗位，明确一个"主汇报人"（谁写考核、谁批请假、谁谈调薪）</li><li class="py-1">· 如果确实需要两个人同时管，拆成两个岗位</li><li class="py-1">· 新架构方案原则：一个人一个老板，一个结果一个Owner</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>多头汇报岗位盘点完成</li><li>每个岗位明确主汇报人</li><li>特殊岗位已拆岗或合并</li></ul></div></div><div class="week-block"><span class="week-num">Week 7-8</span><p class="text-sm text-gray-700 font-bold mb-2">新业务独立</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 新业务或孵化中的方向，从老部门里独立出来，直接向老板或COO汇报</li><li class="py-1">· 设定独立的新业务90天目标，不与老部门的KPI混合</li><li class="py-1">· 明确新业务的负责人（一个人，不是一个委员会）</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>新业务已独立</li><li>90天目标已设定</li><li>唯一负责人已指定</li></ul></div></div><span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 固化新架构</span><p class="text-sm text-gray-600 mb-3">新架构跑两个月后做一次全面Review，微调后正式定版。</p><div class="week-block"><span class="week-num">Week 9-10</span><p class="text-sm text-gray-700 font-bold mb-2">发布新架构 + 全员沟通</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 用<strong>模板3（新版架构一页纸）</strong>向全员发布新架构</li><li class="py-1">· 开一次全员会：讲清楚"为什么调"、"调了什么"、"对你日常工作的影响是什么"</li><li class="py-1">· 不要只发邮件，面对面讲</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>新架构全员沟通会完成</li><li>每个员工知道自己跟谁汇报</li><li>每个部门知道自己的新OKR</li></ul></div></div><div class="week-block"><span class="week-num">Week 11-12</span><p class="text-sm text-gray-700 font-bold mb-2">跑流程 + 收反馈</p><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">· 新架构下跑2-3个完整业务周：跨部门协调还在卡吗？决策速度变快了吗？</li><li class="py-1">· 收集每个部门负责人的反馈：新架构对你部门的效率是提升还是降低了？为什么？</li><li class="py-1">· 微调：不要怕改，本来第一版就很难完美</li></ul><div class="checklist"><p class="text-xs text-gray-400 mb-1">☑ 本周检查：</p><ul><li>反馈收集完毕</li><li>至少1-2处微调完成</li><li>新架构V1.1定版</li></ul></div></div><div class="action-card" style="text-align:center;margin-top:16px;"><p class="text-sm font-bold text-gray-800 mb-2">🏁 90天目标</p><p class="text-sm text-gray-600"><strong>跨部门协调不再需要老板亲自推动</strong>，每个部门清楚自己的OKR和边界，新业务有独立的资源和负责人。</p></div></div><div class="action-section"><h2 class="action-section-title">四、配套模板</h2><p class="text-sm text-gray-500 mb-3">以下3个模板可直接使用。建议打印出来或复制到文档工具里。</p><div class="template-card"><span class="template-label">模板1</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">业务流程图</h3><p class="text-sm text-gray-500 mb-3">画一条业务流程，标注谁在做什么、信息怎么流、卡在哪</p><table><tr><th style="width:12%;">步骤</th><th>谁干</th><th>输入什么</th><th>输出什么</th><th>给谁</th><th>卡不卡</th></tr>
+          <tr><td>1</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td>顺/卡</td></tr>
+          <tr><td>2</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td>顺/卡</td></tr>
+          <tr><td>3</td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td><span class="fill-line"></span></td><td>顺/卡</td></tr>
+          <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr></table><p class="text-xs text-gray-400 mt-2">只画最重要5条流程。卡的地方标注原因：缺信息？没人定？两个人打架？</p></div><div class="template-card"><span class="template-label">模板2</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">组织架构审计表</h3><p class="text-sm text-gray-500 mb-3">逐项检查当前架构的健康度</p><table><tr><th style="width:12%;">#</th><th>检查项</th><th>是/否</th><th>备注</th></tr>
+          <tr><td>1</td><td>每个岗位只向一个人汇报？</td><td></td><td><span class="fill-line"></span></td></tr>
+          <tr><td>2</td><td>每个部门的职责边界清晰，没有重叠？</td><td></td><td><span class="fill-line"></span></td></tr>
+          <tr><td>3</td><td>没有"谁都不管"的空白地带？</td><td></td><td><span class="fill-line"></span></td></tr>
+          <tr><td>4</td><td>每个业务结果都有唯一的Owner部门？</td><td></td><td><span class="fill-line"></span></td></tr>
+          <tr><td>5</td><td>有新业务/新项目的快速编队机制（不是无限开会）？</td><td></td><td><span class="fill-line"></span></td></tr></table></div><div class="template-card"><span class="template-label">模板3</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin-bottom:6px;">新版架构一页纸</h3><p class="text-sm text-gray-500 mb-3">新架构发布时用这个模板，让每个人清楚自己的位置</p><table><tr><th style="width:25%;">区域</th><th>内容</th></tr>
+          <tr><td>新架构图</td><td>（画图：部门名称+负责人+核心职责一句话）</td></tr>
+          <tr><td>跟旧版的区别</td><td>1. ___ 2. ___ 3. ___ （每条不超过一行）</td></tr>
+          <tr><td>我的变化</td><td>我向谁汇报、我管谁、我的OKR是什么、谁依赖我的产出</td></tr>
+          <tr><td>有问题找谁</td><td>人/部门/什么时候可以找</td></tr>
+          <tr><td>生效时间</td><td>从哪一天开始、有2周过渡期</td></tr></table></div></div><div class="action-section"><h2 class="action-section-title">五、真实案例</h2><div class="case-card"><span class="case-tag">案例1 · 制造业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家年营收1.2亿的机械加工厂，用一次架构调整节省了20%的管理成本</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家厂200人，原来的架构是按工序分的：下料车间、加工车间、焊接车间、装配车间、质检科、仓库。每个车间一个主任，各管一摊。问题出在"跨车间的活没人管"。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          一个订单从下料到出厂，要经过5个车间，每个车间都有自己的排产计划。A车间拼命赶，做完放一边；B车间正在忙别的，接不到。订单在车间之间"漂"的时间占了总生产时间的35%。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2"><strong>他们做了什么事：</strong></p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 把按工序分的架构改成按产品线分的架构：A产品线（标准件）、B产品线（定制件）、C产品线（维修件）</li>
+          <li class="py-1">· 每条产品线内部包含完整工序，由一个产品线经理统一管排产</li>
+          <li class="py-1">· 车间主任不再按车间考核，是按产品线的"按时交付率"考核</li>
+          <li class="py-1">· 质检和仓库独立，向厂长汇报，不受产品线控制（保留跨产品线的标准一致性）</li>
+          <li class="py-1">· 效果：订单平均交付时间从18天缩短到11天，管理岗位减少了3个</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>关键教训：</strong>工序导向的架构是"我干好我这道工序就行了"，产品线导向的架构是"我负责这个产品从原材料到客户手里"。后者对结果负责，前者只对过程负责。
+        </p></div><div class="case-card"><span class="case-tag">案例2 · 互联网行业</span><h3 style="font-size:15px;font-weight:700;color:#1E293B;margin:8px 0;">一家从35人涨到90人的技术公司，中间那一次"架构对了"救了命</h3><p class="text-sm text-gray-600 leading-relaxed">
+          这家公司做企业SaaS，从35人到90人只用了不到一年。业务涨得飞快，但组织几乎散架了。最大的问题：原来扁平结构，老板直接管7个人，在35人时还好，到了90人时，老板成了全公司最大的瓶颈。所有决策、所有跨部门协调、所有招人，全部卡在他一个人那里。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          他们做了一次"加层"的架构调整：
+        </p>
+        <ul class="text-sm text-gray-600" style="list-style:none;padding:0;">
+          <li class="py-1">· 在老板和一线之间加了一层"事业部负责人"：产品事业部、交付事业部、增长事业部</li>
+          <li class="py-1">· 每个事业部的负责人对这条线的"收入+成本+团队"负全责</li>
+          <li class="py-1">· 老板只管三件事：战略方向、事业部负责人的OKR和考核、跨事业部的大项目协调</li>
+          <li class="py-1">· 刚调整完第一个月最难，中层觉得"以前我能直接找老板，现在要过一层"</li>
+          <li class="py-1">· 到第三个月效果出来了：产品迭代速度从每月1版变成每周1版，客户需求响应时间从3天降到半天</li>
+        </ul>
+        <p class="text-sm text-gray-600 leading-relaxed mt-2">
+          <strong>最关键的细节：</strong>不是直接找三个"总监"来顶。是先让最有潜力的三个人见习两个月，以"代理负责人"身份干活，两个月后能扛住的才正式任命。三个人里有一个没扛住，调去做了技术专家。这个过渡机制避免了"上去了下不来"的尴尬。
+        </p></div></div><div class="action-section"><h2 class="action-section-title">六、90天自我检查清单</h2><div class="action-card"><h3>第30天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 5条核心业务流程图完成了吗？卡点标注了责任人吗？</li><li class="py-1">☐ 架构审计表填完并评分了吗？高层的优先级共识有了吗？</li><li class="py-1">☐ 最突出的2-3个架构问题列出来了吗？有解决方案了吗？</li></ul></div><div class="action-card"><h3>第60天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 多头汇报情况处理完了吗？每个岗位都只有一个主汇报人了吗？</li><li class="py-1">☐ 新业务独立出来了吗？有唯一负责人和90天目标了吗？</li><li class="py-1">☐ 新架构的过渡方案写出来了吗？（怎么从旧切换到新，不停摆）</li></ul></div><div class="action-card"><h3>第90天检查</h3><ul class="text-sm text-gray-600" style="list-style:none;padding:0;"><li class="py-1">☐ 新架构全员沟通会完成了吗？每个员工知道自己向谁汇报和新的OKR了吗？</li><li class="py-1">☐ 新架构下跑了完整业务周了吗？跨部门还在卡吗？</li><li class="py-1">☐ 至少1-2处微调完成了吗？新架构V1.1定版了吗？</li></ul></div><div class="action-card" style="text-align:center;border:2px solid #93C5FD;background:#EFF6FF;"><p class="text-sm text-gray-700 leading-relaxed">🏁 <strong>90天结束后，最重要的一件事</strong><br>不是看架构图画得多漂亮，是看<strong>跨部门的事能不能在不经老板协调的情况下顺畅流转</strong>。<br>如果以前需要老板协调的跨部门问题减少了50%以上，架构调对了。</p></div></div>`,
+    };
 
-    <!-- ========== 底部分隔 ========== -->
-    <div style="text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #F1F5F9;">
-      <p class="text-xs text-gray-400">如需更多支持，请联系微信：LaoLee01</p>
-    </div>
+    // Render header
+    var h = HEADERS[dim] || HEADERS['0'];
+    document.getElementById('pageHeader').innerHTML =
+      '<div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0F4C81,#1E40AF);">' + h.badge + '</div>' +
+      '<h1 class="text-2xl font-extrabold text-gray-900 mb-2">' + h.title + '</h1>' +
+      '<p class="text-base text-gray-500">90天执行手册</p>' +
+      '<p class="text-sm text-gray-400 mt-1">' + h.subtitle + '</p>';
 
-  </div>
+    // Render content
+    document.getElementById('dimContent').innerHTML = CONTENTS[dim] || CONTENTS['0'];
+
+    // Update page title
+    document.title = (h.title || '组织升级') + ' · 组织升级方案';
+    document.querySelector('meta[name="description"]').setAttribute('content', (h.title || '组织升级') + ' - 90天执行手册');
+  </script>
 </body>
 </html>
