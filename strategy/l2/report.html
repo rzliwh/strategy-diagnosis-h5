@@ -159,8 +159,8 @@
     html += '</div>';
 
     if (plan.available) {
-      html += '<a href="action/pay.html?dir=' + plan.dirParam + '" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.3);">¥100 解锁执行方案 →</a>';
-      html += '<p class="text-xs text-gray-400 text-center mt-2">微信扫码支付，即刻查看</p>';
+      html += '<a href="action/' + plan.dirParam + '.html" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.3);">查看「' + plan.name + '」执行方案 →</a>';
+      html += '<p class="text-xs text-gray-400 text-center mt-2">先了解方案详情，再决定是否解锁</p>';
     } else {
       html += '<button style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:#94A3B8;color:#fff;font-size:16px;font-weight:700;text-align:center;border:none;cursor:not-allowed;" disabled>该方向执行方案即将上线</button>';
       html += '<p class="text-xs text-gray-400 text-center mt-2">正在制作中，敬请期待</p>';

@@ -77,13 +77,13 @@
 
     <!-- 收款码 -->
     <div class="mb-8">
-      <div class="inline-block p-3 border-2 border-dashed border-gray-200 rounded-2xl relative">
-        <div id="qr-skeleton" class="w-[200px] h-[200px] bg-gray-100 rounded-xl animate-pulse flex items-center justify-center">
-          <span class="text-gray-300 text-3xl">💳</span>
-        </div>
+      <div style="display:inline-block;padding:12px;border:2px dashed #E2E8F0;border-radius:16px;">
         <img src="../../images/wechat-pay-100.jpg" alt="微信扫码支付 ¥100"
-             style="max-width:200px;height:auto;display:block;border-radius:12px;position:absolute;top:12px;left:12px;"
-             onload="document.getElementById('qr-skeleton').style.display='none';this.style.position='static';">
+             style="width:200px;height:auto;display:block;border-radius:12px;"
+             onerror="this.style.display='none';var fb=document.getElementById('qr-fallback');if(fb)fb.style.display='flex';">
+        <div id="qr-fallback" style="display:none;width:200px;height:200px;background:#F8FAFC;border-radius:12px;align-items:center;justify-content:center;text-align:center;color:#94A3B8;font-size:13px;line-height:1.6;">
+          收款码加载失败<br>请联系微信：LaoLee01
+        </div>
       </div>
       <p class="text-sm text-gray-500 mt-3">微信扫码支付 ¥100</p>
     </div>
@@ -143,7 +143,7 @@
     function goToActionPlan() {
       var page = DIR_PAGES[dir];
       if (page) {
-        window.location.href = page;
+        window.location.href = page + '?paid=1';
       } else {
         alert('该方向暂未找到对应方案，请联系微信：LaoLee01');
       }

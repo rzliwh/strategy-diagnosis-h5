@@ -102,6 +102,29 @@
 
     <!-- 第三章 -->
     <div class="action-section">
+      
+<!-- 付款解锁区域 -->
+<div class="action-section" id="pay-gate" style="text-align:center;margin:32px 0;">
+  <div style="background:linear-gradient(135deg,#EFF6FF,#F0F9FF);border:2px solid #BFDBFE;border-radius:16px;padding:24px 20px;">
+    <p style="font-size:20px;margin-bottom:8px;">🔒</p>
+    <h3 style="font-size:18px;font-weight:700;color:#1E3A8A;margin-bottom:8px;">解锁完整执行方案</h3>
+    <p style="font-size:14px;color:#64748B;margin-bottom:16px;">你已了解这个方向的基本逻辑和适配条件<br>接下来是执行干货</p>
+    <div style="background:#fff;border-radius:12px;padding:14px;margin-bottom:16px;text-align:left;">
+      <p style="font-size:13px;font-weight:700;color:#1E293B;margin-bottom:8px;">📦 包含内容：</p>
+      <ul style="font-size:12px;color:#64748B;list-style:none;padding:0;">
+        <li class="py-1">📘 <strong>90天分步执行手册</strong> —— 每周干什么、谁来做、做到什么标准</li>
+        <li class="py-1">📋 <strong>3个可直接填写的模板</strong> —— 拿来就能用</li>
+        <li class="py-1">📖 <strong>2个同类型企业的真实案例</strong> —— 怎么做的、踩了什么坑</li>
+        <li class="py-1">📅 <strong>90天关键节点检查清单</strong></li>
+      </ul>
+    </div>
+    <a href="pay.html?dir=differentiation" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.3);">去付款 ¥100 解锁方案 →</a>
+    <p style="font-size:11px;color:#94A3B8;margin-top:8px;">微信扫码支付 ¥100，即刻查看完整内容</p>
+  </div>
+</div>
+
+<div id="gated-content" style="display:none;">
+
       <h2 class="action-section-title">三、90天执行路线图</h2>
       <p class="text-sm text-gray-500 mb-3">三个阶段，找到你的独特卖点并让客户感知到它。</p>
 
@@ -338,6 +361,20 @@
       <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
     </div>
     <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+
+</div><!-- #gated-content -->
+
+<script>
+(function() {
+  if (new URLSearchParams(window.location.search).get('paid') === '1') {
+    var gate = document.getElementById('pay-gate');
+    if (gate) gate.style.display = 'none';
+    var gc = document.getElementById('gated-content');
+    if (gc) gc.style.display = 'block';
+  }
+})();
+</script>
+
   </div>
 </body>
 </html>
