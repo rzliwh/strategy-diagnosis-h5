@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="聚焦细分赛道 - 90天执行手册">
+  <title>聚焦细分赛道 · 执行手册</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1E3A8A', light: '#3B82F6' },
+            gold: { DEFAULT: '#F59E0B', dark: '#D97706' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+
+    /* 章节卡片 */
+    .action-section { margin-bottom: 28px; }
+    .action-section-title {
+      font-size: 18px; font-weight: 700; color: #1E3A8A; margin-bottom: 12px;
+      padding-left: 12px; border-left: 4px solid #3B82F6;
+    }
+    .action-card {
+      background: #fff; border: 1px solid #E2E8F0; border-radius: 16px;
+      padding: 20px; margin-bottom: 14px;
+    }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .action-card h4 { font-size: 14px; font-weight: 700; color: #475569; margin: 16px 0 6px; }
+
+    /* 阶段标签 */
+    .phase-badge {
+      display: inline-block; padding: 4px 12px; border-radius: 20px;
+      font-size: 12px; font-weight: 700; margin-bottom: 12px;
+    }
+    .phase-1 { background: #EFF6FF; color: #1E3A8A; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+
+    /* 适合/不适合 */
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no  { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+
+    /* 周步骤 */
+    .week-block {
+      border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px;
+      background: #F8FAFC;
+    }
+    .week-block .week-num {
+      display: inline-block; background: #1E3A8A; color: #fff; font-size: 11px;
+      font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li {
+      font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px;
+      position: relative; list-style: none;
+    }
+    .week-block .checklist li::before {
+      content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px;
+    }
+
+    /* 模板卡片 */
+    .template-card {
+      border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px;
+      margin-bottom: 16px; background: #FAFAFA;
+    }
+    .template-card .template-label {
+      display: inline-block; background: #FEF3C7; color: #92400E;
+      font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th {
+      background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px;
+      color: #475569; border: 1px solid #E2E8F0;
+    }
+    .template-card td {
+      padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px;
+    }
+    .fill-line {
+      display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px;
+      color: #94A3B8;
+    }
+
+    /* 案例卡片 */
+    .case-card {
+      background: linear-gradient(135deg, #F8FAFC, #EFF6FF);
+      border: 1px solid #BFDBFE; border-radius: 14px; padding: 20px; margin-bottom: 14px;
+    }
+    .case-card .case-tag {
+      display: inline-block; background: #DBEAFE; color: #1E40AF;
+      font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    }
+
+    /* 闭环时间线 */
+    .timeline-item {
+      display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9;
+    }
+    .timeline-dot {
+      width: 36px; height: 36px; border-radius: 50%; background: #EFF6FF;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #1E3A8A; flex-shrink: 0;
+    }
+
+    /* 打印样式 */
+    @media print {
+      body { background: #fff; }
+      .action-container { max-width: 100%; padding: 0; box-shadow: none; }
+      .action-section-title { break-after: avoid; }
+      .week-block { break-inside: avoid; }
+      .template-card { break-inside: avoid; }
+      .case-card { break-inside: avoid; }
+    }
+
+    /* 决策灯 */
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red   { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+
+    <!-- ========== 封面 ========== -->
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#3B82F6,#2563EB);">
+        机会区 · 方向一
+      </div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">聚焦细分赛道</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">不跟大佬正面硬刚，找一个他们看不上<br>但你能做成第一的小市场</p>
+    </div>
+
+    <!-- ========== 保存提示 ========== -->
+    <div class="l2-save-banner">
+      <span class="save-icon">📌</span>
+      <span>建议收藏此页面链接，或将本页打印出来，对照执行</span>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第一章：这个方向到底在说什么 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          你现在在<strong>机会区</strong>——市场有机会，但你在市场里的位置还不够强。
+          大市场里有肉，但你的实力还不足以跟头部玩家正面竞争。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          这时候最蠢的做法是<strong>"努力变强，去跟大人打架"</strong>。
+          最聪明的做法是<strong>"换一个你能赢的战场"</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          聚焦细分赛道，就是主动把战场从<strong>"所有人都是我的客户"</strong>缩小到
+          <strong>"只有这类客户是我的客户"</strong>。看上去市场变小了，但你的<strong>赢面变大了</strong>。
+        </p>
+      </div>
+
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          一家做企业IT运维的公司，原来什么客户都接——工厂、医院、学校、写字楼。收入还行但利润越来越薄，因为每个客户都觉得"你家不是专门干我这行的"，不愿意付高价。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          后来他们做了一个决定：<strong>只做连锁餐饮</strong>。把所有客户梳理一遍后发现，餐饮客户利润最高、需求最标准化、而且老板之间互相推荐最活跃。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          一年后，他们成了成都连锁餐饮IT服务的默认选择。客单价从3万涨到8万，因为<strong>"在餐饮IT这块，你最懂"</strong>。
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">
+          <strong>市场规模从"全行业"缩小到"连锁餐饮"，但企业从"可替代"变成了"不可替代"。</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第二章：判断你是否适合 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+
+      <p class="text-sm text-gray-500 mb-3">坦诚对照，别骗自己——选错方向比选慢方向更贵。</p>
+
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的客户里有一小撮对你特别满意，但大部分客户没什么忠诚度</li>
+          <li class="py-1">· 你感觉自己在跟所有人竞争，但没有人觉得你"特别适合他们"</li>
+          <li class="py-1">· 你不追求"做大"，更希望"做稳、做精、做贵"</li>
+          <li class="py-1">· 你资源有限，但在某个领域有独特的理解或关系</li>
+        </ul>
+      </div>
+
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的行业已经高度细分，每个细分都有很强的专业玩家，这时候"聚焦"等于进别人的地盘硬刚</li>
+          <li class="py-1">· 你的核心竞争力只有"便宜"，在任何细分都没有独特价值，聚焦改变不了这个事实</li>
+          <li class="py-1">· 你选的细分市场太小，连养团队都不够，那就不是"聚焦"，是"缩水"</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（机会区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你的具体情况</strong>。
+        </p>
+        <p class="text-sm text-gray-700 leading-relaxed mt-2">
+          这时候你需要回头看一下诊断报告里的另外两个方向——<strong>打造差异化卖点</strong>和<strong>AI弯道超车</strong>——看看它们的"适合条件"是不是跟你的现状更匹配。诊断的结论是"你属于机会区"，但具体选哪条路，你自己最清楚自己的底牌。
+        </p>
+        <p class="text-sm mt-3">
+          <a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a>
+        </p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01，帮你判断。</p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第三章：90天执行路线图 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <p class="text-sm text-gray-500 mb-3">三个阶段，每周有明确动作。不需要一次做完，但需要每周都动。</p>
+
+      <!-- ===== Phase 1 ===== -->
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 找到你的黄金细分</span>
+
+      <!-- Week 1-2 -->
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>客户数据大盘点</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">把你过去12个月所有付费客户拉出来，用下面几个维度分一遍。别凭感觉，<strong>看数据</strong>。</p>
+        <ul class="checklist">
+          <li>按行业/领域分类</li>
+          <li>按企业规模分类</li>
+          <li>按客单价排序（从高到低）</li>
+          <li>按购买次数排序（从多到少）</li>
+          <li>按利润贡献排序（不是收入，是利润）</li>
+          <li>标注：这个客户是从哪个渠道来的</li>
+        </ul>
+        <div class="mt-3 flex gap-4 text-xs">
+          <span>👤 <strong>谁来做：</strong>你自己</span>
+          <span>⏱ <strong>耗时：</strong>4-6小时</span>
+        </div>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>覆盖≥80%的付费客户，每个客户至少5个维度的数据</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>数据不全，一半客户你凭印象在分类</p>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-block">
+        <span class="week-num">第3周</span>
+        <h4>找到你的"黄金客户"画像</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">按<strong>利润率</strong>排序，找出前20%。然后问自己三个问题：</p>
+        <ul class="checklist">
+          <li>这群高利润客户，有什么共同特征？（行业？规模？需求场景？）</li>
+          <li>他们当初是怎么找到你的？为什么要选你？</li>
+          <li>他们买完之后，还在抱怨什么？（说明你还没满足的需求）</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>能一句话说清楚"理想客户长这样：行业X、规模Y、痛点Z"</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>画像模糊，"什么样的客户我们都服务得好"——这不叫画像</p>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week-block">
+        <span class="week-num">第4周</span>
+        <h4>验证：这个细分值不值得All-in</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">用<strong>模板2（细分市场评估矩阵）</strong>给候选细分打分。三个关键数字：</p>
+        <ul class="checklist">
+          <li>市场规模：够不够你未来3年吃？</li>
+          <li>竞争强度：有没有人在专门服务他们？</li>
+          <li>你的优势：他们选你的理由够不够强？</li>
+        </ul>
+        <div class="mt-3 p-3 bg-white rounded-lg border border-gray-200">
+          <p class="text-xs font-bold text-gray-700 mb-2">决策口诀</p>
+          <p class="text-xs text-gray-600">· 三个维度都高 → <span class="signal-green">就是它，全力投入</span></p>
+          <p class="text-xs text-gray-600">· 市场够大但竞争也激烈 → 再切一刀，找更小的切口</p>
+          <p class="text-xs text-gray-600">· 市场太小 → 可以作为利润业务，但不是主赛道</p>
+        </div>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>选定目标细分+能说清楚为什么选它</p>
+      </div>
+
+      <!-- ===== Phase 1 小结 ===== -->
+      <div class="action-card" style="background:#EFF6FF;border-color:#BFDBFE;">
+        <p class="text-sm font-bold text-brand mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700">到第30天，你要能说出这句话：<br>
+        <strong>"从今天起，我们专注服务_________类型的客户，因为_________。"</strong></p>
+        <p class="text-xs text-gray-500 mt-2">说不出来？回第1周重做，别急着往下走。</p>
+      </div>
+
+      <!-- ===== Phase 2 ===== -->
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 为这个细分量身定制</span>
+
+      <!-- Week 5-6 -->
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>为细分客户重新设计产品/服务方案</h4>
+        <p class="text-sm text-gray-600 leading-relaxed"><strong>不用做新产品。</strong>把现有产品的包装、话术、案例，朝这个细分的方向改。关键不是产品真的不一样，而是让客户感觉<strong>"你懂我"</strong>。</p>
+        <ul class="checklist">
+          <li>把通用产品介绍，改成"XX行业专版"或"XX规模企业定制版"，用这个细分行业的语言写</li>
+          <li>准备3个同细分客户的成功案例故事</li>
+          <li>如果可能，调整价格结构（比如为这个细分搭配一个更匹配的套餐）</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>你的销售材料里，术语和目标客户的语言一致。客户看了说"这就是给我做的"</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>介绍还是"通用版"，只是换了个封面</p>
+      </div>
+
+      <!-- Week 7-8 -->
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>小范围测试，别all-in</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">选<strong>5-10个</strong>目标细分客户（老客户或新线索都行），用新方案去接触：</p>
+        <ul class="checklist">
+          <li>老客户：告诉他们"我们最近专注服务你们这个类型的客户，把方案做了升级，你要不要看看？"</li>
+          <li>新线索：用新行业话术去接触，看回复率有没有变化</li>
+          <li>记录每一次接触结果：什么话术有效？客户什么反应？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少3个客户给出明确的正向反馈或购买意向</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>客户反应跟以前一样，没有"这个正好是我需要的"的感觉 → 你的方案没做对或细分选错了</p>
+      </div>
+
+      <div class="action-card" style="background:#ECFDF5;border-color:#A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">🔑 Phase 2 关键里程碑</p>
+        <p class="text-sm text-gray-700">到第60天，你手上要有：<br>
+        <strong>① 一套面向目标细分的产品/服务方案V2（经过测试优化的）<br>
+        ② 至少3个真实的正向客户反馈</strong></p>
+      </div>
+
+      <!-- ===== Phase 3 ===== -->
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 让世界知道你是谁</span>
+
+      <!-- Week 9-10 -->
+      <div class="week-block">
+        <span class="week-num">第9-10周</span>
+        <h4>重构你的营销话语体系</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">把对外说的所有话，从<strong>"我们提供XX服务"</strong>改成<strong>"我们帮XX行业/XX规模的企业解决XX问题"</strong>。</p>
+        <ul class="checklist">
+          <li>微信公众号/视频号介绍，改</li>
+          <li>朋友圈日常内容，从"今天我做了什么"变成"对这个细分有用的内容"</li>
+          <li>发给客户的第一条消息，改</li>
+          <li>你的个人简介/短视频主页，改</li>
+          <li>公司官网/简介/PPT，改</li>
+        </ul>
+        <p class="text-sm text-gray-600 mt-2">用<strong>模板3（一句话定位一页纸）</strong>统一所有渠道的话术。</p>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>一个新客户看到你内容后，能说出"这个人是专门做XX的"</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>客户还需要问"你们主要做什么"——说明你的定位在传播中没有被感知到</p>
+      </div>
+
+      <!-- Week 11-12 -->
+      <div class="week-block">
+        <span class="week-num">第11-12周</span>
+        <h4>渠道聚焦——砍掉不擅长的，深耕有效的</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">把精力集中到目标细分客户最常出现的地方。问：</p>
+        <ul class="checklist">
+          <li>目标客户在什么行业社群里？</li>
+          <li>他们看什么内容？谁在给他们提供信息？</li>
+          <li>他们做采购决策时信任谁的推荐？</li>
+          <li>确定1-2个核心渠道，其他渠道停止主动投入</li>
+          <li>在核心渠道持续输出，不是发广告，是发对这个细分"真正有用"的东西</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>你能说出"我们客户主要通过X渠道找到我们"</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>还是什么渠道都想做，哪个都没做深</p>
+      </div>
+
+      <!-- Week 13 -->
+      <div class="week-block">
+        <span class="week-num">第13周</span>
+        <h4>90天复盘——诚实面对数据</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">回答以下问题，<strong>不要骗自己</strong>：</p>
+        <ul class="checklist">
+          <li>目标细分客户的收入占比有没有提升？（目标：≥40%）</li>
+          <li>你的定位话语，客户能不能自己复述出来？</li>
+          <li>团队精力是不是更集中了，还是又做回去了？</li>
+          <li>下一步：继续深耕这个细分，还是可以复制到第二个细分？</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>细分客群收入占比 ≥ 40%</strong></p>
+        <p class="text-xs text-gray-500 mt-2">没到40%不一定失败。检查：方向选对了吗？方案做对了吗？渠道找对了吗？三个里哪个出了问题，针对性调整。</p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第四章：配套模板 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <p class="text-sm text-gray-500 mb-3">三个模板，对应三个关键决策。建议打印出来用笔填——效果比在手机上划好得多。</p>
+
+      <!-- 模板1 -->
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">客户利润分层分析表</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：找出你真正在赚钱的客户长什么样。填完你就知道该聚焦谁。</p>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <tr>
+              <th>客户名称</th><th>行业</th><th>规模</th><th>年营收贡献</th><th>预估利润</th><th>购买次数</th><th>获客渠道</th><th>利润排名</th>
+            </tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 填完表后，按"利润排名"列排序。前20%的客户有什么共同点？记下来。</p>
+        <p class="text-xs text-gray-400 mt-1">🖨️ <strong>建议打印此页</strong>，或用Excel创建一个相同结构的表来填。</p>
+      </div>
+
+      <!-- 模板2 -->
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">细分市场吸引力评估矩阵</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：用数据而不是感觉，来决定选哪个细分。每个候选细分打一次分。</p>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <tr>
+              <th>评估维度</th><th>权重</th><th>候选细分A<br><span class="fill-line">&nbsp;&nbsp;&nbsp;</span></th><th>候选细分B<br><span class="fill-line">&nbsp;&nbsp;&nbsp;</span></th><th>候选细分C<br><span class="fill-line">&nbsp;&nbsp;&nbsp;</span></th>
+            </tr>
+            <tr>
+              <td>市场规模（够不够吃3年）</td><td>30%</td><td>/10</td><td>/10</td><td>/10</td>
+            </tr>
+            <tr>
+              <td>增长速度（这个细分在变大吗）</td><td>20%</td><td>/10</td><td>/10</td><td>/10</td>
+            </tr>
+            <tr>
+              <td>竞争强度（有专业玩家吗）</td><td>25%</td><td>/10<br><small>越低越好</small></td><td>/10<br><small>越低越好</small></td><td>/10<br><small>越低越好</small></td>
+            </tr>
+            <tr>
+              <td>你的相对优势（他们选你的理由）</td><td>25%</td><td>/10</td><td>/10</td><td>/10</td>
+            </tr>
+            <tr style="font-weight:700;background:#F1F5F9;">
+              <td>加权总分</td><td>100%</td><td></td><td></td><td></td>
+            </tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 打分规则：1=极弱，5=一般，10=极强。竞争强度那一行反过来：1=竞争极激烈，10=几乎没有竞争。</p>
+        <p class="text-xs text-gray-400">⚡ 如果加权总分低于6，这个细分慎重进入。</p>
+      </div>
+
+      <!-- 模板3 -->
+      <div class="template-card">
+        <span class="template-label">📋 模板3</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">一句话定位一页纸</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：统一你对外的定位话术。填完后，你团队所有人对外说话都用这个。</p>
+
+        <div class="p-3 bg-white rounded-lg border border-gray-200 mb-3">
+          <p class="text-sm text-gray-700 leading-relaxed">
+            <strong>我们帮助</strong>
+            <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            （目标客户群）
+          </p>
+          <p class="text-sm text-gray-700 leading-relaxed mt-2">
+            <strong>解决</strong>
+            <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            （核心痛点）
+          </p>
+          <p class="text-sm text-gray-700 leading-relaxed mt-2">
+            <strong>通过</strong>
+            <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            （你的解决方案）
+          </p>
+          <p class="text-sm text-gray-700 leading-relaxed mt-2">
+            <strong>跟他们找别人不一样的是</strong>
+            <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            （你的差异化）
+          </p>
+        </div>
+
+        <p class="text-xs text-gray-500 mb-3">填完合起来读一遍，像不像人话？不像就改。下面是两个参考：</p>
+
+        <div class="p-3 bg-white rounded-lg border border-gray-200 mb-2">
+          <p class="text-xs text-gray-600"><strong>✅ 好的例子：</strong><br>
+          "我们帮助<strong>20-200人的连锁餐饮企业</strong>，解决<strong>多门店IT运维跟不上的问题</strong>，通过<strong>标准化的门店IT托管方案</strong>。跟他们找传统IT公司不一样的是，<strong>我们只做餐饮，不需要每家店重新调研，3天完成部署</strong>。"</p>
+        </div>
+        <div class="p-3 bg-white rounded-lg border border-red-200">
+          <p class="text-xs text-gray-600"><strong>❌ 差的例子：</strong><br>
+          "我们为企业提供全方位数字化转型解决方案，通过先进技术和专业团队，助力企业降本增效。"——<strong>套在任何人身上都行=套在任何人身上都不行。</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第五章：案例卡 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+
+      <!-- 案例1 -->
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某IT运维公司：从"什么行业都做"到"连锁餐饮IT专家"</h3>
+
+        <div class="text-sm text-gray-600 leading-relaxed space-y-2">
+          <p><strong>背景：</strong>公司成立5年，20人团队，年营收约600万。客户横跨制造业、教育、餐饮、写字楼。老板感觉越来越累但利润没涨。</p>
+
+          <p><strong>诊断发现：</strong>在餐饮行业客户里，他们的利润最高、续约率最高、转介绍最多——但餐饮客户只占他们营收的25%，因为他们从来没想过"只做餐饮"。</p>
+
+          <p><strong>做了什么：</strong></p>
+          <ul style="list-style:none;padding:0;">
+            <li class="py-1">· 第1个月：梳理了72个历史客户，发现餐饮客户的三个共同特征：多门店、IT需求标准化、老板圈子里口碑传播极快</li>
+            <li class="py-1">· 第2个月：把服务打包成"连锁餐饮IT管家"三个套餐，统一了定价和交付标准</li>
+            <li class="py-1">· 第3个月：所有对外内容全部改成"服务餐饮老板"的口吻，停掉了给工厂客户准备的宣传材料</li>
+          </ul>
+
+          <p><strong>结果（12个月后）：</strong></p>
+          <ul style="list-style:none;padding:0;">
+            <li class="py-1">· 餐饮客户从25%营收占比提升到65%</li>
+            <li class="py-1">· 客单价从3.2万提升到7.8万（"因为你是专门干这个的"）</li>
+            <li class="py-1">· 转介绍率翻倍（餐饮老板的圈子效应）</li>
+            <li class="py-1">· 主动放弃了一些非餐饮客户，但整体营收增长了40%</li>
+          </ul>
+
+          <p class="mt-3"><strong>最大的坎：</strong>决定"不做其他行业"的时候，老板心里很慌——主动放弃客户，收入会不会掉？实际结果是掉了2个月收入，第3个月就涨回来了。</p>
+
+          <p><strong>这件事最关键的决策：</strong>不是"选哪个细分"，而是<strong>"敢不敢放弃不属于这个细分的客户"</strong>。大多数老板卡在这一步。</p>
+        </div>
+      </div>
+
+      <!-- 案例2 -->
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某管理咨询师：从"什么企业都服务"到"只做医疗诊所"</h3>
+
+        <div class="text-sm text-gray-600 leading-relaxed space-y-2">
+          <p><strong>背景：</strong>个人咨询师，一年接15-20个项目，什么行业都做。客单价1-2万，收入天花板明显。客户觉得他"什么都能做"但"好像什么都不专"。</p>
+
+          <p><strong>诊断发现：</strong>过去3年做过的项目里，口腔诊所和中医馆的客户满意度最高、复购最多、而且他本人对这个领域有天然的亲近感（家里有人开诊所）。</p>
+
+          <p><strong>做了什么：</strong></p>
+          <ul style="list-style:none;padding:0;">
+            <li class="py-1">· 第1个月：把服务提炼成"诊所经营三张表"，流量表、转化表、利润表。只做这三件事，不做战略/组织/HR全案</li>
+            <li class="py-1">· 第2个月：在诊所老板聚集的行业群里持续分享内容，全是诊所经营的干货</li>
+            <li class="py-1">· 第3个月：把公众号名字从"XX管理咨询"改成了"诊所经营笔记"</li>
+          </ul>
+
+          <p><strong>结果（18个月后）：</strong></p>
+          <ul style="list-style:none;padding:0;">
+            <li class="py-1">· 客单价从1.5万涨到4万（"你是专门做诊所的"溢价）</li>
+            <li class="py-1">· 获客几乎全来自口碑转介绍，不再需要主动找客户</li>
+            <li class="py-1">· 服务产品化程度提高，交付时间反而缩短了</li>
+          </ul>
+
+          <p class="mt-3"><strong>最大的坎：</strong>前3个月收入几乎没有。因为老客户找他做"非诊所"项目，他全推了。扛过这3个月后，诊所客户开始转介绍，才进入正循环。</p>
+
+          <p><strong>这件事最关键的决策：</strong>不是"选诊所这个赛道"，而是<strong>"扛住了3个月收入下降的恐惧"</strong>。聚焦需要为短期收入下降做准备。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第六章：自我检查节点 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <p class="text-sm text-gray-500 mb-3">四个关键时间点，建议在手机日历上设个提醒。到了那天对照一下就行，不需要跟任何人汇报。</p>
+
+      <div class="action-card">
+        <div class="timeline-item">
+          <div class="timeline-dot">📅</div>
+          <div>
+            <p class="text-sm font-bold text-gray-800">Day 7 · 启动检查</p>
+            <p class="text-xs text-gray-500">自查：客户数据盘点开始了吗？如果还没动——这周补上。没有数据，后面每一步都是凭感觉。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">📅</div>
+          <div>
+            <p class="text-sm font-bold text-gray-800">Day 30 · 细分选定检查</p>
+            <p class="text-xs text-gray-500">自查：能一句话说清楚你选的细分是什么、为什么选它吗？说不清楚就回Phase 1再看一遍。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">📅</div>
+          <div>
+            <p class="text-sm font-bold text-gray-800">Day 60 · 方案验证检查</p>
+            <p class="text-xs text-gray-500">自查：给目标细分客户看过新方案了吗？至少3个客户觉得"这个好，我需要"才算过关。</p>
+          </div>
+        </div>
+        <div class="timeline-item" style="border-bottom:none;">
+          <div class="timeline-dot" style="background:#1E3A8A;color:#fff;">📅</div>
+          <div>
+            <p class="text-sm font-bold text-gray-800">Day 90 · 终局复盘</p>
+            <p class="text-xs text-gray-500">自查：细分客户营收占比到40%了吗？到没到都建议<strong>重新做一次战略诊断L2</strong>——对比两次报告，看竞争地位分有没有变。这是你对自己"这三个月有没有进步"最直接的答案。</p>
+            <a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第七章：常见问题 -->
+    <!-- ================================================================ -->
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+
+      <div class="action-card">
+        <p class="text-sm font-bold text-gray-800">Q：我选了细分，但老客户找上门来做"非细分"的业务，接不接？</p>
+        <p class="text-sm text-gray-600 mt-1">接。但<strong>不主动推广</strong>。你可以做，但不要把你的营销资源、内容精力、团队时间花在非细分客户上。做他们是为了现金流，不是战略方向。</p>
+      </div>
+
+      <div class="action-card">
+        <p class="text-sm font-bold text-gray-800">Q：选了细分以后发现市场太小，怎么办？</p>
+        <p class="text-sm text-gray-600 mt-1">如果这个细分能让你活得不错（利润高、竞争小），那就安心做"小而美"。不是所有企业都需要做大。如果确实养不活团队，说明细分选错了——回Phase 1，重新选。</p>
+      </div>
+
+      <div class="action-card">
+        <p class="text-sm font-bold text-gray-800">Q：我的团队不理解为什么要"缩小市场"，怎么沟通？</p>
+        <p class="text-sm text-gray-600 mt-1">让他们看第一章的例子。或者直接问他们：你们希望客户说"这家什么都做"还是"这家就是做我们这个的"？大部分人能听懂这个。</p>
+      </div>
+
+      <div class="action-card">
+        <p class="text-sm font-bold text-gray-800">Q：聚焦之后发现友商也跟着进来了，怎么办？</p>
+        <p class="text-sm text-gray-600 mt-1">这是好事——说明你选的细分有价值。友商跟进的时候，你已经比他们多了认知积累和客户口碑。保持领先的方法不是防着他们，而是<strong>继续做深</strong>：你比别人更懂这个细分，客户感受得到。</p>
+      </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 底部CTA -->
+    <!-- ================================================================ -->
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:16px;">L3深度咨询服务：针对你的具体企业情况，定制战略落地路线图</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+
+  </div>
+</body>
+</html>

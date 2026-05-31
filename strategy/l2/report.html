@@ -102,6 +102,75 @@
     return { tag: null, tagClass: '' };
   }
 
+  /* ========== 行动方案映射 ========== */
+  var ACTION_PLAN_MAP = {
+    '机会区': {
+      0: { name: '聚焦细分赛道', dirParam: 'niche-focus', available: true },
+      1: { name: '打造差异化卖点', dirParam: 'differentiation', available: true },
+      2: { name: '用AI实现弯道超车', dirParam: 'ai-overtake', available: true }
+    },
+    '明星区': {
+      0: { name: '加大投入扩大份额', dirParam: 'market-expand', available: true },
+      1: { name: '横向复制成功模式', dirParam: 'mode-replicate', available: true },
+      2: { name: '建立行业壁垒', dirParam: 'build-moat', available: true }
+    },
+    '陷阱区': {
+      0: { name: '聚焦收缩保留精华', dirParam: 'focus-shrink', available: true },
+      1: { name: '寻找新赛道转型', dirParam: 'new-track', available: true },
+      2: { name: '寻求合作共赢', dirParam: 'cooperation', available: true }
+    },
+    '保护区': {
+      0: { name: '深耕客户提升复购', dirParam: 'deepen-customer', available: true },
+      1: { name: '微创新延伸产品线', dirParam: 'extend-product', available: true },
+      2: { name: '用AI降低运营成本', dirParam: 'ai-reduce-cost', available: true }
+    }
+  };
+
+  function renderActionPlanCTA(quadrant, directions, goal, fundStatus) {
+    // 找到有'推荐'标签的方向
+    var recommendedIdx = -1;
+    for (var di = 0; di < directions.length; di++) {
+      var tagInfo = getDirectionTags(quadrant, di, goal, fundStatus);
+      if (tagInfo.tag === '推荐') {
+        recommendedIdx = di;
+        break;
+      }
+    }
+
+    var plan = ACTION_PLAN_MAP[quadrant] && ACTION_PLAN_MAP[quadrant][recommendedIdx];
+    if (!plan) return ''; // 没有推荐方向或没有配置
+
+    var html = '';
+    html += '<div class="l2-report-section">';
+    html += '<h2 class="l2-report-title">🚀 拿到你的执行方案</h2>';
+    html += '<div class="l2-report-card" style="background:linear-gradient(135deg,#EFF6FF,#F0F9FF);border:2px solid #BFDBFE;">';
+
+    html += '<p class="text-sm text-gray-700 leading-relaxed mb-1">根据你的诊断结果，<strong>推荐方向是「' + plan.name + '」</strong></p>';
+    html += '<p class="text-xs text-gray-500 mb-4">诊断告诉你去哪，执行方案告诉你怎么走。</p>';
+
+    html += '<div style="background:#fff;border-radius:12px;padding:14px;margin-bottom:14px;">';
+    html += '<p class="text-sm font-bold text-gray-800 mb-2">📦 包含内容</p>';
+    html += '<ul class="text-xs text-gray-600" style="list-style:none;padding:0;">';
+    html += '<li class="py-1">📘 90天分步执行手册 —— 每周干什么、谁来做、做到什么标准</li>';
+    html += '<li class="py-1">📋 3个可直接填写的模板 —— 客户分层表、市场评估矩阵、定位一页纸</li>';
+    html += '<li class="py-1">📖 2个同类型企业的真实案例 —— 怎么做的、踩了什么坑</li>';
+    html += '<li class="py-1">🔄 90天关键节点检查 + 复测邀请</li>';
+    html += '</ul>';
+    html += '</div>';
+
+    if (plan.available) {
+      html += '<a href="action/pay.html?dir=' + plan.dirParam + '" style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;font-size:16px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 16px rgba(245,158,11,0.3);">¥100 解锁执行方案 →</a>';
+      html += '<p class="text-xs text-gray-400 text-center mt-2">微信扫码支付，即刻查看</p>';
+    } else {
+      html += '<button style="display:block;width:100%;padding:14px 20px;border-radius:14px;background:#94A3B8;color:#fff;font-size:16px;font-weight:700;text-align:center;border:none;cursor:not-allowed;" disabled>该方向执行方案即将上线</button>';
+      html += '<p class="text-xs text-gray-400 text-center mt-2">正在制作中，敬请期待</p>';
+    }
+
+    html += '</div>';
+    html += '</div>';
+    return html;
+  }
+
   /* ========== 行业洞察文案 ========== */
   function getMarketLevelText(score) {
     if (score >= 60) return INDUSTRY_INSIGHT.marketLevel.high;
@@ -279,6 +348,9 @@
       html += '</div>';
     }
     html += '</div>';
+
+    // ===== 5.5 行动方案CTA（在方向卡片后、竞对分析前） =====
+    html += renderActionPlanCTA(quadrant, directions, d.goal, d.fundStatus);
 
     // ===== 6. 竞争对手分析框架 =====
     html += renderCompetitorAnalysis(d);

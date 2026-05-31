@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="微创新延伸产品线 - 90天执行手册">
+  <title>微创新延伸产品线 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #92400E; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #F59E0B; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #FFF7ED; color: #92400E; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #92400E; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #FFF7ED); border: 1px solid #FDE68A; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #FFF7ED; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #92400E; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#B45309,#A16207);">保护区 · 方向二</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">微创新延伸产品线</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">在你擅长的领域里<br>做出1-2个新产品，让老客户再多付一次钱</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>保护区</strong>——老客户信任你，但你的产品太单一，他们想多花钱都没地方花。延伸产品线不是"做完全不一样的东西"，而是<strong>"在你擅长的领域里，做一个老客户一看就知道是配套的东西"</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">微创新的"微"，意思是<strong>不在技术上创新，在组合方式和使用场景上创新</strong>。把现有的能力换一种方式打包，解决老客户的相邻需求。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家做企业团餐配送的公司，给写字楼送午餐。客户稳定但单客消费就那么多。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们发现了客户的一个相邻需求：很多企业开会时需要茶歇和简餐。于是增加了一条新线——"会议茶歇套餐"。不需要新产品，厨房、配送、客户关系都是现成的，只是多了一个场景。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>结果：</strong>客单价提升了35%，而且茶歇套餐的利润率比午餐高得多。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>延伸不在"新"，在"近"——离老客户的需求越近越好。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的产品/服务很单一，客户买了你就没别的了</li>
+          <li class="py-1">· 老客户经常问你"你们能不能也做XX"，这就是延伸的需求信号</li>
+          <li class="py-1">· 你跟老客户的关系基础好，他们愿意先试试你的新产品</li>
+          <li class="py-1">· 你有现成的团队和能力，不需要从零搭建就能延伸</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的核心产品还没做好，先打磨好现有的，别急着延伸</li>
+          <li class="py-1">· 延伸方向离你太远，需要完全不同的能力，那不是延伸，是跨界</li>
+          <li class="py-1">· 你没有精力管多一条产品线，延伸需要额外的运营精力</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（保护区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你现有产品的成熟度</strong>。如果你的核心产品还没打牢或者精力本身就跟不上，<strong>深耕客户</strong>和<strong>AI降本</strong>可能更适合你。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 发现延伸机会</span>
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>访谈10个老客户，找延伸需求</h4>
+        <ul class="checklist">
+          <li>问：在使用我们产品/服务的过程中，你还遇到过什么相关但没被满足的需求？</li>
+          <li>问：你之前为了解决这个问题找过谁？感觉怎么样？</li>
+          <li>把回答分类，找出重复出现≥3次的延伸需求</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第3-4周</span>
+        <h4>筛选最优延伸方向</h4>
+        <ul class="checklist">
+          <li>需求强度：客户愿意为这个多付多少钱？</li>
+          <li>能力匹配：你的团队能做吗？离现有能力有多远？</li>
+          <li>市场规模：不只是现有客户需要，还能吸引新客户吗？</li>
+          <li>选定1个延伸方向，做最小版本的产品方案</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>选定1个延伸方向，完成MVP产品方案</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · MVP测试</span>
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>把MVP推给老客户测试</h4>
+        <ul class="checklist">
+          <li>先找5个最熟的老客户："我们准备做XX，你是第一个知道的，想让你先试试，价格我给你打骨折"</li>
+          <li>收集反馈：价格接受吗？使用体验好吗？哪里还需要改？</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>根据反馈迭代</h4>
+        <ul class="checklist">
+          <li>修改产品方案（不用完美，能用就行）</li>
+          <li>把第一个版本的产品标准化，定价、交付流程、服务标准</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>新产品有≥5个付费客户，收入开始产生</p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 正式上线</span>
+      <div class="week-block">
+        <span class="week-num">第9-13周</span>
+        <h4>向所有老客户推广 + 衡量效果</h4>
+        <ul class="checklist">
+          <li>新产品正式在你的客户群里推广，老客户优先</li>
+          <li>评估：客单价变化？有多少客户同时买了新旧产品？新产品的利润率？</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>客单价提升≥20%，新产品有稳定的付费客户</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">延伸方向评估卡</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>延伸方向</th><th>客户需求强度(1-10)</th><th>能力匹配度(1-10)</th><th>预期客单价提升</th><th>开发难度(1-10)</th><th>总分</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 总分=需求强度×2+能力匹配度×2+预期单价提升/开发难度。分最高的先做。</p>
+      </div>
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">新产品一页纸方案</h3>
+        <div class="p-3 bg-white rounded-lg border border-gray-200">
+          <p class="text-sm text-gray-700"><strong>产品名称：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>解决什么需求：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>目标客户：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>定价：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>跟现有产品的关联：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某团餐公司：从"只送午餐"到"会议茶歇套餐"</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>给写字楼送团餐，客户稳定但客单价钉死了。</p>
+          <p><strong>做了什么：</strong>客户公司经常开会有茶歇需求，以前自己买零食凑合。他们用现有厨房和配送能力，推出"会议茶歇套餐"——标准化套餐，提前2小时下单即可。</p>
+          <p><strong>结果：</strong>客单价提升35%，茶歇利润率远高于午餐。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>推出套餐第一个月，只接到两单。原因是"客户不知道你有这个服务"。后来他们把茶歇套餐直接写在午餐配送单的背面，每一份午餐都变成了一张茶歇广告。第二个月单量翻了五倍。</p>
+          <p><strong>最关键决策：</strong>不增加固定资产，<strong>用现有资源服务客户的相邻需求</strong>。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某管理软件公司：从"卖软件"到"软件+数据报告"</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>给中小企业卖管理软件，年费制，产品单一。</p>
+          <p><strong>做了什么：</strong>客户用了软件积累了数据但不会分析，老板想要的不只是"工具"而是"能帮我看到什么"。他们推出"季度经营分析报告"增值服务——基于客户在软件里的数据，AI生成经营分析报告，收费是软件年费的30%。</p>
+          <p><strong>结果：</strong>40%的现有客户购买了增值服务，整体客单价提升25%。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>第一版报告太像"数据分析报告"，客户老板看不懂。后来把报告改成了"三句话结论+一张图+一个行动建议"的格式，老板看完就懂，购买率从15%涨到40%。不是做得不够好，是做得不够简单。</p>
+          <p><strong>最关键决策：</strong>新产品不需要从零做——<strong>客户已经在你的系统里产生了数据，你只是把它变成他们看得懂的结论。</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 14 · 客户访谈完成</p><p class="text-xs text-gray-500">自查：跟≥10个老客户聊过了吗？有没有重复出现的延伸需求？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 延伸方向选定</p><p class="text-xs text-gray-500">自查：选定方向了吗？能说清楚为什么老客户会需要它吗？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · MVP测试完成</p><p class="text-xs text-gray-500">自查：≥5个客户付费了吗？没有的话重新评估需求强度。</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#B45309;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 效果复盘</p><p class="text-xs text-gray-500">建议<strong>重新做一次L2诊断</strong>，看新产品是否提升了你的竞争地位。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：新产品会不会分散我本来就不多的精力？</p><p class="text-sm text-gray-600 mt-1">如果延伸的方向离现有业务很近——用同样的团队、同样的能力做相近的需求——那精力分散是可控的。怕的是跳到完全新的领域。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：老客户会买吗？万一做了没人买？</p><p class="text-sm text-gray-600 mt-1">这就是为什么要先拿5个老客户测试。如果他们都不愿意掏钱，说明方向有问题，停下来改。MVP阶段不花大钱。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：新产品会不会干扰老产品的品牌定位？</p><p class="text-sm text-gray-600 mt-1">只要延伸方向离你核心能力够近、服务的是同一批老客户的相邻需求，就不会干扰，反而会强化"你懂我"的认知。怕的是跳到完全不相干的领域——那就不叫延伸，叫混乱。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：做了延伸产品后，团队精力跟不上怎么办？</p><p class="text-sm text-gray-600 mt-1">延伸的前提是老产品已经稳定、不需要你每天盯着。如果你还在"救火"，先别延伸。另外，延伸初期不要分团队——让同一拨人先用20%的时间做新方向，验证稳定了再考虑拆分。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.9);margin-bottom:16px;">L3深度咨询：帮你评估延伸方向，降低产品开发试错成本</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="寻求合作共赢 - 90天执行手册">
+  <title>寻求合作共赢 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #B91C1C; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #DC2626; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #FFF7ED; color: #B45309; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #DC2626; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #B45309; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #FFF7ED); border: 1px solid #FED7AA; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #FFF7ED; color: #B45309; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #FFF7ED; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #B45309; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#B45309,#92400E);">陷阱区 · 方向三</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">寻求合作共赢</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">单打独斗太难了<br>找到能互补的伙伴，一起把蛋糕做大</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>陷阱区</strong>——市场不好，你也不强。自己单打独斗很难突破，但不代表你没有价值。<strong>你手上有些东西是别人需要的，只是你自己没意识到。</strong></p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">合作不是"求人帮忙"，是<strong>交换</strong>。你有客户资源但缺产品，就去找有产品缺客户的人；你有技术能力但缺渠道，就去找有渠道缺产品的人。<strong>陷阱区的聪明活法是：别自己爬坑，找个人搭把手。</strong></p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">这个方向的核心：<strong>用你有的，换你没有的。</strong>投入低，但需要你愿意放下"什么都得我自己做"的执念。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家做企业财税服务的小公司，只有十几个客户，获客一直靠老板的朋友圈。他们有服务能力，但缺品牌、缺渠道。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">后来他们找到一家做企业办公空间租赁的公司合作——办公空间公司有几千个企业客户，但除了租办公室没有其他服务。财税公司提出：<strong>你把我推荐给你的客户，客户成交后我给你分成</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>结果：</strong>财税公司的客户量一年翻了四倍。办公空间公司多了一个服务客户的增值项目。双方都没额外花钱，只是把资源对上了。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>合作不是谁帮谁，是谁恰好需要谁。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你有独特的资源，客户关系、区域覆盖、技术能力、行业认知，但缺别的</li>
+          <li class="py-1">· 你自己做不大，不是因为不努力，而是缺一个关键要素（产品/渠道/品牌/资金）</li>
+          <li class="py-1">· 资金紧张，经不起收缩或转型的折腾，合作是成本最低的突围方式</li>
+          <li class="py-1">· 你不介意分享利益，明白"一半的大蛋糕比整个空盘子大"</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你手头没有任何别人需要的东西，没有客户、没有技术、没有渠道</li>
+          <li class="py-1">· 你对分利润有心理障碍，总觉得"我辛辛苦苦做的东西凭什么分给你"</li>
+          <li class="py-1">· 行业里缺乏有诚信的潜在合作方，合作风险远大于收益</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（陷阱区）是基于市场吸引力和竞争地位的客观数据算出来的，但<strong>哪条路最适合你，取决于你手里有什么筹码</strong>。如果你手上的资源不足以做交换，<strong>聚焦收缩</strong>和<strong>新赛道转型</strong>可能更适合你。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 盘点筹码，找到互补方</span>
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>盘点你的核心交换资源</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">把你手上有价值的东西列出来，用<strong>模板1（资源交换清单）</strong>：</p>
+        <ul class="checklist">
+          <li>客户资源：你有多少客户？他们有什么特征？</li>
+          <li>渠道/区域：你在哪个区域/渠道有覆盖？</li>
+          <li>专业能力：你的团队擅长什么？</li>
+          <li>品牌/信任：你在客户心里建立了什么认知？</li>
+          <li>数据/信息：你掌握什么别人不知道的信息？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>列出≥3项你可以用来交换的资源</p>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第3-4周</span>
+        <h4>找到互补的潜在合作方</h4>
+        <ul class="checklist">
+          <li>在你的行业上下游和相邻行业里，谁缺你手里有的东西？</li>
+          <li>列出5-8个潜在合作方，注明互补逻辑</li>
+          <li>通过行业活动、社群、转介绍等渠道开始接触</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>列出≥5个潜在合作方，已开始接触≥3个</p>
+      </div>
+      <div class="action-card" style="background:#FEF2F2;border-color:#FECACA;">
+        <p class="text-sm font-bold text-red-700 mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>明确自己的交换筹码，并开始接触潜在合作方</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 谈合作框架</span>
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>跟最匹配的2-3家深入谈</h4>
+        <ul class="checklist">
+          <li>不是"你要不要跟我合作"，而是"我有X，你有Y，如果合作，客户能同时获得X+Y，我们都能多赚钱"</li>
+          <li>准备好合作方案框架：各自的贡献是什么？利益怎么分？合作期限多长？</li>
+          <li>谈的时候先说"我能给你什么"，再说"我希望得到什么"，顺序很重要</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>小范围试跑一个合作项目</h4>
+        <ul class="checklist">
+          <li>选一个最小的合作项目先试1-2个月，不急着签大协议</li>
+          <li>试跑的目的：看合作方是否靠谱、合作模式是否顺畅、效果是否如预期</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少1个合作项目启动试运行</p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 巩固合作，放大效果</span>
+      <div class="week-block">
+        <span class="week-num">第9-12周</span>
+        <h4>评估试跑结果，决定是否扩大</h4>
+        <ul class="checklist">
+          <li>试跑项目的效果如何？合作方靠谱吗？过程顺畅吗？</li>
+          <li>如果OK：签正式合作框架，扩大合作范围</li>
+          <li>如果不行：复盘问题在哪，换一个合作方或调整合作模式</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>至少1个合作项目完成试跑并有正向结果，决定是否扩大</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">资源交换清单</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>你拥有的资源</th><th>谁可能需要</th><th>为什么他们会要</th><th>你想换什么回来</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">合作方评估表</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>合作方</th><th>互补程度(1-10)</th><th>对方靠谱度(1-10)</th><th>预期收益(1-10)</th><th>合作难度(1-10)</th><th>总分</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某财税公司 × 办公空间公司：渠道互补，客户量翻四倍</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>财税公司只有十几个客户，获客靠老板朋友圈，增长乏力。</p>
+          <p><strong>做了什么：</strong>找到一家办公空间租赁公司——对方有几千个企业客户但只提供空间租赁。财税公司提出：你把我的服务推荐给你的客户，成交后利润分成。办公空间公司多了一个增值服务项，财税公司获得了稳定客户渠道。</p>
+          <p><strong>结果：</strong>财税公司客户量一年内翻四倍，办公空间公司客户满意度提升。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>第一版分润方案谈崩了两次——对方觉得"凭什么给你推荐客户"，财税公司换了说法："这是一项你客户需要的增值服务，你是在帮客户，顺便赚点推荐费"。说法从"分你的利润"变成了"帮你服务客户"。谈成之后才发现，合作的障碍不是利益分配，是沟通角度。</p>
+          <p><strong>最关键决策：</strong>愿意分利益。很多老板觉得"客户是我服务的凭什么分给你"，但<strong>没有别人，这些客户根本不会来找你。</strong></p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某设计公司 × 印刷厂：互为渠道，降低客户获取成本</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>设计公司做品牌设计，印刷厂做物料印刷。双方客户其实有重叠——做品牌设计的客户后面一定要印东西，印东西的客户有时也需要品牌升级。</p>
+          <p><strong>做了什么：</strong>互相推荐客户。设计公司做完logo推荐客户去合作印刷厂印物料，印刷厂遇到"需要品牌设计"的客户推荐给设计公司。不分成，纯互推——每季度核对一次推荐量和成交量，确保双方投入对等。</p>
+          <p><strong>结果：</strong>双方获客成本降了一半，转化率还高了——因为推荐的客户已经有信任基础。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>前三个月推荐出去十几次，只成交了一单。双方差点放弃。后来分析发现不是模式有问题，是推荐时机不对——印刷厂在客户还没确定品牌方案的时候就推了设计师，客户觉得"你先让我把logo定下来再说"。调整了推荐时机后，成交率从10%涨到40%。</p>
+          <p><strong>最关键决策：</strong>选对合作方最重要——<strong>对方不跟你抢客户，但恰好能服务你客户的另一部分需求</strong>。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 14 · 资源盘点完成</p><p class="text-xs text-gray-500">自查：列出你的交换筹码了吗？≥3项才算合格。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 已经开始接触</p><p class="text-xs text-gray-500">自查：跟至少3个潜在合作方接触过了吗？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · 合作试跑启动</p><p class="text-xs text-gray-500">自查：至少1个合作进入试跑阶段了吗？</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#B45309;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 复盘+复测</p><p class="text-xs text-gray-500">建议<strong>重新做一次L2诊断</strong>，看合作是否带来了战略位置的变化。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我怕合作方把我的客户抢走了？</p><p class="text-sm text-gray-600 mt-1">选对合作方就不会。好的合作方跟你互补，不是跟你竞争。合同里明确约定"合作期间和结束后X年内不碰对方的客户"。另外，合作的基础是信任，最好先小范围试跑。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我试过合作，但对方总想占便宜怎么办？</p><p class="text-sm text-gray-600 mt-1">那是合作方选错了。好的合作是互相都觉得"赚了"。如果对方只想着自己多拿，趁早结束。合作的前提是双赢思维，不是零和博弈。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我没有"大资源"，感觉没什么可交换的？</p><p class="text-sm text-gray-600 mt-1">不一定非要大资源。你对某个小圈子的信任、对某个细分领域的经验、甚至你本人的人脉——都可以是筹码。认真填模板1，你可能会发现自己之前没意识到的资产。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：合作了一段时间后，发现合作方不行怎么办？</p><p class="text-sm text-gray-600 mt-1">这就是为什么要先小范围试跑。试跑阶段设置明确的退出条件——比如"试跑2个月，如果没有产生X个共同客户就终止"。有退出机制的合作才安全。没签大协议之前退出成本很低。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:16px;">L3深度咨询：帮你制定合作策略，筛选和评估潜在合作方</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

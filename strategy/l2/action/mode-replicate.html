@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="横向复制成功模式 - 90天执行手册">
+  <title>横向复制成功模式 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #0F766E; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #0D948D; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #F0FDFA; color: #0F766E; }
+    .phase-2 { background: #EFF6FF; color: #1E3A8A; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #0D948D; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #0D948D; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #ECFDF5); border: 1px solid #99F6E4; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #CCFBF1; color: #0F766E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #F0FDFA; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #0F766E; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#0D948D,#0F766E);">明星区 · 方向二</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">横向复制成功模式</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">把已经跑通的模式<br>复制到新城市或新客群</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>明星区</strong>——你的模式在一个市场已经验证了、赚钱了、跑通了。接下来最自然的增长方式不是"重新发明"，而是<strong>"把已经在A地验证的模式，搬到B地去"</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">复制的关键是搞清楚：<strong>你的成功是可复制的，还是依赖了不可复制的条件</strong>？比如你的成功是因为你在某个城市有独家人脉——那换个城市就复制不了。但如果你的成功是因为一套可以标准化的流程——那就可以复制。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家在成都做到第一的企业培训公司，模式验证后决定去重庆。他们不是"派几个人去试试"，而是做了一套标准化的复制方案。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们把操作分解为"选址标准→团队配置→培训手册→营销模板→供应商列表"五个模块，每个模块有明确的检查清单。派了一个运营经理带着这本手册去重庆，6个月就复制到了一个跟成都差不多的规模。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>复制靠的不是人，是手册。人可能水土不服，但标准化的流程可以反复打磨。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你有一个明确验证过的成功模式，客户来源、服务流程、盈利能力都跑通了</li>
+          <li class="py-1">· 你的运营流程可以被文档化，有人能写出一本"操作手册"</li>
+          <li class="py-1">· 存在明确的、未覆盖的新区域/新客群，且与现有市场有相似性</li>
+          <li class="py-1">· 你有或能找到能执行的人，一个能被手册"武装"的负责人</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的成功高度依赖个人，关键人物一走模式就散了</li>
+          <li class="py-1">· 新市场的环境差异太大，客户需求、竞争格局完全不同</li>
+          <li class="py-1">· 你的模式本身还没有稳定，还在不断试错调整中</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#ECFDF5;border:1px solid #A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（明星区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你的模式是否可以被标准化</strong>。如果你的成功高度依赖个人或模式还不稳定，<strong>扩大份额</strong>和<strong>建立壁垒</strong>可能更适合你。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01，帮你判断。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 把成功模式"拆"成手册</span>
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>提炼成功的关键要素</h4>
+        <ul class="checklist">
+          <li>回答：你现在的客户是通过什么渠道来的？你的服务流程是什么？盈利的关键是什么？</li>
+          <li>把答案写成一句话版本的"模式说明书"</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第3-4周</span>
+        <h4>写出标准化操作手册（SOP）</h4>
+        <ul class="checklist">
+          <li>把关键流程分解成步骤：选址/客户获取/服务交付/售后维护</li>
+          <li>每个步骤：做什么、标准是什么、谁来做、做多久</li>
+          <li>选定1个复制目标：新城市或新客群</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#ECFDF5;border-color:#A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>完成标准化操作手册 + 选定1个复制目标</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 小规模验证</span>
+      <div class="week-block">
+        <span class="week-num">第5-8周</span>
+        <h4>在新目标启动最小规模的验证</h4>
+        <ul class="checklist">
+          <li>派1个人或自己亲自去新市场试水，不是all-in，是小规模跑通</li>
+          <li>按照SOP执行，记录哪里管用、哪里需要调整</li>
+          <li>如果3周没有正向反馈，停下来看看SOP哪里写错了</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>新模式产生初步收入，哪怕很少</p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 决定是否加大复制</span>
+      <div class="week-block">
+        <span class="week-num">第9-13周</span>
+        <h4>评估复制效果</h4>
+        <ul class="checklist">
+          <li>新市场的客单量是否接近老市场的起步阶段？</li>
+          <li>SOP需要改哪些地方？把修改后的SOP定为V2版本</li>
+          <li>决定：继续加码这个目标，还是换下一个，还是暂停复制</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>新模式有收入验证，SOP升级到V2</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">模式拆解五问</h3>
+        <div class="p-3 bg-white rounded-lg border border-gray-200">
+          <p class="text-sm text-gray-700"><strong>1. 客户从哪来？</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>2. 客户为什么选你？</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>3. 你的服务/交付流程？</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>4. 每个客户你赚多少？</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>5. 这个模式依赖什么不可复制的东西？</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 第5问最关键——如果答案是"我本人"或"某个特殊关系"，这个模式很难复制。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某企业培训公司：从成都到重庆，一本SOP搞定</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>成都市场做到第一，想复制到重庆。</p>
+          <p><strong>做了什么：</strong>把操作拆成五大模块：选址标准、团队配置、培训手册、营销模板、供应商列表。每个模块一份检查清单。派一个运营经理带手册去重庆。</p>
+          <p><strong>结果：</strong>6个月复制到接近成都的规模。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>SOP第一版写得太细，执行的人反而抓不住重点。后来把所有步骤归成"开业前必做的7件事"，每件事配一张清单，反而执行率大幅提高。SOP不是越细越好，是<strong>让对方能记住几个关键动作</strong>。</p>
+          <p><strong>最关键决策：</strong>不是"派最厉害的人去"，而是<strong>"把最厉害的人脑子里的东西写成别人能照着做的手册"</strong>。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某财税代账公司：从1个城市到5个城市的复制之路</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>在某二线城市做到财税代账第一，月服务客户800家。模式跑通了，但城市天花板到了。</p>
+          <p><strong>做了什么：</strong>把"获客-签约-做账-报税-续费"全流程拆成了37个标准节点，每个节点配了操作视频和模板。以"成熟市场利润养新市场"的方式，一个季度开一个新城市。</p>
+          <p><strong>结果：</strong>两年覆盖5个城市，客户总量从800家涨到3500家，规模效应让单客成本下降40%。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>第一个复制城市差点关掉——派去的负责人是原城市最好的会计，但不会管理团队。后来学会了：复制需要的是"能执行手册的人"，不一定是"原来最厉害的人"。</p>
+          <p><strong>最关键决策：</strong>复制第一站选了一个<strong>离总部最近的市场</strong>，出了问题老板3小时能到现场。不要第一站就选最远的。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 14 · 模式提炼完成</p><p class="text-xs text-gray-500">自查：能说清楚你成功的五个要素吗？尤其第5问。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · SOP完成 + 目标选定</p><p class="text-xs text-gray-500">自查：有标准化操作手册吗？选定复制目标了吗？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · 小规模启动</p><p class="text-xs text-gray-500">自查：新市场开始产生收入了吗？哪怕很少。</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#0D948D;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 复盘+复测</p><p class="text-xs text-gray-500">建议<strong>重新做一次L2诊断</strong>，看复制是否改变了你的市场吸引力。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我的模式能复制吗？怎么判断？</p><p class="text-sm text-gray-600 mt-1">模板1的第5问：你的成功多大程度上依赖你个人？如果60%以上靠你——复制不了，除非你能克隆自己。如果靠的是流程和方法——可以复制。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：新市场跟老市场不一样，SOP没用怎么办？</p><p class="text-sm text-gray-600 mt-1">SOP是起点不是终点。去新市场先按SOP跑，发现问题记录下来改。复制第一站的目标不是完美复制，是<strong>让你的SOP从V1进化到V2</strong>。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：派谁去新市场最合适？</p><p class="text-sm text-gray-600 mt-1">不要派你最依赖的骨干——他走了老市场会出问题。找一个中层里执行力最强的人，配好SOP和你的远程支持。他要的不是"创新"，是"执行"。SOP写得越细，对他能力的要求越低。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：复制失败了怎么收场？</p><p class="text-sm text-gray-600 mt-1">控制试错成本——先租个共享办公位、招1-2个人跑最小闭环。3个月没起色就果断收。复制失败丢的是小钱，拖太久才收场丢的是大钱。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.9);margin-bottom:16px;">L3深度咨询：帮你提炼标准化模式，降低复制失败率</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

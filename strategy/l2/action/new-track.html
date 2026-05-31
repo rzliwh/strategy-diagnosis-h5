@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="寻找新赛道转型 - 90天执行手册">
+  <title>寻找新赛道转型 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #B91C1C; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #DC2626; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #FFF7ED; color: #B45309; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #DC2626; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #B45309; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #FFF7ED); border: 1px solid #FED7AA; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #FFF7ED; color: #B45309; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #FFF7ED; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #B45309; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#B45309,#92400E);">陷阱区 · 方向二</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">寻找新赛道转型</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">当前赛道太难了，不是你不够努力<br>是该换一条路走</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>陷阱区</strong>——市场不算好，你在里面也不算强。这不是你做错了什么，而是赛道本身就有问题。<strong>在一个下沉的赛道里努力，再努力也是往下走。</strong></p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">转型不是"今天关掉公司明天开一个新的"。而是<strong>用好你现有的资源和能力，换一个更有增长空间的方向</strong>。你积累的客户关系、行业认知、团队能力，在新赛道可能都是稀缺资源——关键是你有没有找到对的赛道。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">这个方向的核心：<strong>不是从零开始，而是有目的地迁移。</strong></p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家做传统印刷的公司，纸质名片、宣传册印刷量连年下滑，价格越压越低，利润越来越薄。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们没有转行开餐厅，而是用"印刷行业的供应链管理经验"转型做<strong>企业包装耗材一站式采购</strong>。客户还是企业的采购部门，但产品从"印刷品"变成了"包装材料"——从下滑赛道切换到刚需赛道。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>结果：</strong>老客户迁移了一部分过来，新赛道客户规模大得多，两年后新业务营收超过了旧业务。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>转型不是转行。是用你的核心能力，换一个新战场。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <p class="text-sm text-gray-500 mb-3">转型是最大的战略决策之一，不是方向一不对就转——先确认你是不是真的该转了。</p>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你所在的行业在下滑或在萎缩，不是你的问题，是行业的问题</li>
+          <li class="py-1">· 你有一定的资金储备，能支撑6-18个月的转型探索期</li>
+          <li class="py-1">· 你在现有业务里积累了可迁移的能力或资源（客户关系、供应链、技术、品牌）</li>
+          <li class="py-1">· 你本人对新方向有好奇心，愿意花时间去学习和验证</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你手里的资金只够维持3个月，转型需要时间，3个月远远不够</li>
+          <li class="py-1">· 你在现有赛道的下滑是因为你自己做得不好，而不是行业问题，先把自己做好再说转型</li>
+          <li class="py-1">· 你的团队和资源高度绑定在当前行业，没有明显的可迁移能力</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（陷阱区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你的具体情况</strong>。转型需要资金和时间储备，如果条件不具备，<strong>聚焦收缩</strong>和<strong>合作共赢</strong>可能更适合你现在的阶段。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <p class="text-sm text-gray-500 mb-3">转型不是赌博，是验证。三个阶段：探索→测试→决策。</p>
+
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 列出备选赛道并用数据筛选</span>
+
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>列出所有可能的转型方向</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">从<strong>现有能力出发</strong>，不是从"什么热门"出发：</p>
+        <ul class="checklist">
+          <li>你现在最擅长的能力是什么？（不是产品，是能力，比如"供应链管理"、"客户关系维护"、"数据分析"）</li>
+          <li>这些能力还能用在哪个行业？列出5-10个方向</li>
+          <li>快速筛选：去掉那些"市场规模明显太小"或"竞争极度红海"的</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>列出≥5个候选方向，剩3个进入下一轮筛选</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第3-4周</span>
+        <h4>用模板1和模板2给每个方向打分</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">三个核心问题：</p>
+        <ul class="checklist">
+          <li>市场规模：够不够大、在不在增长？</li>
+          <li>竞争格局：有没有已经很强的头部玩家？</li>
+          <li>能力匹配：你的团队能不能在这个新赛道建立优势？</li>
+          <li>选定1个方向作为主攻，1个作为备选</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>选定1个转型方向，有数据支撑而不是凭感觉</p>
+      </div>
+
+      <div class="action-card" style="background:#FEF2F2;border-color:#FECACA;">
+        <p class="text-sm font-bold text-red-700 mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>选定1个转型方向 + 1个备选方向，每个至少有三条数据支撑你的判断</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · MVP最小验证</span>
+
+      <div class="week-block">
+        <span class="week-num">第5-8周</span>
+        <h4>用最小成本验证转型方向</h4>
+        <p class="text-sm text-gray-600 leading-relaxed"><strong>不要all-in，不要招人，不要换办公室。</strong>用你现有资源做一个最小验证：</p>
+        <ul class="checklist">
+          <li>能不能用现有团队的人，花20%的时间试水新方向？</li>
+          <li>能不能找到3-5个"如果你做我就买"的潜在客户聊聊？</li>
+          <li>能不能用一个最简单的方案（哪怕是PPT）先测试市场反应？</li>
+          <li>记录每一次客户反馈，他们感兴趣的点在哪？不感兴趣的原因是什么？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少3个潜在客户表达明确兴趣或购买意向</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>聊了10个客户没人感兴趣——方向可能选错了</p>
+      </div>
+
+      <div class="action-card" style="background:#ECFDF5;border-color:#A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">🔑 Phase 2 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>新方向有至少3个付费客户或明确意向，验证了方向可行性</strong></p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 决定加码还是回撤</span>
+
+      <div class="week-block">
+        <span class="week-num">第9-12周</span>
+        <h4>根据验证结果做决策</h4>
+        <ul class="checklist">
+          <li>如果验证通过：制定资源倾斜计划，逐步把旧业务的资源移向新方向</li>
+          <li>如果验证不佳：回到备选方向再测一轮，或者重新评估转型的时机</li>
+          <li>制定12个月的过渡方案：旧业务如何有序收缩，新方向如何持续投入</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>新方向有明确的市场反馈，并制定了12个月过渡方案</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">转型方向评估卡</h3>
+        <p class="text-xs text-gray-500 mb-3">每个候选方向填一张卡。</p>
+        <div class="p-3 bg-white rounded-lg border border-gray-200 mb-3">
+          <p class="text-sm text-gray-700"><strong>方向名称：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>市场规模估计：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>增长速度：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>头部玩家（有没有大公司？）：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>你的可迁移优势：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>最大的不确定性：</strong><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 mt-1"><strong>综合判断（打勾）：</strong> □ 值得测试 □ 再看看 □ 放弃</p>
+        </div>
+      </div>
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">MVP验证记录表</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>验证对象</th><th>接触方式</th><th>对方反应</th><th>兴趣程度(1-10)</th><th>关键反馈</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 至少填满5行。如果平均兴趣分<5，方向可能有问题。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某印刷公司：从名片印刷转型为企业包装耗材一站式采购</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>传统印刷公司，业务连年下滑，利润越来越薄。最大的资产是有几百个企业客户关系和供应商管理经验。</p>
+          <p><strong>做了什么：</strong>从"印刷"转到"包装耗材采购服务"——利用对供应链的理解和企业客户关系，做企业包装材料的一站式供应。先从老客户里找了10家验证需求，7家确认这是他们的痛点。</p>
+          <p><strong>结果：</strong>新业务两年后营收超过旧业务。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>老客户迁移速度比预期慢。"包装材料"跟"印刷品"虽然是相邻需求，但客户的采购决策链不同——印刷品是行政买，包装材料是供应链部门买。他们花了大半年才打通新客户的决策路径。</p>
+          <p><strong>最关键决策：</strong>转型不是转行。印刷和包装是同一条供应链上的两个节点，<strong>能力可迁移，客户可复用</strong>。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某活动策划公司：从线下活动转型为线上私域运营服务</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>公司做了7年线下活动策划，疫情后业务骤降。团队有很强的"用户运营"能力——活动策划本质上是运营人的能力。</p>
+          <p><strong>做了什么：</strong>帮品牌做私域社群运营——把活动策划的"人跟人之间怎么互动"的能力用到线上。免费帮两个老客户的品牌做了两个月社群运营，用数据验证效果。</p>
+          <p><strong>结果：</strong>12个月后私域运营收入占到总收入的60%。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>从"看得见摸得着的活动"变成"纯线上的社群"，老客户一开始不认可这个价值——"你们以前是搭舞台的，现在说能帮我管微信群？"他们花了半年时间用免费服务攒案例，才逐步建立了线上运营的口碑。</p>
+          <p><strong>最关键决策：</strong>不是选了什么新行业，而是<strong>识别出了自己的核心能力——"运营人的关系"，这个能力在线下和线上都能用。</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 14 · 候选方向清单完成</p><p class="text-xs text-gray-500">自查：至少列出5个候选方向了吗？每个方向能说清你凭什么能做吗？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 方向选定</p><p class="text-xs text-gray-500">自查：选定主攻方向了吗？有至少3条数据支撑不是凭感觉？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · MVP验证结果</p><p class="text-xs text-gray-500">自查：找到至少3个愿意掏钱的客户了吗？没有的话需要重新评估方向。</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#B45309;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 决策复盘</p><p class="text-xs text-gray-500">建议<strong>重新做一次L2诊断</strong>，看新方向是否改变了你的战略位置。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：怎么区分"该转型了"和"我做得不够好"？</p><p class="text-sm text-gray-600 mt-1">看行业数据——如果你所在的行业前几名的公司也在下滑，说明是行业问题。如果同行里有人还在增长而你下滑了，可能不是赛道问题，是你自己的问题。先把自己做好。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：转型期间旧业务怎么办？</p><p class="text-sm text-gray-600 mt-1">用旧业务养新业务。旧业务不需要做大，但需要维持基本运转——它是转型期的安全垫。不要因为有了新方向就急着关掉旧业务。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：转型半年了还没有起色，要坚持还是放弃？</p><p class="text-sm text-gray-600 mt-1">看半年里你有没有离目标更近。如果连初步的市场反馈都没有——没有客户说"这个有意思"——那方向可能有问题。如果市场反馈是正向的只是速度慢，可以继续。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：转型成功了，旧业务全部关掉吗？</p><p class="text-sm text-gray-600 mt-1">不一定。如果旧业务还能稳定产生现金流，就留着当"现金牛"——不投入精力发展，但让它继续运转养着新业务。很多成功转型的企业，旧业务最后变成了"被动收入"。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:16px;">L3深度咨询：帮你系统评估转型方向，制定安全的过渡方案</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="聚焦收缩保留精华 - 90天执行手册">
+  <title>聚焦收缩保留精华 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #B91C1C; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #DC2626; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #FFF7ED; color: #B45309; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #DC2626; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #B45309; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #FFF7ED); border: 1px solid #FED7AA; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #FFF7ED; color: #B45309; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #FFF7ED; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #B45309; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#B45309,#92400E);">陷阱区 · 方向一</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">聚焦收缩，保留精华</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">砍掉让你忙而不赚钱的业务<br>集中火力打赢一场仗</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>陷阱区</strong>——市场吸引力低，你的竞争地位也弱。这是最难的位置，但也是<strong>做减法最有效的位置</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">很多老板在陷阱区犯的错误是"多试几个方向，说不定哪个就起来了"。结果业务线越铺越多，每条线都不强，团队精力分散，利润被稀释。正确做法恰恰相反——<strong>砍掉不赚钱的业务，把资源集中到最能打的那个点上</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">收缩不是认输，是<strong>战略性后撤</strong>。先用减法瘦身，把利润提上来，再考虑下一步。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家做企业礼品定制的公司，原来同时做四块：节日礼盒、员工福利、客户伴手礼、活动定制。每块都有客户，每块都做不精。年营收800万但利润不到5%。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们做了一件事：<strong>砍掉节日礼盒和活动定制</strong>，只保留员工福利和客户伴手礼。把设计师和销售从四个方向集中到两个方向。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">结果：营收从800万降到600万，但利润从40万涨到120万。因为聚焦后设计效率提升了，采购量集中后议价能力变强，而且销售不再是"什么都能做但什么都说不清楚"。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>营收降了，利润涨了。这就是收缩的价值。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <p class="text-sm text-gray-500 mb-3">收缩需要勇气——承认有些业务不该做，比开始新业务更难。</p>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的业务线超过3条，但每条线的利润都不高，甚至有些线在亏损</li>
+          <li class="py-1">· 你和团队每天都在"救火"，这个客户催、那个项目赶，没有专注</li>
+          <li class="py-1">· 你心里其实知道哪块业务最赚钱、最有潜力，但一直舍不得砍掉其他的</li>
+          <li class="py-1">· 你的现金流偏紧，经不起长时间试错</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你只有一条业务线，已经是最精简的状态，没有可砍的</li>
+          <li class="py-1">· 你的每条业务线都在稳定盈利且互不冲突，收缩反而破坏协同</li>
+          <li class="py-1">· 你的问题不是业务太多，而是核心业务本身没有竞争力，收缩解决不了这个问题</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了。陷阱区里，<strong>收缩、转型、合作</strong>三条路各适合不同情况。</p>
+        <p class="text-sm text-gray-700 leading-relaxed mt-2">这时候你需要回头看一下诊断报告里的另外两个方向——<strong>寻找新赛道转型</strong>和<strong>合作共赢</strong>——看看哪个更适合你。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01，帮你判断。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <p class="text-sm text-gray-500 mb-3">三个阶段：用数据看清真相→果断砍→集中火力。</p>
+
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 用数据看清每条线的真相</span>
+
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>每一条业务线单独算账</h4>
+        <p class="text-sm text-gray-600 leading-relaxed"><strong>不是看收入，是看利润。</strong>用模板1把每条业务线的真实利润算出来。自己花的精力也算成本——你的时间不是免费的。</p>
+        <ul class="checklist">
+          <li>每条业务线：收入 - 直接成本 - 摊销成本 = 真实利润</li>
+          <li>标注每条线的毛利、净利、占用你多少时间、占用团队多少精力</li>
+          <li>特别标注：哪些业务线"吃掉"了最好的资源但产出最低</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>每条业务线有清晰的利润数据，不是凭感觉说"大概赚钱"</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第3周</span>
+        <h4>识别"伪利润"业务</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">有些业务看起来有收入，但<strong>算上你的精力和团队机会成本，其实是亏的</strong>：</p>
+        <ul class="checklist">
+          <li>占用你最多时间的业务，是不是利润最高的？</li>
+          <li>有没有客户单次金额大但利润极薄甚至负的？</li>
+          <li>有没有业务线虽然赚钱，但天花板已经触顶、增长为零？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>列出"应该砍掉/让给别人/收缩规模"的候选业务清单</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第4周</span>
+        <h4>做决定：留什么，砍什么</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">用<strong>模板2（业务线留存决策矩阵）</strong>打分。三条标准：</p>
+        <ul class="checklist">
+          <li>利润贡献：这条线赚钱吗？</li>
+          <li>战略价值：这条线是未来的方向吗？</li>
+          <li>资源匹配：你的资源和能力匹配这条线吗？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>明确决定保留哪条、砍掉哪条、收缩哪条</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>做完决定后"舍不得"，又开始纠结——这是情绪，不是数据</p>
+      </div>
+
+      <div class="action-card" style="background:#FEF2F2;border-color:#FECACA;">
+        <p class="text-sm font-bold text-red-700 mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>做出明确的保留/砍掉/收缩决定，并写下每条线的理由</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 启动收缩</span>
+
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>非核心业务的退出计划</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">不是一刀切停掉，是<strong>有序退出</strong>：</p>
+        <ul class="checklist">
+          <li>通知现有客户：我们正在调整业务方向，现有合同执行完毕后不再续约</li>
+          <li>给客户推荐替代方案或友商（体面地退出）</li>
+          <li>已经在进行中的项目认真完成，退出不是翻脸</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>退出计划已启动，所有受影响客户已通知</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>资源回收——人、钱、时间回流核心业务</h4>
+        <ul class="checklist">
+          <li>把砍掉业务的团队人力重新分配到保留业务</li>
+          <li>把营销预算100%集中到核心业务</li>
+          <li>你本人的时间，从"哪个客户都见"变成"只见核心业务客户"</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>核心业务获得至少比收缩前多50%的资源和注意力</p>
+      </div>
+
+      <div class="action-card" style="background:#ECFDF5;border-color:#A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">🔑 Phase 2 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>非核心业务完全退出或降到最低运营状态，核心业务获得显著资源回流</strong></p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 深耕核心，验证效果</span>
+
+      <div class="week-block">
+        <span class="week-num">第9-12周</span>
+        <h4>集中火力做深核心业务</h4>
+        <ul class="checklist">
+          <li>在核心业务上投入之前被分散的资源，设计优化、渠道加深、客户关系加强</li>
+          <li>因为你更专注了，产品/服务质量应该明显提升</li>
+          <li>关注核心客户的反馈，他们有没有感受到你的变化？</li>
+        </ul>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第13周</span>
+        <h4>90天复盘——用利润说话</h4>
+        <ul class="checklist">
+          <li>整体毛利率有没有提升？（目标：提升≥5个百分点）</li>
+          <li>核心业务的营收增速是否提升？</li>
+          <li>你和团队的精力是不是更集中了？</li>
+          <li>这次收缩有没有伤筋动骨，还是有条不紊？</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>整体毛利率提升≥5个百分点，核心业务增长迹象明显</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <p class="text-sm text-gray-500 mb-3">收缩凭数据，不凭感觉。这两个模板帮你做决定。</p>
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">业务线真实利润表</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>业务线</th><th>年营收</th><th>直接成本</th><th>摊销成本</th><th>真实利润</th><th>利润率</th><th>占用你的时间%</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 摊销成本 = 房租、行政等按收入比例分摊。你自己的时间按小时工资折算。</p>
+      </div>
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">业务线留存决策矩阵</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>业务线</th><th>利润贡献(1-10)</th><th>战略价值(1-10)</th><th>资源匹配(1-10)</th><th>总分</th><th>决定</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 总分≥21=保留；15-20=观察；<15=退出。诚信打分，别骗自己。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某企业礼品公司：营收降了200万，利润涨了80万</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>四条业务线同时跑——节日礼盒、员工福利、客户伴手礼、活动定制。年营收800万，利润不到40万。老板每天在不同的客户需求之间切换，团队也疲于应付。</p>
+          <p><strong>做了什么：</strong>砍掉节日礼盒和活动定制（利润最薄、占用精力最多），只保留员工福利和客户伴手礼。</p>
+          <p><strong>结果：</strong>营收降到600万，但利润涨到120万。设计效率提升、采购有了量议价权、销售话术变清晰——"我们就是做商务送礼的"。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>砍业务的时候，老客户打电话来骂"你们怎么说变就变"。老板一个个解释，推荐了替代供应商。</p>
+          <p><strong>最关键决策：</strong>不是砍哪个，而是<strong>砍完以后有没有勇气面对短期收入下降</strong>。扛住了，利润就上来了。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某软件开发工作室：砍掉外包业务，专注做自己的SaaS产品</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>8人团队，一半人做外包（项目制，来钱快但利润薄），一半人在开发自己的SaaS产品（还没收入）。外包业务养着SaaS研发，但两头都做不好。</p>
+          <p><strong>做了什么：</strong>主动停接新外包项目，现有项目做完后不再续。团队全部转到SaaS研发和获客上。</p>
+          <p><strong>结果：</strong>前6个月收入腰斩，但第7个月SaaS开始有付费客户。18个月后SaaS的月度经常性收入超过了之前外包的最高月收入。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>收入腰斩的那半年，差点撑不住。老板说"全靠之前的积蓄和自己的信念"。但如果不砍，SaaS永远做不起来。</p>
+          <p><strong>最关键决策：</strong>收缩需要<strong>现金储备做缓冲</strong>。如果没有至少6个月的运营资金储备，不要all-in收缩。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <p class="text-sm text-gray-500 mb-3">四个关键时间点，建议在手机日历上设个提醒。</p>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 7 · 利润数据拉完</p><p class="text-xs text-gray-500">自查：每条线的利润数据清楚了吗？别凭感觉说"大概赚钱"——感觉经常是错的。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 收缩决定已做</p><p class="text-xs text-gray-500">自查：留什么、砍什么，决定了吗？决定了就别回头看了。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · 退出已完成</p><p class="text-xs text-gray-500">自查：非核心业务退出了吗？核心业务获得更多资源了吗？</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#B45309;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 利润复盘</p><p class="text-xs text-gray-500">自查：毛利率提升了吗？建议<strong>重新做一次L2诊断</strong>，看双维度的分数有没有变化。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：砍掉业务后营收下降怎么办？</p><p class="text-sm text-gray-600 mt-1">营收下降是必然的，你要盯的不是营收，是利润。如果营收降了30%但利润涨了50%，这个决策就是对的。很多老板在陷阱区的最大错误就是<strong>舍不得砍掉"有营收但不赚钱"的业务</strong>。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：砍掉的业务里有几个大客户，不想得罪怎么办？</p><p class="text-sm text-gray-600 mt-1">帮他们找到靠谱的替代供应商，做好交接。表面上你失去了客户，实际上你赢了尊重——客户会记住你的体面。以后你有新方向了他们还可能回来。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：员工不理解，觉得"公司是不是不行了"？</p><p class="text-sm text-gray-600 mt-1">这是最常见的团队反应。你需要坦诚沟通：不是公司不行了，是我们要把力量集中到一个点上。收缩后核心业务的增长数据就是最好的说服。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：收缩以后发现核心业务也做不起来？</p><p class="text-sm text-gray-600 mt-1">这是个真风险。所以Phase 1要做足功课——确认核心业务确实有潜力再收缩。如果核心业务本身没有竞争力，那你可能需要的是转型（看陷阱区方向二），不是收缩。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:16px;">L3深度咨询：帮你评估每条业务线的真实价值，制定安全的退出路径</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

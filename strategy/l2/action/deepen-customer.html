@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="深耕客户提升复购 - 90天执行手册">
+  <title>深耕客户提升复购 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #92400E; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #F59E0B; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #FFF7ED; color: #92400E; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #92400E; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #FFF7ED); border: 1px solid #FDE68A; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #FFF7ED; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #92400E; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#B45309,#A16207);">保护区 · 方向一</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">深耕现有客户，提升复购</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">别老想着开新客户<br>把已有客户服务好，钱就来了</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>保护区</strong>——市场增长放缓，但你在现有市场里的位置是稳的。这时候最划算的事不是大力开拓新市场，而是<strong>从已有客户里挖出更多价值</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">一个被很多人忽略的事实：<strong>老客户复购的获客成本是零，转化率是新客的5-10倍</strong>。你花在新客户上的那些钱和精力，其实值得先花在老客户身上。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">深耕不是"多给客户发广告"。而是<strong>把客户关系从"一锤子买卖"变成"持续服务"</strong>。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家做企业礼品的公司，发现一个现象：客户买了一次节日礼盒后，至少要等一年才有下一次采购。一年复购一次，这种关系太脆弱了。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们做了一件事：<strong>把"节日礼品"变成"全年商务送礼服务"</strong>。客户生日礼、客户签约礼、员工入职纪念、客户答谢——一年下来至少有6-8个送礼场景。他们给每个客户建了一个"送礼日历"，提前一个月提醒。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>结果：</strong>单个客户年均消费从1次变成4-5次，客户生命周期价值翻了四倍。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>不是没需求，是需求在你没发现的地方摆着。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你手上已经有一批老客户，但复购率/续费率不高</li>
+          <li class="py-1">· 客户的单次购买金额有提升空间，他们有更多的钱可以花在你身上</li>
+          <li class="py-1">· 你所在的行业客户一旦信任了你，更换供应商的成本较高</li>
+          <li class="py-1">· 拓新客的成本越来越高，而你的老客户几乎被"放着没管"</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的产品是一次性的（比如婚礼策划、装修），客户短期内不会重复需要</li>
+          <li class="py-1">· 你的客户基数太小（<20个），深耕的样板量不够，先解决获客问题</li>
+          <li class="py-1">· 老客户对你的满意度其实不高，先解决产品和服务的质量问题</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（保护区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你的客户结构</strong>。如果你的产品偏一次性消费或客户基数偏小，<strong>微创新延伸产品线</strong>和<strong>AI降本</strong>可能更适合你现在的阶段。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 客户分层 + 建健康度评分</span>
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>客户分层——谁是你的"金矿"</h4>
+        <ul class="checklist">
+          <li>把你所有客户按年消费额+购买频率分成三层：高价值/中价值/低价值</li>
+          <li>高价值客户：前20%贡献80%利润的，重点维护，一对一服务</li>
+          <li>中价值客户：有增长潜力但还没开发充分的，重点提频升级</li>
+          <li>用<strong>模板1（客户健康度评分卡）</strong>给每个大客户打分</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>所有客户完成分层，前20%高价值客户单独标记</p>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第3-4周</span>
+        <h4>识别流失风险 + 创造新的接触机会</h4>
+        <ul class="checklist">
+          <li>分析过去12个月流失的客户，他们走之前有什么信号？多久没跟你们互动了？</li>
+          <li>给每个高价值客户设计"下一个消费场景"，他下次需要你的产品/服务可能是什么时候？</li>
+          <li>主动联系：不是"要不要买"，而是"上次用的怎么样？有个新东西你可能有用"</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>完成客户分层 + 每个高价值客户有明确的"下一次接触"计划</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 深度维护 + 提升触点</span>
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>一对一拜访/沟通高价值客户</h4>
+        <ul class="checklist">
+          <li>前20%高价值客户，这个月全部一对一联系一遍，电话或拜访</li>
+          <li>目的不是推销，是了解：他们目前最大的挑战是什么？还有什么需求是你可以帮到的？</li>
+          <li>记录每一次沟通的关键信息</li>
+        </ul>
+      </div>
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>设计复购/续费提醒机制</h4>
+        <ul class="checklist">
+          <li>根据客户的使用/购买周期，设置提前一个月的续费/复购提醒</li>
+          <li>不是"您的合同快到期了"，而是"我们为您准备了下个周期的方案，要不要看看？"</li>
+          <li>建立客户关怀日历：生日、合作周年、行业大事件，自然的接触机会</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>有系统的客户关怀节奏，不再依赖"想起来才联系"</p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 评估效果</span>
+      <div class="week-block">
+        <span class="week-num">第9-13周</span>
+        <h4>数据复盘——复购是不是真涨了</h4>
+        <ul class="checklist">
+          <li>复购率/续费率有没有提升？（目标：提升≥10个百分点）</li>
+          <li>客户生命周期价值有没有提升？</li>
+          <li>哪些维护动作最有效？哪些花了时间没效果？</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">客户健康度评分卡</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>客户名称</th><th>年消费额</th><th>购买频率</th><th>最近一次购买距今</th><th>满意度(1-10)</th><th>流失风险</th><th>行动</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 流失风险：高=最近一次购买距今>6个月且满意度<7；低=活跃且满意。</p>
+      </div>
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">客户关怀日历模板</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>客户</th><th>1月</th><th>2月</th><th>3月</th><th>...</th><th>年度接触目标</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td>≥6次</td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 每个客户每年至少6次有意义的接触（不包含节日群发）。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某企业礼品公司：从"一年一次"到"全年6次"</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>客户每年只在节日买一次礼品，复购周期太长。</p>
+          <p><strong>做了什么：</strong>建立客户送礼日历，把场景从节日拓展到日常——生日礼、签约礼、入职纪念、客户答谢、开业祝贺、年终回馈。提前一个月提醒客户。</p>
+          <p><strong>结果：</strong>单个客户年均消费从1次→4.5次，客户生命周期价值翻四倍。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>最初推"全年送礼日历"的时候，客户觉得"你们就是想多卖东西"。后来改了一个说法——"我们帮你记住你该记住的人，礼品只是载体"——客户才接受。从"推销"变成"服务"的关键不是产品，是让客户感觉到你在帮他而不是在卖他。</p>
+          <p><strong>最关键决策：</strong>不是改变产品，是<strong>改变了客户消费的频率——你帮他想起"什么时候该送了"</strong>。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某软件服务商：从"被动续费"到"主动护航"</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>软件年续费服务，续费率一直在60%左右，流失的40%找不到原因。</p>
+          <p><strong>做了什么：</strong>建立客户健康度评分——根据使用频率、客服工单、反馈评价做提前预警。评分低的客户，在续费前三个月就主动介入。</p>
+          <p><strong>结果：</strong>续费率从60%→78%，流失预警让很多客户在要走之前被拉回来了。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>健康度评分体系建了两个月才跑通——开始设的维度太多，打分不准，误报率高。后来砍到只留三个核心指标：使用频率、最近一次登录时间、客服工单次数。简单但有效。</p>
+          <p><strong>最关键决策：</strong>不等客户主动流失，<strong>在客户自己还没意识到要走的时候，你就知道该做什么了。</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 14 · 客户分层完成</p><p class="text-xs text-gray-500">自查：所有客户完成分层了吗？前20%高价值客户单独标记了吗？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 维护计划就绪</p><p class="text-xs text-gray-500">自查：每个高价值客户有明确的"下一次接触"计划了吗？</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · 关怀系统运转</p><p class="text-xs text-gray-500">自查：客户关怀节奏在运行吗？还是又回到"想起来才联系"？</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#B45309;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 复购率复盘</p><p class="text-xs text-gray-500">建议<strong>重新做一次L2诊断</strong>，看竞争地位分有没有因为客户深耕而提升。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：老客户已经很久没联系了，突然找他们会不会很尴尬？</p><p class="text-sm text-gray-600 mt-1">不要上来就"买东西吗"。先给价值——分享一篇对ta有用的行业信息、问一句"上次那个项目现在怎么样了"。<strong>有内容、有理由、有关心，就不尴尬。</strong></p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：深耕老客户真的比找新客户划算吗？</p><p class="text-sm text-gray-600 mt-1">数据不会骗人：老客户转化率通常是新客的5-10倍，获客成本为零。如果你花跟找新客同样的精力在老客户身上，回报率大概率更高。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：有些老客户就是"一锤子买卖"型，怎么深耕都没用？</p><p class="text-sm text-gray-600 mt-1">确实存在。把精力集中在"有复购潜力"的客户上，不必在所有老客户身上平均用力。这就是客户分层的意义——把时间花在刀刃上。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：做了客户深耕但短期看不到效果，怎么办？</p><p class="text-sm text-gray-600 mt-1">深耕的效果通常要3-6个月才能体现在数据上。不要因为第一个月复购率没涨就放弃。坚持下去——大多数企业在"深耕客户"这件事上，不是做错了，是没做够就停了。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.9);margin-bottom:16px;">L3深度咨询：帮你建立客户深耕体系和关怀策略</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

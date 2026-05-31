@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="打造差异化卖点 - 90天执行手册">
+  <title>打造差异化卖点 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #1E3A8A; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #3B82F6; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .action-card h4 { font-size: 14px; font-weight: 700; color: #475569; margin: 16px 0 6px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #EFF6FF; color: #1E3A8A; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #1E3A8A; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #EFF6FF); border: 1px solid #BFDBFE; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #DBEAFE; color: #1E40AF; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #EFF6FF; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #1E3A8A; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#3B82F6,#2563EB);">机会区 · 方向二</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">打造差异化卖点</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">在产品同质化的市场里<br>让客户一眼记住你、愿意多付钱</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <!-- 第一章 -->
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>机会区</strong>——市场有机会，但客户选你只是因为"反正都差不多，这家便宜"。这是一个危险的信号：<strong>没有差异化，你的价格就是唯一的理由</strong>。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">差异化不是"做完全不一样的东西"。而是<strong>在客户在意的地方，做得比对手明显好一点</strong>。比如响应速度、行业理解、售后体验、交付方式——这些都不是产品本身的差异，但客户会因为这些东西选你。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">这个方向的核心是：<strong>找到一个客户在乎、你能做到、对手没做好的点，把它做到极致</strong>。不需要全维度领先，只需要一个维度让人记住。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家做企业培训的公司，市场上类似机构几十家，报价差不多，课程内容差不多。客户决策的方式就是"谁便宜找谁"。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们做了一个决定：<strong>所有培训都附带"3个月落地辅导"</strong>。别的公司培训完就走了，他们培训完还有三个月的跟进——每周一次电话会议，帮学员把课堂内容落地到实际工作里。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">这个差异化点不需要额外开发产品，只是多花了服务时间。但客户选择他们的时候理由变了：从"这家便宜"变成<strong>"这家是真的能帮我落地的"</strong>。客单价涨了40%，转介绍率翻了三倍。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>差异化不是做别人做不到的事，是做别人不愿意做的事。</strong></p>
+      </div>
+    </div>
+
+    <!-- 第二章 -->
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <p class="text-sm text-gray-500 mb-3">坦诚对照，别骗自己——选错方向比选慢方向更贵。</p>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的产品/服务和友商比，功能上确实差不多，不是你的问题，是行业就这样</li>
+          <li class="py-1">· 客户选你的时候经常问"能不能便宜点"，说明他们没有看到价格之外选你的理由</li>
+          <li class="py-1">· 你的客户里有20%对你特别忠诚，但80%只是"顺便买的"，说明你有差异化的种子</li>
+          <li class="py-1">· 你愿意在客户体验上花时间和精力，不只是卖完就走</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的行业已经进入极度标准化阶段，客户只关心价格，比如大宗原材料、基础物流</li>
+          <li class="py-1">· 你觉得"现在这样就挺好的"，没有动力去改变任何东西</li>
+          <li class="py-1">· 你选的差异化点太小众，大多数客户根本不在乎，比如在低价批发市场强调"环保包装"</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（机会区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你的具体情况</strong>。</p>
+        <p class="text-sm text-gray-700 leading-relaxed mt-2">这时候你需要回头看一下诊断报告里的另外两个方向——<strong>聚焦细分赛道</strong>和<strong>AI弯道超车</strong>——看看它们的"适合条件"是不是跟你的现状更匹配。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01，帮你判断。</p>
+      </div>
+    </div>
+
+    <!-- 第三章 -->
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <p class="text-sm text-gray-500 mb-3">三个阶段，找到你的独特卖点并让客户感知到它。</p>
+
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 找到你的差异化因子</span>
+
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>收集客户选你的真实原因</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">别猜，<strong>直接问客户</strong>。从过去12个月的客户里选20个——10个最满意（续约/复购的），10个只买过一次就没后续的。</p>
+        <ul class="checklist">
+          <li>满意客户：当初为什么选我们而不是别人？如果把我们推荐给朋友，你会怎么说？</li>
+          <li>流失客户：最终选了谁？他们哪里比我们好？如果我们在哪个方面改进，你会重新考虑？</li>
+          <li>把回答整理成一份清单，圈出重复出现的词，这些就是客户眼中你的"差异因子"</li>
+        </ul>
+        <div class="mt-3 flex gap-4 text-xs"><span>👤 <strong>谁来做：</strong>你自己</span><span>⏱ <strong>耗时：</strong>一周，每天聊2-3个客户</span></div>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少完成15个客户的访谈，整理出≥5个客户原话中的关键词</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>你说"我知道客户为什么选我"，但没有直接问过客户——你知道的可能是错的</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第3周</span>
+        <h4>分析友商——他们的弱点是你的机会</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">列出3-5个主要竞争对手，收集客户对他们的评价：</p>
+        <ul class="checklist">
+          <li>客户对友商最不满的是什么？（看评价平台、行业群、客户访谈中的吐槽）</li>
+          <li>友商在哪个环节明显做得不好？（售前响应慢？售后没人管？方案不够灵活？）</li>
+          <li>有哪些客户需求，友商明明能做但就是不做？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>列出友商至少3个可以被你超越的弱点</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第4周</span>
+        <h4>筛选：哪个差异化点值得All-in</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">用<strong>模板1（差异化因子评估表）</strong>给每个候选差异化点打分：</p>
+        <ul class="checklist">
+          <li>客户在乎程度：他们愿意为这个点多付钱吗？</li>
+          <li>你能做到的程度：你有能力做到比别人明显好吗？</li>
+          <li>友商难模仿程度：他们看到了也懒得跟吗？</li>
+          <li>选定1个核心差异化点 + 1个备选</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>选定1个差异化方向，能用一句话说清楚</p>
+      </div>
+
+      <div class="action-card" style="background:#EFF6FF;border-color:#BFDBFE;">
+        <p class="text-sm font-bold text-brand mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700">到第30天，你要能说出：<br><strong>"客户选我们而不是友商，最核心的理由是_________。"</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 把差异做出来</span>
+
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>围绕差异化点，重新设计一个环节</h4>
+        <p class="text-sm text-gray-600 leading-relaxed"><strong>不用改全部。</strong>只改一个客户能直接感知到的环节。比如你选了"响应快"——那就把从客户发消息到你回复的时间，从半天压缩到15分钟。</p>
+        <ul class="checklist">
+          <li>把这个差异化点拆成具体的行为标准（不是"服务好"，而是"客户消息15分钟内必回"）</li>
+          <li>写进团队的工作流程里，不是口号，是动作</li>
+          <li>准备把这个差异化点写进你的所有对外材料</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>差异化点有具体的、可检查的行为标准，团队每个人知道怎么做</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>让10个客户先感受，收集反馈</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">选10个客户（新老各半），让他们体验你的差异化：</p>
+        <ul class="checklist">
+          <li>新客户：在第一次接触时就主动展示你的差异化（比如"我们跟别人不一样的是..."）</li>
+          <li>老客户：告诉他们"我们最近升级了XX，你感受一下"</li>
+          <li>每次体验后问一句：跟以前比怎么样？跟别人比怎么样？</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少5个客户主动提到"你们在XX方面确实不一样"</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>没人在意你做的差异化——不是做得不够好，是做错了方向</p>
+      </div>
+
+      <div class="action-card" style="background:#ECFDF5;border-color:#A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">🔑 Phase 2 关键里程碑</p>
+        <p class="text-sm text-gray-700">到第60天，你手上要有：<br><strong>① 一个经过客户验证的差异化行为标准<br>② 至少5个客户明确认可这个差异点</strong></p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 让市场知道你跟别人不一样</span>
+
+      <div class="week-block">
+        <span class="week-num">第9-10周</span>
+        <h4>把差异化变成你的"一句话标签"</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">用<strong>模板3（差异化一句话标签）</strong>，把差异化浓缩成一句人话。然后：</p>
+        <ul class="checklist">
+          <li>微信签名/短视频主页/公众号介绍，统一改成这句</li>
+          <li>每次跟客户介绍自己时，第一句话就带出这个标签</li>
+          <li>所有销售材料、报价单、合同封面，加上这个标签</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>一个新客户第一次接触你后，能复述出你的差异化标签</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第11-12周</span>
+        <h4>在目标客户聚集的地方持续输出</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">围绕你的差异化点，持续产出内容：</p>
+        <ul class="checklist">
+          <li>在行业群、朋友圈、公众号里，围绕你的差异化点持续分享</li>
+          <li>每一条内容都强化一个认知："在这个点上，他们确实不一样"</li>
+          <li>用客户证言来背书，让客户替你说"他们不一样在哪"</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>一个月内至少产出4条围绕差异化点的内容</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第13周</span>
+        <h4>90天复盘——差异化有没有带来真金白银</h4>
+        <ul class="checklist">
+          <li>客单价有没有提升？（目标：≥10%）</li>
+          <li>客户比价的情况有没有减少？</li>
+          <li>转介绍率有没有变化？</li>
+          <li>新客户中有多少人能说出你的差异化？</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>客单价提升 ≥ 10%，客户比价情况明显减少</strong></p>
+        <p class="text-xs text-gray-500 mt-2">没达到？检查：差异化点选对了吗？执行到位了吗？传播够了吗？</p>
+      </div>
+    </div>
+
+    <!-- 第四章：配套模板 -->
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <p class="text-sm text-gray-500 mb-3">三个模板，对应三个关键决策。建议打印出来用笔填。</p>
+
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">差异化因子评估表</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：从客户真实反馈里提炼出最强的差异化候选。</p>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>客户原话</th><th>对应差异化因子</th><th>客户在乎度(1-10)</th><th>你能做到的程度(1-10)</th><th>友商难模仿度(1-10)</th><th>总分</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 总分最高的1-2个因子，就是你该发力的差异化点。</p>
+      </div>
+
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">友商弱点扫描表</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：找到友商在客户体验链上的薄弱环节。</p>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>友商名称</th><th>售前痛点</th><th>交付痛点</th><th>售后痛点</th><th>客户最常吐槽什么</th><th>机会评级</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 机会评级：高=友商长期忽视且客户确实在乎；低=友商也在改进中。</p>
+      </div>
+
+      <div class="template-card">
+        <span class="template-label">📋 模板3</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">差异化一句话标签</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：把你的差异化浓缩成一句客户能记住、能转述的人话。</p>
+        <div class="p-3 bg-white rounded-lg border border-gray-200 mb-3">
+          <p class="text-sm text-gray-700 leading-relaxed"><strong>我们跟别人不一样的是</strong> <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 leading-relaxed mt-2"><strong>所以客户选我们是因为</strong> <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-sm text-gray-700 leading-relaxed mt-2"><strong>客户用了以后会说</strong> <span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+        </div>
+        <div class="p-3 bg-white rounded-lg border border-gray-200 mb-2">
+          <p class="text-xs text-gray-600"><strong>✅ 好例子：</strong><br>"我们跟别人不一样的是<strong>培训完不是结束，是开始——后面三个月每周陪你把课程落地</strong>。所以客户选我们是因为<strong>别人教了就走了，我们陪你做出来</strong>。"</p>
+        </div>
+        <div class="p-3 bg-white rounded-lg border border-red-200">
+          <p class="text-xs text-gray-600"><strong>❌ 差例子：</strong><br>"我们提供卓越的客户体验和高品质的服务。"——<strong>谁都会说，没人会信。</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第五章 -->
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某企业培训公司：从"什么都教"到"保证落地的培训"</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>公司做通用管理培训，市场上同质化严重，客户比价严重。年营收400万但利润不到15%。</p>
+          <p><strong>诊断发现：</strong>客户访谈里反复出现一句话——"培训的时候很激动，回去之后一动不动"。而友商从来不管培训之后的事。</p>
+          <p><strong>做了什么：</strong>所有课程标配"3个月落地辅导"，每周一次线上跟进会。新增成本是1个助教的工资，但差异化立竿见影。</p>
+          <p><strong>结果（12个月后）：</strong>客单价从2万→2.8万（提价40%），转介绍率从15%→45%，营收增长到680万。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>团队觉得"做完培训还要跟三个月，太累了"。老板扛住了，因为这是他们唯一的壁垒。</p>
+          <p><strong>最关键决策：</strong>差异化不是"做更多"，而是<strong>"做别人嫌麻烦的事"</strong>。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某包装设计公司：从"好看的设计"到"能卖货的设计"</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>设计公司同质化极严重，客户选设计师基本看价格和审美偏好。老板发现一个规律：客户嘴上说"要好看"，最后买单的理由其实是"这个包装上架后销量涨了"。</p>
+          <p><strong>做了什么：</strong>他们改变了服务流程——设计方案交付时，附带一份"上架效果预估报告"，用同类产品的市场数据来说明设计可能带来的销量变化。别的设计师只给图，他们给图+数据。</p>
+          <p><strong>结果：</strong>客单价提升25%，成交率从30%→60%。客户老板层面的转介绍显著增加。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>做数据预估需要额外时间，项目周期长了。但客户愿意等，因为这个附加值他们认可。</p>
+          <p><strong>最关键决策：</strong>差异化不是"做得更好看"，而是<strong>"用客户老板的语言说话"</strong>——老板关心销量，不是设计美感。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第六章 -->
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <p class="text-sm text-gray-500 mb-3">四个关键时间点，建议在手机日历上设个提醒。</p>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 7 · 客户访谈启动</p><p class="text-xs text-gray-500">自查：客户访谈开始了吗？聊了几个了？不聊客户，后面的差异化方向就是自己在猜。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 差异化方向选定</p><p class="text-xs text-gray-500">自查：能一句话说清楚客户选你的"唯一理由"是什么吗？说不清楚就回Phase 1。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · 客户验证通过</p><p class="text-xs text-gray-500">自查：至少5个客户明确认可你的差异化点了吗？没有的话，方向可能需要调整。</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#1E3A8A;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 效果复盘</p><p class="text-xs text-gray-500">自查：客单价涨了吗？比价客户少了吗？建议<strong>重新做一次L2诊断</strong>，看竞争地位分有没有变化。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <!-- 第七章 -->
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我们行业产品太标准化了，感觉找不到差异化点？</p><p class="text-sm text-gray-600 mt-1">产品标准化，不代表服务、体验、沟通也标准化。想想：能不能在响应速度上更快？在售后上更贴心？在交付方式上更灵活？<strong>产品没差，但人可以做出差。</strong></p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：差异化做出来了，但友商很快就抄了怎么办？</p><p class="text-sm text-gray-600 mt-1">抄得快的通常是"看得见"的——比如你的定价、你的包装。但"服务体验"、"响应速度"、"行业理解"这些是抄不走的。选那些<strong>需要持续投入、别人懒得坚持</strong>的差异化点。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我的差异化点客户好像不太在意，怎么办？</p><p class="text-sm text-gray-600 mt-1">两种情况：要么差异化方向选错了（客户确实不在乎），回Phase 1重新选；要么你做的方式不对（客户感知不到），回Phase 2重新设计客户体验环节。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：做差异化会不会把一些客户挡在门外？</p><p class="text-sm text-gray-600 mt-1">会。有差异化就有取舍。你在乎"落地效果"的客户会因此选你，只在乎"便宜"的客户会因此不选你——这就是你想要的。差异化不是讨好所有人，是让对的人无法拒绝。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:16px;">L3深度咨询服务：针对你的具体企业情况，定制差异化战略</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>

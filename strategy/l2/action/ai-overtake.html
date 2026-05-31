@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="用AI实现弯道超车 - 90天执行手册">
+  <title>用AI实现弯道超车 · 执行手册</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#1E3A8A',light:'#3B82F6'},gold:{DEFAULT:'#F59E0B',dark:'#D97706'}}}}}</script>
+  <link rel="stylesheet" href="../css/l2-style.css">
+  <style>
+    body { background: #F8FAFC; }
+    .action-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; padding: 20px 20px 40px; }
+    .action-section { margin-bottom: 28px; }
+    .action-section-title { font-size: 18px; font-weight: 700; color: #1E3A8A; margin-bottom: 12px; padding-left: 12px; border-left: 4px solid #3B82F6; }
+    .action-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+    .action-card h3 { font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 8px; }
+    .action-card h4 { font-size: 14px; font-weight: 700; color: #475569; margin: 16px 0 6px; }
+    .phase-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .phase-1 { background: #EFF6FF; color: #1E3A8A; }
+    .phase-2 { background: #ECFDF5; color: #065F46; }
+    .phase-3 { background: #FEF3C7; color: #92400E; }
+    .fit-yes { background: #ECFDF5; border-left: 4px solid #10B981; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .fit-no { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px 16px; border-radius: 0 12px 12px 0; margin-bottom: 10px; }
+    .week-block { border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 12px; background: #F8FAFC; }
+    .week-block .week-num { display: inline-block; background: #1E3A8A; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .week-block .checklist { margin-top: 8px; }
+    .week-block .checklist li { font-size: 13px; color: #64748B; padding: 4px 0; padding-left: 20px; position: relative; list-style: none; }
+    .week-block .checklist li::before { content: '☐'; position: absolute; left: 0; color: #94A3B8; font-size: 13px; }
+    .template-card { border: 2px dashed #CBD5E1; border-radius: 14px; padding: 20px; margin-bottom: 16px; background: #FAFAFA; }
+    .template-card .template-label { display: inline-block; background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .template-card table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .template-card th { background: #F1F5F9; padding: 8px; text-align: left; font-size: 12px; color: #475569; border: 1px solid #E2E8F0; }
+    .template-card td { padding: 8px; border: 1px solid #E2E8F0; color: #94A3B8; font-size: 12px; }
+    .fill-line { display: inline-block; border-bottom: 1px dashed #94A3B8; min-width: 80px; color: #94A3B8; }
+    .case-card { background: linear-gradient(135deg, #F8FAFC, #EFF6FF); border: 1px solid #BFDBFE; border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    .case-card .case-tag { display: inline-block; background: #DBEAFE; color: #1E40AF; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; }
+    .timeline-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #EFF6FF; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #1E3A8A; flex-shrink: 0; }
+    @media print { body { background: #fff; } .action-container { max-width: 100%; padding: 0; } .week-block, .template-card, .case-card { break-inside: avoid; } }
+    .signal-green { color: #10B981; font-weight: 700; }
+    .signal-red { color: #EF4444; font-weight: 700; }
+    .ai-tip { background: #1E3A8A; color: #fff; border-radius: 8px; padding: 8px 12px; font-size: 12px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="action-container">
+    <div class="text-center mb-8 pt-4">
+      <div class="inline-block px-4 py-1 rounded-full text-white text-sm font-bold mb-3" style="background:linear-gradient(135deg,#3B82F6,#2563EB);">机会区 · 方向三</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-2">用AI实现弯道超车</h1>
+      <p class="text-base text-gray-500">90天执行手册</p>
+      <p class="text-sm text-gray-400 mt-1">别在旧赛道追赶<br>用AI重新定义交付方式，跑到对手前面</p>
+    </div>
+    <div class="l2-save-banner"><span class="save-icon">📌</span><span>建议收藏此页面链接，或将本页打印出来，对照执行</span></div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">一、这个方向到底在说什么</h2>
+      <div class="action-card">
+        <h3>详细解读</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">你现在在<strong>机会区</strong>——市场有机会，但你在传统维度上（品牌、渠道、技术）很难追上头部玩家。但如果换一条赛道呢？</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">AI给了中小企业一个<strong>非对称竞争</strong>的机会：你不需要在产品上超越对手，但可以在效率上、响应速度上、服务方式上，用AI工具实现对手三五个人才能做到的事。<strong>一个人+AI，可以干出一个小团队的效果。</strong></p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">这个方向的核心不是"买AI工具"，而是<strong>"用AI改变你做事的方式"</strong>。不是技术升级，是工作方式升级。</p>
+      </div>
+      <div class="action-card">
+        <h3>用个例子你就明白了</h3>
+        <p class="text-sm text-gray-600 leading-relaxed">一家建筑设计工作室，8个人，跟100人的大设计院竞争。大设计院有专门的方案组、绘图组、预算组。小工作室一个人要干三个人的活。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3">他们做了一件事：<strong>把AI嵌入到设计流程里</strong>。初期方案用AI辅助生成多种方向供客户选择（以前要画3天，现在1天出5个方案），图纸审核用AI先扫一遍查错（以前要人工对图半天，现在10分钟），方案汇报PPT用AI一键生成（以前要花2天美化）。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>结果：</strong>项目交付周期从6周压缩到4周。同样8个人，年项目量从12个变成18个。客户觉得"这家方案出得快、改得快"，复购率显著提高。</p>
+        <p class="text-sm text-gray-600 leading-relaxed mt-3"><strong>他们没有变成AI公司。他们只是用AI把自己变成了"更快的工作室"。</strong></p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">二、你适不适合走这条路</h2>
+      <p class="text-sm text-gray-500 mb-3">坦诚对照——不是所有人都需要现在就用AI，但所有企业都应该考虑。</p>
+      <div class="fit-yes">
+        <p class="text-sm font-bold text-green-800 mb-1">✅ 四个信号，说明这条路适合你</p>
+        <ul class="text-sm text-green-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的工作流程里有很多重复性环节，做方案、写报告、回客户消息、整理数据</li>
+          <li class="py-1">· 你经常感觉"人不够用"，但短期内招不起也管不了更多人</li>
+          <li class="py-1">· 你本人或团队里有人愿意学习新工具，不排斥尝试</li>
+          <li class="py-1">· 你的友商目前还没在这个方向上发力，窗口期还在</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <p class="text-sm font-bold text-red-800 mb-1">❌ 三个信号，说明这条路不适合你</p>
+        <ul class="text-sm text-red-800" style="list-style:none;padding:0;">
+          <li class="py-1">· 你的业务依赖高度个性化的人际关系（比如高客单价1v1咨询），AI目前帮不上核心环节</li>
+          <li class="py-1">· 团队里没有一个人愿意碰新工具，你推动也没人跟</li>
+          <li class="py-1">· 你的资金极度紧张，连每个月几百块的AI工具订阅费都觉得是负担</li>
+        </ul>
+      </div>
+      <div class="action-card" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <p class="text-sm font-bold text-amber-800 mb-1">⚠️ 自检提示</p>
+        <p class="text-sm text-gray-700 leading-relaxed">如果你发现自己有2个以上不适合信号，不代表诊断错了——你的象限归属（机会区）是基于市场吸引力和竞争地位的客观数据算出来的，但同一个象限里，<strong>哪条路最适合你，取决于你的具体情况</strong>。</p>
+        <p class="text-sm text-gray-700 leading-relaxed mt-2">这时候你需要回头看一下诊断报告里的另外两个方向——<strong>聚焦细分赛道</strong>和<strong>打造差异化卖点</strong>——看看它们的"适合条件"是不是跟你的现状更匹配。</p>
+        <p class="text-sm mt-3"><a href="../survey.html" style="display:inline-block;padding:10px 20px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;">🔄 重新进入诊断问卷，对比另外两个方向 →</a></p>
+        <p class="text-xs text-gray-500 mt-2">如果仍然不确定，可以带着诊断报告联系微信 LaoLee01，帮你判断。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">三、90天执行路线图</h2>
+      <p class="text-sm text-gray-500 mb-3">三个阶段：试点一个环节→复制到更多环节→把AI能力变成你的竞争优势。</p>
+
+      <span class="phase-badge phase-1">Phase 1 · 第1-30天 · 选一个环节，用AI打穿</span>
+
+      <div class="week-block">
+        <span class="week-num">第1-2周</span>
+        <h4>扫描你的"重复性工作清单"</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">把你和团队每周做的工作列出来，标注<strong>重复次数、耗时时长、判断难度</strong>。AI最擅长的是"重复但有规律"的工作。</p>
+        <ul class="checklist">
+          <li>列出所有日常工作，每项标注：每周做几次？每次多久？需要动脑还是动手？</li>
+          <li>用<strong>模板1（AI改造优先级矩阵）</strong>打分排序</li>
+          <li>选出1个"高频、耗时、不需要复杂判断"的任务作为第一个试点</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>完成工作扫描，选定1个试点任务</p>
+        <div class="ai-tip">🤖 AI工具建议：方案/报价生成→Claude/GPT；客服→AI客服机器人；数据分析→ChatGPT数据分析模式</div>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第3-4周</span>
+        <h4>试点改造：把一个环节做到AI化</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">集中精力改造那一个选定的环节。比如选了"客户方案生成"：</p>
+        <ul class="checklist">
+          <li>把你过去做过的最好的3-5个方案整理出来，作为AI的学习样本</li>
+          <li>写一个标准化的提示词模板（让AI理解你的业务语境和标准）</li>
+          <li>先用AI生成初稿，你再修改，逐步减少修改量</li>
+          <li>记录改造前后耗时对比</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>该环节耗时降低≥50%，且输出质量不低于人工水平</p>
+        <p class="text-xs"><span class="signal-red">危险信号：</span>AI生成的完全不能用，每次都要重做——提示词没写对</p>
+      </div>
+
+      <div class="action-card" style="background:#EFF6FF;border-color:#BFDBFE;">
+        <p class="text-sm font-bold text-brand mb-1">🔑 Phase 1 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>至少1个核心环节实现AI化，耗时降低≥50%</strong></p>
+      </div>
+
+      <span class="phase-badge phase-2" style="margin-top:20px;">Phase 2 · 第31-60天 · 从点到面复制</span>
+
+      <div class="week-block">
+        <span class="week-num">第5-6周</span>
+        <h4>全员培训——每个人掌握1-2个AI工具</h4>
+        <p class="text-sm text-gray-600 leading-relaxed"><strong>不是讲课，是带他们做。</strong>你把第3-4周自己摸索出来的方法，手把手教给团队里最愿意试的2-3个人：</p>
+        <ul class="checklist">
+          <li>你演示一遍：这个工作我是怎么用AI做的</li>
+          <li>他们做一遍：你看着，纠正</li>
+          <li>他们独立做一周：你检查输出质量</li>
+          <li>把操作步骤写成<strong>一页纸指南</strong>（不是厚手册），方便其他人复制</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少2个团队成员能独立使用AI完成至少1项工作</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第7-8周</span>
+        <h4>扩展到第二个环节</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">用模板1重新打分，选第二个改造的环节：</p>
+        <ul class="checklist">
+          <li>这次改造你已经有经验了，速度会快很多</li>
+          <li>把两个AI化环节的落地经验整理成团队的"AI工具使用规范"</li>
+          <li>开始记录人均效率数据，这是Phase 3证明成果的证据</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>至少2个核心环节完成AI化，团队有统一的AI使用规范文档</p>
+      </div>
+
+      <div class="action-card" style="background:#ECFDF5;border-color:#A7F3D0;">
+        <p class="text-sm font-bold text-green-700 mb-1">🔑 Phase 2 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>① 团队至少2人独立使用AI ② 至少2个环节AI化 ③ 有团队共享的AI使用规范</strong></p>
+      </div>
+
+      <span class="phase-badge phase-3" style="margin-top:20px;">Phase 3 · 第61-90天 · 把AI能力变成竞争优势</span>
+
+      <div class="week-block">
+        <span class="week-num">第9-10周</span>
+        <h4>对外展示你的"AI加速"优势</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">把AI带来的效率提升，转化为客户能感知的差异：</p>
+        <ul class="checklist">
+          <li>如果你的方案出得快，告诉客户"别人3天出方案，我们24小时"</li>
+          <li>如果你的客服响应快，告诉客户"任何问题，15分钟内必有回复"</li>
+          <li>把这些写进你的销售材料、公众号、短视频内容里</li>
+        </ul>
+        <p class="text-xs mt-2"><span class="signal-green">做成标准：</span>你的对外宣传里至少出现1个"AI加速带来的具体承诺"</p>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第11-12周</span>
+        <h4>持续迭代——把AI用成习惯</h4>
+        <ul class="checklist">
+          <li>每个月团队分享一次"我这个月用AI省了多少时间"</li>
+          <li>持续优化提示词模板库，这是你公司的AI资产</li>
+          <li>关注AI工具的新动态，每个月可能有新的工具出现</li>
+        </ul>
+      </div>
+
+      <div class="week-block">
+        <span class="week-num">第13周</span>
+        <h4>90天复盘——数据说话</h4>
+        <ul class="checklist">
+          <li>人均产出提升了多少？（目标：≥30%）</li>
+          <li>团队对AI工具的使用频率是上升还是下降？</li>
+          <li>客户是否感受到了服务速度或质量的变化？</li>
+          <li>下一步：AI还能用在哪个环节？</li>
+        </ul>
+      </div>
+
+      <div class="action-card" style="background:#FEF3C7;border-color:#FDE68A;">
+        <p class="text-sm font-bold text-amber-700 mb-1">🔑 Phase 3 关键里程碑</p>
+        <p class="text-sm text-gray-700"><strong>人均产出提升≥30%，且至少2个核心流程实现AI化</strong></p>
+        <p class="text-xs text-gray-500 mt-2">没达到？检查：环节选对了吗？提示词模板一直在优化吗？团队真的在用还是应付你？</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">四、配套模板</h2>
+      <p class="text-sm text-gray-500 mb-3">三个模板，帮你用数据而不是感觉来推进AI化。</p>
+
+      <div class="template-card">
+        <span class="template-label">📋 模板1</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">AI改造优先级矩阵</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：找到最适合先用AI改造的环节。</p>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>工作环节</th><th>每周耗时(小时)</th><th>重复程度(1-10)</th><th>判断难度(1-10)<br><small>越低越适合AI</small></th><th>业务影响(1-10)</th><th>优先级分</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 优先级分 = 耗时 × 重复程度 × 业务影响 ÷ 判断难度。分最高的先改。</p>
+      </div>
+
+      <div class="template-card">
+        <span class="template-label">📋 模板2</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">AI提示词模板库</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：把好用的提示词沉淀下来，团队复用。每个常用场景一个模板。</p>
+        <div class="p-3 bg-white rounded-lg border border-gray-200 mb-2">
+          <p class="text-xs font-bold text-gray-700">场景：<span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p class="text-xs font-bold text-gray-700 mt-1">提示词模板：</p>
+          <p class="text-xs text-gray-500 bg-gray-50 p-2 rounded mt-1" style="font-family:monospace;">"我的业务是_________。请帮我_________。背景信息：_________。要求：_________。"</p>
+        </div>
+        <p class="text-xs text-gray-400">💡 好的提示词 = 角色设定 + 具体任务 + 背景信息 + 输出格式要求</p>
+      </div>
+
+      <div class="template-card">
+        <span class="template-label">📋 模板3</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">AI改造前后对比记录表</h3>
+        <p class="text-xs text-gray-500 mb-3">目的：用数据证明AI改造的效果，给团队和自己信心。</p>
+        <div style="overflow-x:auto;">
+          <table>
+            <tr><th>工作环节</th><th>改造前耗时</th><th>改造后耗时</th><th>节省时间</th><th>质量变化</th><th>团队反馈</th></tr>
+            <tr><td><span class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">💡 每改造一个环节就填一行，三个月后这个表就是你的AI成果报告。</p>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">五、真实案例（已匿名处理）</h2>
+      <div class="case-card">
+        <span class="case-tag">📖 案例一</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某建筑设计工作室：8个人干出了15个人的产值</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>8人工作室，跟大设计院竞争。最大的劣势是慢——大设计院人多，同时开几个项目不费劲。</p>
+          <p><strong>做了什么：</strong>把方案设计、图纸审核、汇报PPT三个环节全部AI化。初期方案用AI快速生成多个方向；图纸用AI预审查错；PPT用AI一键美化。</p>
+          <p><strong>结果：</strong>项目周期从6周→4周，年项目量从12个→18个，同样8个人产值提升了50%。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>老设计师觉得"AI懂个屁"，抵触情绪大。老板的做法是：自己先用，拿数据说话——"你看我这个项目，AI帮我省了2天"。慢慢有人开始跟着用。</p>
+          <p><strong>最关键决策：</strong>不强迫，做示范。<strong>先让愿意试的人尝到甜头，其他人自然跟过来。</strong></p>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">📖 案例二</span>
+        <h3 style="font-size:16px;font-weight:700;color:#1E293B;margin:8px 0;">某电商代运营公司：用AI把客服团队从15人降到8人</h3>
+        <div class="text-sm text-gray-600 leading-relaxed">
+          <p><strong>背景：</strong>公司为多个品牌做电商代运营，客服团队15人，是最大的成本中心。老板一直想压缩但担心影响服务质量。</p>
+          <p><strong>做了什么：</strong>不是直接换AI客服。而是用AI做"客服辅助"——客户问问题，AI实时弹建议回复，客服人员确认或修改后发送。同时AI自动整理FAQ、生成日报。</p>
+          <p><strong>结果：</strong>单人处理客户量提升60%，团队从15人自然减到8人（离职不补），客户满意度没降。</p>
+          <p class="mt-3"><strong>最大的坎：</strong>初期AI建议不准，客服觉得"等于没用还浪费时间"。后来把历史聊天记录喂给AI学习，准确率从60%提到90%。</p>
+          <p><strong>最关键决策：</strong>不是"用AI替代人"，而是<strong>"用AI辅助人"</strong>。这降低了团队的抵触心理。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">六、自我检查节点</h2>
+      <p class="text-sm text-gray-500 mb-3">四个关键时间点，建议在手机日历上设个提醒。</p>
+      <div class="action-card">
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 7 · 工作扫描完成</p><p class="text-xs text-gray-500">自查：工作清单列出来了吗？选定第一个试点环节了吗？没选出来就再看一遍模板1。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 30 · 第一个环节AI化完成</p><p class="text-xs text-gray-500">自查：该环节耗时降低≥50%了吗？如果是，你可以庆祝一下了。</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot">📅</div><div><p class="text-sm font-bold text-gray-800">Day 60 · 团队能独立使用AI</p><p class="text-xs text-gray-500">自查：至少2个团队成员能独立用AI了吗？有共享的提示词库了吗？</p></div></div>
+        <div class="timeline-item" style="border-bottom:none;"><div class="timeline-dot" style="background:#1E3A8A;color:#fff;">📅</div><div><p class="text-sm font-bold text-gray-800">Day 90 · 效率复盘</p><p class="text-xs text-gray-500">自查：人均产出提升≥30%了吗？建议<strong>重新做一次L2诊断</strong>，看竞争地位分变化。</p><a href="../survey.html" style="display:inline-block;margin-top:8px;padding:8px 16px;background:linear-gradient(135deg,#1E3A8A,#1E40AF);color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;">🔄 复测战略诊断L2</a></div></div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <h2 class="action-section-title">七、常见问题</h2>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：我不懂技术，能用AI吗？</p><p class="text-sm text-gray-600 mt-1">现在的主流AI工具不需要技术背景，<strong>会打字就能用</strong>。你需要的是"知道自己想让它做什么"，而不是"知道它怎么工作"。就像你开车不需要懂发动机。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：团队里有人坚决不用AI怎么办？</p><p class="text-sm text-gray-600 mt-1">不用强推。让愿意用的人先用起来，用数据说话。当其他人看到"他用AI做同样的活，比我快一倍"，自然会过来问你怎么用的。另外，<strong>不强迫全员，但要确保你的核心骨干至少愿意试</strong>。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：AI生成的内容会不会让客户觉得我们敷衍？</p><p class="text-sm text-gray-600 mt-1">AI生成+人工审核=效率和质量兼得。关键是你审不审、改不改。AI出初稿，你把关，客户看不出来也不需要在意图是不是AI写的——它只在意"内容对我有没有用"。</p></div>
+      <div class="action-card"><p class="text-sm font-bold text-gray-800">Q：友商也开始用AI了，我的优势会消失吗？</p><p class="text-sm text-gray-600 mt-1">工具本身不是优势，<strong>谁用得深、用得好才是优势</strong>。大家都用Excel，但财务分析厉害的人依然稀缺。AI同理——领先6-12个月已经够你建立认知和效率差了。</p></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1E3A8A,#1E40AF);border-radius:16px;padding:24px 20px;text-align:center;color:#fff;margin-top:8px;">
+      <p style="font-size:20px;margin-bottom:8px;">📋</p><h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">需要更针对性的指导？</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:16px;">L3深度咨询服务：帮你找到最适合你业务流程的AI切入方式</p>
+      <a href="../report.html" style="display:inline-block;padding:12px 28px;border-radius:12px;background:#fff;color:#1E3A8A;font-size:15px;font-weight:700;text-decoration:none;">了解L3咨询 →</a>
+    </div>
+    <p class="text-xs text-gray-400 text-center mt-8">© 2026 dontbesilent · 战略诊断行动方案</p>
+  </div>
+</body>
+</html>
